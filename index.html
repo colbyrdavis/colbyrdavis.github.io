@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Portfolio</title>
+  <title>Colby Davis | Aerospace Engineer</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #F4F4F9;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #F0F0F0;
       color: #333;
       margin: 0;
       padding: 0;
@@ -20,103 +20,107 @@
     }
 
     header {
-      background: #333;
+      background: #444;
       color: #fff;
-      padding-top: 30px;
-      min-height: 70px;
-      border-bottom: #77A6F7 3px solid;
+      padding: 20px 0;
+      border-bottom: #888 4px solid;
     }
 
-    header a {
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 16px;
+    header h1 {
+      text-align: center;
+      font-size: 2.5em;
+      letter-spacing: 2px;
     }
 
-    header ul {
-      padding: 0;
-      list-style: none;
-    }
-
-    header li {
-      float: left;
-      display: inline;
-      padding: 0 20px 0 20px;
-    }
-
-    header #branding {
-      float: left;
-    }
-
-    header #branding h1 {
-      margin: 0;
-      color: #77A6F7; /* Set name color */
-    }
-
-    header nav {
-      float: right;
+    nav {
+      text-align: center;
       margin-top: 10px;
     }
 
-    header .highlight, header .current a {
-      color: #77A6F7;
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin: 0 15px;
       font-weight: bold;
     }
 
-    header a:hover {
-      color: #77A6F7;
-      font-weight: bold;
+    nav a:hover {
+      color: #888;
     }
 
     #showcase {
-      min-height: 400px;
-      background: url('showcase.jpg') no-repeat 0 -400px;
-      text-align: center;
+      height: 400px;
+      background-color: #666;
       color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
     }
 
     #showcase h1 {
-      margin-top: 100px;
-      font-size: 55px;
+      font-size: 3em;
       margin-bottom: 10px;
-      color: #77A6F7; /* Changed color for visibility */
+      color: #E0E0E0;
     }
 
     #showcase p {
-      font-size: 20px;
-      color: #77A6F7; /* Set color for description */
+      font-size: 1.2em;
+      color: #ccc;
     }
 
     .button {
       display: inline-block;
-      padding: 10px 20px;
-      font-size: 18px;
+      padding: 10px 30px;
+      margin-top: 20px;
+      font-size: 1.1em;
       color: #fff;
-      background: #77A6F7;
-      text-decoration: none;
+      background: #888;
+      border: none;
       border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
     }
 
     .button:hover {
-      background: #3E8EDE;
-      transition: background 0.3s;
+      background-color: #555;
     }
 
-    #about, #skills, #portfolio, #contact {
-      padding: 20px 0;
+    section {
+      padding: 40px 0;
+      border-bottom: 2px solid #ccc;
     }
 
-    .content {
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .about-me {
+      background: #F8F8F8;
       padding: 20px;
-      background: #fff;
-      border-radius: 5px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
+      margin-bottom: 30px;
     }
 
-    .skills-box, .about-me-box {
-      padding: 20px;
+    .skills-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .skills-list div {
+      background-color: #ccc;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      color: #444;
     }
 
     .portfolio-grid {
@@ -127,57 +131,46 @@
 
     .portfolio-item {
       position: relative;
-      overflow: hidden;
+      background-color: #E0E0E0;
       border-radius: 10px;
+      overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 300px; /* Fixed height for uniform size */
+      padding: 20px;
+      text-align: center;
+      height: 350px;
     }
 
     .portfolio-item img {
       width: 100%;
-      height: 100%;
+      height: 180px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
     }
 
-    .portfolio-item .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(46, 59, 85, 0.8);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-      border-radius: 10px;
+    .portfolio-item h3 {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
     }
 
-    .portfolio-item:hover .overlay {
-      opacity: 1;
+    .portfolio-item ul {
+      text-align: left;
+      list-style-type: none;
+      padding: 0;
+      color: #444;
     }
 
-    .portfolio-item .overlay h3,
-    .portfolio-item .overlay p {
-      margin: 10px 0;
+    .portfolio-item ul li {
+      margin-bottom: 8px;
     }
 
     footer {
-      padding: 20px;
-      background: #333;
+      background: #444;
       color: #fff;
       text-align: center;
-    }
-
-    footer p {
-      margin: 0;
+      padding: 20px;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -185,102 +178,107 @@
 
   <header>
     <div class="container">
-      <div id="branding">
-        <h1>Colby Davis</h1>
-      </div>
+      <h1>Colby Davis</h1>
       <nav>
-        <ul>
-          <li class="current"><a href="#showcase">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <section id="showcase">
     <div class="container">
-      <h1>Welcome to My Engineering Portfolio</h1>
-      <p>Discover my projects, skills, and experiences.</p>
+      <h1>Aerospace Engineer</h1>
+      <p>Focused on space system design and cutting-edge propulsion techniques.</p>
       <a href="resume_ColbyDavis.pdf" class="button" target="_blank">View Resume</a>
     </div>
   </section>
 
   <section id="about" class="container">
-    <div class="about-me-box content">
+    <div class="about-me">
       <h2>About Me</h2>
-      <p>I am an Alumni from Embry-Riddle Aeronautical University with a Bachlelor of Science in aerospace engineering with a concentration in astronautics. Throughout my academic journey, I have excelled in mastering complex aerospace concepts, demonstrated leadership in team projects, and gained practical experience through projects and lab experience. I am eager to leverage my skills and passion for astronautics to contribute to the forefront of space exploration.</p>
+      <p>I have a BS in Aerospace Engineering from Embry-Riddle Aeronautical University specializing in astronautics with a strong foundation in space system design and propulsion. I thrive in multidisciplinary environments, combining my skills in programming, simulation, and mechanical design to push the boundaries of space exploration.</p>
     </div>
   </section>
 
   <section id="skills" class="container">
-    <div class="skills-box content">
-      <h2>Skills</h2>
-      <p>MATLAB, Python, Linux, STK, SolidWorks, CATIA, CEA, Simulink, NASTRAN, FEMAP, Office 365</p>
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div>MATLAB</div>
+      <div>Python</div>
+      <div>STK</div>
+      <div>SolidWorks</div>
+      <div>C++</div>
+      <div>Simulink</div>
+      <div>CATIA</div>
+      <div>NX</div>
     </div>
   </section>
 
   <section id="portfolio" class="container">
-    <h2>Portfolio (Hover to View Title)</h2>
+    <h2>Portfolio</h2>
     <div class="portfolio-grid">
-      <a href="AE434Report.pdf" class="portfolio-item" target="_blank">
+      <div class="portfolio-item">
         <img src="Sat.mp4" alt="Satellite ADCS">
-        <div class="overlay">
-          <h3>Satellite ADCS</h3>
-          <p>CLICK FOR REPORT</p>
-        </div>
-      </a>
-      <a href="combined.pdf" class="portfolio-item" target="_blank">
+        <h3>Satellite ADCS</h3>
+        <ul>
+          <li>Developed attitude control algorithms using MATLAB.</li>
+          <li>Created realtime 3D render of satellite .</li>
+          <li>Sucessfully detumbled and orientated satellite to desired specifications.</li>
+          <li>Optimized control strategies for reaction wheel sizing.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
         <img src="CubeSat.png" alt="12U CubeSat Design">
-        <div class="overlay">
-          <h3>12U CubeSat Design</h3>
-          <p>CLICK FOR REPORT</p>
-        </div>
-      </a>
-      <a href="VP.pdf" class="portfolio-item" target="_blank">
+        <h3>12U CubeSat Design</h3>
+        <ul>
+          <li>Systems and GNC lead. </li>
+          <li>Designed the CubeSat to meet mission requirements for payload and power.</li>
+          <li>Collaborated with electrical engineers to integrate solar panels.</li>
+          <li>Performed thermal and vibration testing for component durability.</li>
+          <li>Developed technical documentation including WBS,CONOPS,requirements.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
         <img src="test2.mov" alt="Variable Pitch Test">
-        <div class="overlay">
-          <h3>Variable Pitch Test Platform</h3>
-          <p>CLICK FOR REPORT</p>
-        </div>
-      </a>
-      <a href="DIY_Lab_Report.pdf" class="portfolio-item" target="_blank">
+        <h3>Variable Pitch Test Platform</h3>
+        <ul>
+          <li>Designed and built a custom test rig for variable pitch control.</li>
+          <li>Tested aerodynamic performance in various flow conditions.</li>
+          <li>Analyzed data using Python for efficiency comparisons.</li>
+          <li>Developed a dynamic pitch control system using Simulink.</li>
+          <li>Optimized pitch angles to reduce drag at higher velocities.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
         <img src="wind-tunnel-plane.jpeg" alt="Car Wind Tunnel Testing">
-        <div class="overlay">
-          <h3>Car Wind Tunnel Testing</h3>
-          <p>CLICK FOR REPORT</p>
-        </div>
-      </a>
-      <a href="AE414Project.pdf" class="portfolio-item" target="_blank">
+        <h3>Car Wind Tunnel Testing</h3>
+        <ul>
+          <li>Modeled car designs using SolidWorks for aerodynamic testing.</li>
+          <li>Conducted wind tunnel tests to determine drag coefficients.</li>
+          <li>3D Printed car models</li>
+          <li>Compared drag for windows up vs windows down</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
         <img src="prop.jpeg" alt="Propulsion Techniques for Mercury Orbit">
-        <div class="overlay">
-          <h3>Propulsion Techniques for Mercury Orbit</h3>
-          <p>CLICK FOR REPORT</p>
-        </div>
-      </a>
-      <a href="blank.pdf" class="portfolio-item" target="_blank">
-        <img src="dumb.jpg" alt="Model Gym Equipment (Business)">
-        <div class="overlay">
-          <h3>Model Gym Equipment (Business)</h3>
-          <p>Ask for more info</p>
-        </div>
-      </a>
+        <h3>Propulsion Techniques for Mercury Orbit</h3>
+        <ul>
+          <li>Evaluated propulsion methods for deep-space missions.</li>
+          <li>Performed chemical propulsion simulations using CEA.</li>
+          <li>Investigated electric propulsion for low-thrust maneuvers.</li>
+          <li>Presented orbit insertion strategies using STK.</li>
+          <li>Optimized fuel usage for extended mission duration.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="contact" class="container">
-    <div class="content">
-      <h2>Contact</h2>
-      <p>Email: colbyricharddavis@gmail.com</p>
-      <p>Phone: (573) 987-9307</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>Colby Davis &copy; 2024</p>
-  </footer>
-
-</body>
-</html>
+    <
