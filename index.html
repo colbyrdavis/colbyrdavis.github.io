@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
-      background-color: #F0F0F0;
+      background-color: #F7F9FC;
       color: #333;
       margin: 0;
       padding: 0;
@@ -20,10 +20,10 @@
     }
 
     header {
-      background: #444;
+      background: #003366;
       color: #fff;
       padding: 20px 0;
-      border-bottom: #888 4px solid;
+      border-bottom: #005bb5 4px solid;
     }
 
     header h1 {
@@ -38,7 +38,7 @@
     }
 
     nav a {
-      color: #ccc;
+      color: #cce1ff;
       text-decoration: none;
       text-transform: uppercase;
       margin: 0 15px;
@@ -46,12 +46,12 @@
     }
 
     nav a:hover {
-      color: #888;
+      color: #a3c9ff;
     }
 
     #showcase {
       height: 400px;
-      background-color: #666;
+      background-color: #005bb5;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -63,12 +63,12 @@
     #showcase h1 {
       font-size: 3em;
       margin-bottom: 10px;
-      color: #E0E0E0;
+      color: #e0e6f5;
     }
 
     #showcase p {
       font-size: 1.2em;
-      color: #ccc;
+      color: #cce1ff;
     }
 
     .button {
@@ -77,7 +77,7 @@
       margin-top: 20px;
       font-size: 1.1em;
       color: #fff;
-      background: #888;
+      background: #0073e6;
       border: none;
       border-radius: 5px;
       text-decoration: none;
@@ -85,7 +85,7 @@
     }
 
     .button:hover {
-      background-color: #555;
+      background-color: #004a99;
     }
 
     section {
@@ -96,12 +96,12 @@
     h2 {
       text-align: center;
       font-size: 2.5em;
-      color: #555;
+      color: #333;
       margin-bottom: 20px;
     }
 
     .about-me {
-      background: #F8F8F8;
+      background: #f1f1f1;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-bottom: 30px;
@@ -114,13 +114,13 @@
     }
 
     .skills-list div {
-      background-color: #ccc;
+      background-color: #e6e6e6;
       padding: 15px;
       border-radius: 5px;
       margin: 10px;
       width: 200px;
       text-align: center;
-      color: #444;
+      color: #333;
     }
 
     .portfolio-grid {
@@ -131,7 +131,7 @@
 
     .portfolio-item {
       position: relative;
-      background-color: #E0E0E0;
+      background-color: #eef4fc;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -146,6 +146,7 @@
       object-fit: cover;
       border-radius: 5px;
       margin-bottom: 15px;
+      cursor: pointer;
     }
 
     .portfolio-item h3 {
@@ -158,7 +159,7 @@
       text-align: left;
       list-style-type: none;
       padding: 0;
-      color: #444;
+      color: #333;
     }
 
     .portfolio-item ul li {
@@ -166,11 +167,23 @@
     }
 
     footer {
-      background: #444;
+      background: #003366;
       color: #fff;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
+    }
+
+    #contact {
+      background: #e0e6f5;
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #contact p {
+      margin: 10px 0;
+      color: #333;
     }
   </style>
 </head>
@@ -221,30 +234,36 @@
     <h2>Portfolio</h2>
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <img src="Sat.mp4" alt="Satellite ADCS">
+        <a href="AE434Report.pdf" target="_blank">
+          <img src="Sat.mp4" alt="Satellite ADCS">
+        </a>
         <h3>Satellite ADCS</h3>
         <ul>
           <li>Developed attitude control algorithms using MATLAB.</li>
           <li>Created realtime 3D render of satellite .</li>
-          <li>Sucessfully detumbled and orientated satellite to desired specifications.</li>
+          <li>Successfully detumbled and orientated satellite to desired specifications.</li>
           <li>Optimized control strategies for reaction wheel sizing.</li>
         </ul>
       </div>
 
       <div class="portfolio-item">
-        <img src="CubeSat.png" alt="12U CubeSat Design">
+        <a href="12U_CubeSatProposal.pdf" target="_blank">
+          <img src="CubeSat.png" alt="12U CubeSat Design">
+        </a>
         <h3>12U CubeSat Design</h3>
         <ul>
-          <li>Systems and GNC lead. </li>
+          <li>Systems and GNC lead.</li>
           <li>Designed the CubeSat to meet mission requirements for payload and power.</li>
           <li>Collaborated with electrical engineers to integrate solar panels.</li>
           <li>Performed thermal and vibration testing for component durability.</li>
-          <li>Developed technical documentation including WBS,CONOPS,requirements.</li>
+          <li>Developed technical documentation including WBS, CONOPS, requirements.</li>
         </ul>
       </div>
 
       <div class="portfolio-item">
-        <img src="test2.mov" alt="Variable Pitch Test">
+        <a href="VP.pdf" target="_blank">
+          <img src="test2.mov" alt="Variable Pitch Test">
+        </a>
         <h3>Variable Pitch Test Platform</h3>
         <ul>
           <li>Designed and built a custom test rig for variable pitch control.</li>
@@ -256,18 +275,22 @@
       </div>
 
       <div class="portfolio-item">
-        <img src="wind-tunnel-plane.jpeg" alt="Car Wind Tunnel Testing">
-        <h3>Car Wind Tunnel Testing</h3>
+        <a href="DIY_Lab_Report.pdf" target="_blank">
+          <img src="wind-tunnel-plane.jpeg" alt="Car Wind Tunnel Testing">
+        </a>
+       <h3>Car Wind Tunnel Testing</h3>
         <ul>
           <li>Modeled car designs using SolidWorks for aerodynamic testing.</li>
           <li>Conducted wind tunnel tests to determine drag coefficients.</li>
-          <li>3D Printed car models</li>
-          <li>Compared drag for windows up vs windows down</li>
+          <li>3D Printed car models.</li>
+          <li>Compared drag for windows up vs windows down.</li>
         </ul>
       </div>
 
       <div class="portfolio-item">
-        <img src="prop.jpeg" alt="Propulsion Techniques for Mercury Orbit">
+        <a href="AE414Project.pdf" target="_blank">
+          <img src="prop.jpeg" alt="Propulsion Techniques for Mercury Orbit">
+        </a>
         <h3>Propulsion Techniques for Mercury Orbit</h3>
         <ul>
           <li>Evaluated propulsion methods for deep-space missions.</li>
@@ -281,4 +304,13 @@
   </section>
 
   <section id="contact" class="container">
-    <
+    <h2>Contact</h2>
+    <p>Phone: (573) 987-9307</p>
+    <p>Email: <a href="colbyricharddavis@gmail.com">colbyricharddavis@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>Colby Davis © 2024 | Aerospace Engineer</p>
+  </footer>
+</body>
+</html>
