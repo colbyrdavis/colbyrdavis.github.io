@@ -100,6 +100,29 @@
       margin-bottom: 20px;
     }
 
+    .about-me {
+      background: #f1f1f1;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .skills-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .skills-list div {
+      background-color: #e6e6e6;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      color: #333;
+    }
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -124,6 +147,23 @@
       border-radius: 5px;
       margin-bottom: 15px;
       cursor: pointer;
+    }
+
+    .portfolio-item h3 {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-item ul {
+      text-align: left;
+      list-style-type: none;
+      padding: 0;
+      color: #333;
+    }
+
+    .portfolio-item ul li {
+      margin-bottom: 8px;
     }
 
     footer {
@@ -170,20 +210,104 @@
     </div>
   </section>
 
+  <section id="about" class="container">
+    <div class="about-me">
+      <h2>About Me</h2>
+      <p>I have a BS in Aerospace Engineering from Embry-Riddle Aeronautical University specializing in astronautics with a strong foundation in space system design and propulsion. I thrive in multidisciplinary environments, combining my skills in programming, simulation, and mechanical design to push the boundaries of space exploration.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div>MATLAB</div>
+      <div>Python</div>
+      <div>STK</div>
+      <div>SolidWorks</div>
+      <div>C++</div>
+      <div>Simulink</div>
+      <div>CATIA</div>
+      <div>NX</div>
+    </div>
+  </section>
+
   <section id="portfolio" class="container">
     <h2>Portfolio</h2>
     <div class="portfolio-grid">
-      <!-- Portfolio items go here -->
-    </div>
-    <div style="text-align: center; margin-top: 20px;">
-      <a href="Portfolio.pdf" class="button" target="_blank">Download Portfolio PDF</a>
+      <div class="portfolio-item">
+        <a href="AE434Report.pdf" target="_blank">
+          <img src="Sat.mp4" alt="Satellite ADCS">
+        </a>
+        <h3>Satellite ADCS</h3>
+        <ul>
+          <li>Developed attitude control algorithms using MATLAB.</li>
+          <li>Created realtime 3D render of satellite .</li>
+          <li>Successfully detumbled and orientated satellite to desired specifications.</li>
+          <li>Optimized control strategies for reaction wheel sizing.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
+        <a href="12U_CubeSatProposal.pdf" target="_blank">
+          <img src="CubeSat.png" alt="12U CubeSat Design">
+        </a>
+        <h3>12U CubeSat Design</h3>
+        <ul>
+          <li>Systems and GNC lead.</li>
+          <li>Designed the CubeSat to meet mission requirements for payload and power.</li>
+          <li>Collaborated with electrical engineers to integrate solar panels.</li>
+          <li>Performed thermal and vibration testing for component durability.</li>
+          <li>Developed technical documentation including WBS, CONOPS, requirements.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
+        <a href="VP.pdf" target="_blank">
+          <img src="test2.mov" alt="Variable Pitch Test">
+        </a>
+        <h3>Variable Pitch Test Platform</h3>
+        <ul>
+          <li>Designed and built a custom test rig for variable pitch control.</li>
+          <li>Tested aerodynamic performance in various flow conditions.</li>
+          <li>Analyzed data using Python for efficiency comparisons.</li>
+          <li>Developed a dynamic pitch control system using Simulink.</li>
+          <li>Optimized pitch angles to reduce drag at higher velocities.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
+        <a href="DIY_Lab_Report.pdf" target="_blank">
+          <img src="wind-tunnel-plane.jpeg" alt="Car Wind Tunnel Testing">
+        </a>
+       <h3>Car Wind Tunnel Testing</h3>
+        <ul>
+          <li>Modeled car designs using SolidWorks for aerodynamic testing.</li>
+          <li>Conducted wind tunnel tests to determine drag coefficients.</li>
+          <li>3D Printed car models.</li>
+          <li>Compared drag for windows up vs windows down.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-item">
+        <a href="AE414Project.pdf" target="_blank">
+          <img src="prop.jpeg" alt="Propulsion Techniques for Mercury Orbit">
+        </a>
+        <h3>Propulsion Techniques for Mercury Orbit</h3>
+        <ul>
+          <li>Evaluated propulsion methods for deep-space missions.</li>
+          <li>Performed chemical propulsion simulations using CEA.</li>
+          <li>Investigated electric propulsion for low-thrust maneuvers.</li>
+          <li>Presented orbit insertion strategies using STK.</li>
+          <li>Optimized fuel usage for extended mission duration.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="contact" class="container">
     <h2>Contact</h2>
     <p>Phone: (573) 987-9307</p>
-    <p>Email: <a href="mailto:colbyricharddavis@gmail.com">colbyricharddavis@gmail.com</a></p>
+    <p>Email: <a href="colbyricharddavis@gmail.com">colbyricharddavis@gmail.com</a></p>
   </section>
 
   <footer>
