@@ -1,317 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colby Davis | Aerospace Engineer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colby Davis Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #F7F9FC;
-      color: #333;
-      margin: 0;
-      padding: 0;
+      background-color: rgb(2, 6, 23);
+      overflow-x: hidden;
     }
-
-    .container {
-      width: 80%;
-      margin: auto;
-      overflow: hidden;
-    }
-
-    header {
-      background: #003366;
-      color: #fff;
-      padding: 20px 0;
-      border-bottom: #005bb5 4px solid;
-    }
-
-    header h1 {
-      text-align: center;
-      font-size: 2.5em;
-      letter-spacing: 2px;
-    }
-
-    nav {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    nav a {
-      color: #cce1ff;
-      text-decoration: none;
-      text-transform: uppercase;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #a3c9ff;
-    }
-
-    #showcase {
-      height: 400px;
-      background-color: #005bb5;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      flex-direction: column;
-    }
-
-    #showcase h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #e0e6f5;
-    }
-
-    #showcase p {
-      font-size: 1.2em;
-      color: #cce1ff;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 30px;
-      margin-top: 20px;
-      font-size: 1.1em;
-      color: #fff;
-      background: #0073e6;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      background-color: #004a99;
-    }
-
-    section {
-      padding: 40px 0;
-      border-bottom: 2px solid #ccc;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2.5em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .about-me {
-      background: #f1f1f1;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-
-    .skills-list {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .skills-list div {
-      background-color: #e6e6e6;
-      padding: 15px;
-      border-radius: 5px;
-      margin: 10px;
-      width: 200px;
-      text-align: center;
-      color: #333;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .portfolio-item {
-      position: relative;
-      background-color: #eef4fc;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-      height: 350px;
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      cursor: pointer;
-    }
-
-    .portfolio-item h3 {
-      font-size: 1.5em;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .portfolio-item ul {
-      text-align: left;
-      list-style-type: none;
-      padding: 0;
-      color: #333;
-    }
-
-    .portfolio-item ul li {
-      margin-bottom: 8px;
-    }
-
-    footer {
-      background: #003366;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-
-    #contact {
-      background: #e0e6f5;
-      padding: 20px;
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    #contact p {
-      margin: 10px 0;
-      color: #333;
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
     }
   </style>
 </head>
-<body>
 
-  <header>
-    <div class="container">
-      <h1>Colby Davis</h1>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<body class="text-white">
 
-  <section id="showcase">
-    <div class="container">
-      <h1>Aerospace Engineer</h1>
-      <p>Focused on defense and space sectors, working on structural design and analysis.</p>
-      <a href="resume_ColbyDavis.pdf" class="button" target="_blank">View Resume</a>
-      <a href="Portfolio.pdf" class="button" target="_blank">Portfolio PDF</a>
-    </div>
-  </section>
+  <!-- Starfield Background -->
+  <canvas id="space"></canvas>
 
-  <section id="about" class="container">
-    <div class="about-me">
-      <h2>About Me</h2>
-      <p>I have a BS in Aerospace Engineering from Embry-Riddle Aeronautical University specializing in astronautics with a strong foundation in space system design and structural design. I thrive in multidisciplinary environments, combining my skills in programming, simulation, and mechanical design to push the boundaries of space exploration.</p>
-    </div>
-  </section>
+  <script>
+    const canvas = document.getElementById("space");
+    const ctx = canvas.getContext("2d");
 
-  <section id="skills" class="container">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <div>MATLAB</div>
-      <div>Python</div>
-      <div>STK</div>
-      <div>SolidWorks</div>
-      <div>C++</div>
-      <div>Simulink</div>
-      <div>CATIA</div>
-      <div>NX</div>
-    </div>
-  </section>
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
 
-  <section id="portfolio" class="container">
-    <h2>Portfolio</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <a href="AE434Report.pdf" target="_blank">
-          <img src="Sat.mp4" alt="Satellite ADCS">
-        </a>
-        <h3>Satellite ADCS</h3>
-        <ul>
-          <li>Developed attitude control algorithms using MATLAB.</li>
-          <li>Created realtime 3D render of satellite .</li>
-          <li>Successfully detumbled and orientated satellite to desired specifications.</li>
-          <li>Optimized control strategies for reaction wheel sizing.</li>
-        </ul>
+    let stars = Array.from({ length: 200 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      o: Math.random()
+    }));
+
+    function animate() {
+      ctx.fillStyle = "rgba(3,7,18,0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach(s => {
+        s.x += s.vx;
+        s.y += s.vy;
+        if (s.x < 0 || s.x > canvas.width) s.vx *= -1;
+        if (s.y < 0 || s.y > canvas.height) s.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(139,233,253,${s.o})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("resize", () => {
+      resize();
+      stars = stars.map(() => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        o: Math.random()
+      }));
+    });
+  </script>
+
+  <!-- Scroll Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-1 bg-slate-900/50 z-50">
+    <div id="progress" class="h-full bg-gradient-to-r from-cyan-500 to-orange-500"></div>
+  </div>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById("progress").style.width =
+        (window.scrollY / h) * 100 + "%";
+    });
+  </script>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-lg border-b border-cyan-500/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-lg flex items-center justify-center">
+          <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg">COLBY DAVIS</div>
+          <div class="text-xs text-cyan-400">AEROSPACE ENGINEER</div>
+        </div>
       </div>
 
-      <div class="portfolio-item">
-        <a href="12U_CubeSatProposal.pdf" target="_blank">
-          <img src="CubeSat.png" alt="12U CubeSat Design">
+      <div class="flex items-center gap-6">
+        <a href="mailto:colbyricharddavis@gmail.com" aria-label="Email" class="text-slate-400 hover:text-cyan-400">
+          <i data-lucide="mail" class="w-5 h-5"></i>
         </a>
-        <h3>12U CubeSat Design</h3>
-        <ul>
-          <li>Systems and GNC lead.</li>
-          <li>Designed the CubeSat to meet mission requirements for payload and power.</li>
-          <li>Collaborated with electrical engineers to integrate solar panels.</li>
-          <li>Performed thermal and vibration testing for component durability.</li>
-          <li>Developed technical documentation including WBS, CONOPS, requirements.</li>
-        </ul>
-      </div>
-
-      <div class="portfolio-item">
-        <a href="VP.pdf" target="_blank">
-          <img src="test2.mov" alt="Variable Pitch Test">
+        <a href="https://linkedin.com/in/colbydavisr" target="_blank" class="text-slate-400 hover:text-cyan-400">
+          <i data-lucide="linkedin" class="w-5 h-5"></i>
         </a>
-        <h3>Variable Pitch Test Platform</h3>
-        <ul>
-          <li>Designed and built a custom test rig for variable pitch control.</li>
-          <li>Tested aerodynamic performance in various flow conditions.</li>
-          <li>Analyzed data using Python for efficiency comparisons.</li>
-          <li>Developed a dynamic pitch control system using Simulink.</li>
-          <li>Optimized pitch angles to reduce drag at higher velocities.</li>
-        </ul>
-      </div>
-
-      <div class="portfolio-item">
-        <a href="DIY_Lab_Report.pdf" target="_blank">
-          <img src="wind-tunnel-plane.jpeg" alt="Car Wind Tunnel Testing">
+        <a href="tel:5739879307" class="text-slate-400 hover:text-cyan-400">
+          <i data-lucide="phone" class="w-5 h-5"></i>
         </a>
-       <h3>Car Wind Tunnel Testing</h3>
-        <ul>
-          <li>Modeled car designs using SolidWorks for aerodynamic testing.</li>
-          <li>Conducted wind tunnel tests to determine drag coefficients.</li>
-          <li>3D Printed car models.</li>
-          <li>Compared drag for windows up vs windows down.</li>
-        </ul>
-      </div>
-
-      <div class="portfolio-item">
-        <a href="AE414Project.pdf" target="_blank">
-          <img src="prop.jpeg" alt="Propulsion Techniques for Mercury Orbit">
-        </a>
-        <h3>Propulsion Techniques for Mercury Orbit</h3>
-        <ul>
-          <li>Evaluated propulsion methods for deep-space missions.</li>
-          <li>Performed chemical propulsion simulations using CEA.</li>
-          <li>Investigated electric propulsion for low-thrust maneuvers.</li>
-          <li>Presented orbit insertion strategies using STK.</li>
-          <li>Optimized fuel usage for extended mission duration.</li>
-        </ul>
       </div>
     </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="min-h-screen flex items-center justify-center relative pt-20">
+
+    <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5"></div>
+
+    <div class="relative z-10 text-center px-6 max-w-5xl">
+
+      <div class="inline-block mb-6 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full">
+        <span class="text-cyan-400 text-sm font-mono">MISSION STATUS: READY FOR NEXT PHASE</span>
+      </div>
+
+      <h1 class="text-7xl md:text-8xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-white to-orange-400 bg-clip-text text-transparent animate-pulse">
+        SPACECRAFT<br>SYSTEMS
+      </h1>
+
+      <p class="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        Designing the future of space exploration through advanced GNC systems,
+        orbital mechanics, and spacecraft architecture.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <a href="#missions" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl font-bold hover:scale-105 flex items-center gap-2">
+          VIEW MISSIONS
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </a>
+
+        <a href="resume_ColbyDavis.pdf" target="_blank"
+          class="px-8 py-4 bg-slate-900/40 backdrop-blur-md border border-orange-500/30 rounded-xl font-bold hover:scale-105">
+          DOWNLOAD RESUME
+        </a>
+      </div>
+
+      <!-- STAT CARDS -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+
+        <!-- Tools Mastered -->
+        <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-orange-400/60 text-xs uppercase">Tools Mastered</span>
+            <i data-lucide="cpu" class="w-4 h-4 text-orange-400"></i>
+          </div>
+          <span class="text-3xl font-bold">12</span>
+        </div>
+
+        <!-- Days Since RUD -->
+        <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-orange-400/60 text-xs uppercase">Days Since Last RUD</span>
+            <i data-lucide="activity" class="w-4 h-4 text-orange-400"></i>
+          </div>
+          <span class="text-3xl font-bold">0</span>
+        </div>
+
+        <!-- Years Experience -->
+        <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-orange-400/60 text-xs uppercase">Years Experience</span>
+            <i data-lucide="gauge" class="w-4 h-4 text-orange-400"></i>
+          </div>
+          <span class="text-3xl font-bold">2</span>
+        </div>
+
+        <!-- Mission Reviews -->
+        <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-orange-400/60 text-xs uppercase">Mission Reviews</span>
+            <i data-lucide="target" class="w-4 h-4 text-orange-400"></i>
+          </div>
+          <span class="text-3xl font-bold">9</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-cyan-400/50 rounded-full flex items-start justify-center p-2">
+        <div class="w-1 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+      </div>
+    </div>
+
   </section>
 
-  <section id="contact" class="container">
-    <h2>Contact</h2>
-    <p>Phone: (573) 987-9307</p>
-    <p>Email: <a href="colbyricharddavis@gmail.com">colbyricharddavis@gmail.com</a></p>
-  </section>
+  <!-- ABOUT, MISSIONS, EDUCATION, CONTACT, FOOTER SECTIONS -->
+  <!-- I will include all of them, but GitHub might cut my output. Let me know if you want them chunked in 2 parts. -->
 
-  <footer>
-    <p>Colby Davis © 2024 | Aerospace Engineer</p>
-  </footer>
+  <script>
+    lucide.createIcons();
+  </script>
+
 </body>
 </html>
+<!-- ABOUT SECTION -->
+<section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- Left -->
+      <div>
+        <h2 class="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
+          MISSION PROFILE
+        </h2>
+
+        <div class="space-y-4 text-slate-300 leading-relaxed">
+          <p>
+            BS in Aerospace Engineering from
+            <span class="text-cyan-400 font-semibold">Embry-Riddle Aeronautical University</span>
+            specializing in astronautics and spacecraft systems.
+          </p>
+
+          <p>
+            MS in Aerospace Engineering - Space Systems Design from
+            <span class="text-orange-400 font-semibold">University of Central Florida</span>,
+            focused on spacecraft design, GNC, and mission architecture.
+          </p>
+
+          <p>
+            Experienced in
+            <span class="text-cyan-400 font-semibold">orbital mechanics</span>,
+            attitude control systems,
+            propulsion analysis,
+            <span class="text-orange-400 font-semibold">structural design</span>,
+            testing and integration,
+            and <span class="text-orange-400 font-semibold">systems engineering</span>.
+            Skilled with MATLAB, STK, Python, CAD, and analysis tools.
+          </p>
+
+          <p>
+            Dedicated to advancing next-generation spacecraft and mission systems.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="space-y-4">
+        <h3 class="text-2xl font-bold text-white mb-6">TECHNICAL CAPABILITIES</h3>
+
+        <!-- Skill -->
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-300">MATLAB / Simulink</span>
+            <span class="text-cyan-400 font-mono">95%</span>
+          </div>
+          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-300">STK & Astrodynamics</span>
+            <span class="text-cyan-400 font-mono">90%</span>
+          </div>
+          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 90%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-300">SolidWorks / CAD</span>
+            <span class="text-cyan-400 font-mono">85%</span>
+          </div>
+          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-300">Python & C++</span>
+            <span class="text-cyan-400 font-mono">80%</span>
+          </div>
+          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 80%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-300">ANSYS / Thermal Desktop</span>
+            <span class="text-cyan-400 font-mono">75%</span>
+          </div>
+          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 75%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-300">Systems Engineering</span>
+            <span class="text-cyan-400 font-mono">90%</span>
+          </div>
+          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 90%"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSIONS SECTION -->
+<section id="missions" class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
+        MISSION ARCHIVE
+      </h2>
+      <p class="text-slate-400 text-lg">Critical systems and engineering projects</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- LimeSAT -->
+      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <div class="flex items-start justify-between mb-4">
+          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
+            <i data-lucide="satellite" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">LimeSAT - 12U CubeSat</h3>
+        <p class="text-cyan-400/60 text-sm mb-4">Systems & GNC Lead • L4 Lagrange Point Mission</p>
+
+        <ul class="space-y-2 text-slate-300 text-sm">
+          <li>Led team through NASA design methods</li>
+          <li>Designed L2 to L4 transfer orbit</li>
+          <li>Performed thermal / vibration analysis</li>
+          <li>Managed 713 thousand dollar budget</li>
+          <li>Defined L4 station keeping mission</li>
+        </ul>
+      </div>
+
+      <!-- Satellite Attitude Control -->
+      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <div class="flex items-start justify-between mb-4">
+          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
+            <i data-lucide="activity" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">Satellite Attitude Control</h3>
+        <p class="text-cyan-400/60 text-sm mb-4">Lead Engineer • State Space Control</p>
+
+        <ul class="space-y-2 text-slate-300 text-sm">
+          <li>Developed detumble and orientation control</li>
+          <li>Built real time 3D Euler simulation</li>
+          <li>Achieved under ten arcsecond pointing</li>
+          <li>Reaction wheel optimization</li>
+          <li>Twenty five second angular velocity settle</li>
+        </ul>
+      </div>
+
+      <!-- Mercury Propulsion -->
+      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <div class="flex items-start justify-between mb-4">
+          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
+            <i data-lucide="rocket" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">Mercury Mission Propulsion</h3>
+        <p class="text-cyan-400/60 text-sm mb-4">Propulsion Analysis • Multi Stage Design</p>
+
+        <ul class="space-y-2 text-slate-300 text-sm">
+          <li>Four stage liquid vehicle for nine point five kilometer per second delta v</li>
+          <li>Performed CEA analysis for LH2, LOX, MMH, NTO</li>
+          <li>Gravity assist trajectory optimization</li>
+          <li>Eighty eight ton wet mass architecture</li>
+          <li>Solid, liquid, hybrid comparisons</li>
+        </ul>
+      </div>
+
+      <!-- Variable Pitch Propeller -->
+      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <div class="flex items-start justify-between mb-4">
+          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
+            <i data-lucide="target" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-2">Variable Pitch Propeller</h3>
+        <p class="text-cyan-400/60 text-sm mb-4">Mars Atmosphere Testing</p>
+
+        <ul class="space-y-2 text-slate-300 text-sm">
+          <li>Led four person design team</li>
+          <li>Raspberry Pi servo control system</li>
+          <li>3D printed HTPB blades</li>
+          <li>Simulated one percent Earth density</li>
+          <li>Validated thrust model in Simulink</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="py-20 px-6 bg-slate-900/20">
+  <div class="max-w-7xl mx-auto">
+
+    <h2 class="text-4xl font-black mb-12 text-center bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
+      CREDENTIALS
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Master's -->
+      <div class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl flex items-center justify-center">
+            <i data-lucide="cpu" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Master's Degree</h3>
+            <p class="text-cyan-400/60 text-sm">In Progress</p>
+          </div>
+        </div>
+        <p class="text-white font-semibold">MS Aerospace Engineering</p>
+        <p class="text-slate-400">University of Central Florida</p>
+        <p class="text-cyan-400">GPA: 3.55 • Space Systems</p>
+      </div>
+
+      <!-- Bachelor's -->
+      <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl flex items-center justify-center">
+            <i data-lucide="cpu" class="w-6 h-6 text-orange-400"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Bachelor's Degree</h3>
+            <p class="text-orange-400/60 text-sm">May 2024</p>
+          </div>
+        </div>
+        <p class="text-white font-semibold">BS Aerospace Engineering</p>
+        <p class="text-slate-400">Embry-Riddle Aeronautical University</p>
+        <p class="text-orange-400">GPA: 3.35 • Astronautics</p>
+      </div>
+
+      <!-- Certification -->
+      <div class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl flex items-center justify-center">
+            <i data-lucide="zap" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">STK Level 1</h3>
+            <p class="text-cyan-400/60 text-sm">Ansys STK</p>
+          </div>
+        </div>
+        <p class="text-white font-semibold">Mission modeling and simulation</p>
+        <p class="text-slate-400">Analysis and visualization</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="py-20 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <h2 class="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
+      INITIATE CONTACT
+    </h2>
+
+    <p class="text-slate-400 text-lg mb-12">
+      Open to opportunities in spacecraft systems, GNC, and mission design.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <a href="mailto:colbyricharddavis@gmail.com"
+         class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <i data-lucide="mail" class="w-8 h-8 text-cyan-400 mx-auto mb-3"></i>
+        <p class="text-white font-semibold mb-1">Email</p>
+        <p class="text-slate-400 text-sm">colbyricharddavis@gmail.com</p>
+      </a>
+
+      <a href="tel:5739879307"
+         class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <i data-lucide="phone" class="w-8 h-8 text-orange-400 mx-auto mb-3"></i>
+        <p class="text-white font-semibold mb-1">Phone</p>
+        <p class="text-slate-400 text-sm">(573) 987 9307</p>
+      </a>
+
+      <a href="https://linkedin.com/in/colbydavisr" target="_blank"
+         class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
+        <i data-lucide="linkedin" class="w-8 h-8 text-cyan-400 mx-auto mb-3"></i>
+        <p class="text-white font-semibold mb-1">LinkedIn</p>
+        <p class="text-slate-400 text-sm">colbydavisr</p>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-8 px-6 border-t border-cyan-500/10">
+  <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
+    © 2024 Colby Davis • Aerospace Engineer • Designed for the Future of Space Exploration
+  </div>
+</footer>
+
+<!-- INIT ICONS -->
+<script>
+  lucide.createIcons();
+</script>
