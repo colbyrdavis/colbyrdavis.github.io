@@ -1,653 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colby Davis Portfolio</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-    body {
-      background-color: rgb(2, 6, 23);
-      overflow-x: hidden;
-    }
-    canvas {
-      position: fixed;
-      inset: 0;
-      z-index: -10;
-    }
-  </style>
-</head>
-
-<body class="text-white">
-
-  <!-- Starfield Background -->
-  <canvas id="space"></canvas>
-
-  <script>
-    const canvas = document.getElementById("space");
-    const ctx = canvas.getContext("2d");
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-
-    let stars = Array.from({ length: 200 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: (Math.random() - 0.5) * 0.2,
-      o: Math.random()
-    }));
-
-    function animate() {
-      ctx.fillStyle = "rgba(3,7,18,0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      stars.forEach(s => {
-        s.x += s.vx;
-        s.y += s.vy;
-        if (s.x < 0 || s.x > canvas.width) s.vx *= -1;
-        if (s.y < 0 || s.y > canvas.height) s.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139,233,253,${s.o})`;
-        ctx.fill();
-      });
-
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    window.addEventListener("resize", () => {
-      resize();
-      stars = stars.map(() => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
-        o: Math.random()
-      }));
-    });
-  </script>
-
-  <!-- Scroll Progress Bar -->
-  <div class="fixed top-0 left-0 w-full h-1 bg-slate-900/50 z-50">
-    <div id="progress" class="h-full bg-gradient-to-r from-cyan-500 to-orange-500"></div>
-  </div>
-
-  <script>
-    window.addEventListener("scroll", () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      document.getElementById("progress").style.width =
-        (window.scrollY / h) * 100 + "%";
-    });
-  </script>
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-lg border-b border-cyan-500/10">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-lg flex items-center justify-center">
-          <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
-        </div>
-        <div>
-          <div class="font-bold text-lg">COLBY DAVIS</div>
-          <div class="text-xs text-cyan-400">AEROSPACE ENGINEER</div>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-6">
-        <a href="mailto:colbyricharddavis@gmail.com" aria-label="Email" class="text-slate-400 hover:text-cyan-400">
-          <i data-lucide="mail" class="w-5 h-5"></i>
-        </a>
-        <a href="https://linkedin.com/in/colbydavisr" target="_blank" class="text-slate-400 hover:text-cyan-400">
-          <i data-lucide="linkedin" class="w-5 h-5"></i>
-        </a>
-        <a href="tel:5739879307" class="text-slate-400 hover:text-cyan-400">
-          <i data-lucide="phone" class="w-5 h-5"></i>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-<section class="min-h-screen flex items-center justify-center relative pt-20">
-
-  <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5"></div>
-
-  <div class="relative z-10 text-center px-6 max-w-5xl">
-
-    <div class="inline-block mb-6 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full">
-      <span class="text-cyan-400 text-sm font-mono">MISSION STATUS: READY FOR NEXT PHASE</span>
-    </div>
-
-    <!-- REMOVE DEFENSE AND SPACE TEXT AND PARAGRAPH -->
-
-    <!-- PROJECT BUTTON -->
- <!-- GIANT PROJECT BUTTON -->
-  <button id="enterProjects"
-    class="px-16 py-10 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-2xl font-black text-4xl hover:scale-110 transition mx-auto mb-12 shadow-xl">
-    CLICK HERE FOR PROJECTS
-  </button>
-
-
-    <!-- PROJECT OPTIONS -->
-    <div id="projectOptions" class="hidden flex flex-col items-center gap-4">
-
-      <button id="gncBtn"
-        class="px-8 py-3 bg-slate-900/40 border border-cyan-500/30 rounded-xl hover:scale-105 transition w-64">
-        GNC
-      </button>
-
-      <button id="hilBtn"
-        class="px-8 py-3 bg-slate-900/40 border border-orange-500/30 rounded-xl hover:scale-105 transition w-64">
-        Hardware In The Loop
-      </button>
-    </div>
-
-    <!-- PROJECT LISTS -->
-    <div id="gncList" class="hidden mt-8 text-left mx-auto max-w-md space-y-2 text-slate-300">
-      <p class="font-bold text-cyan-400 mb-2">GNC Projects</p>
-      <ul class="space-y-1">
-        <li>6DOF Rocket Simulation</li>
-        <li>Satellite Attitude Control</li>
-        <li>Relative Orbit Simulation HCW</li>
-        <li>Optimal Control Duffing System</li>
-      </ul>
-    </div>
-
-    <div id="hilList" class="hidden mt-8 text-left mx-auto max-w-md space-y-2 text-slate-300">
-      <p class="font-bold text-orange-400 mb-2">Hardware In The Loop</p>
-      <ul class="space-y-1">
-        <li>Raspberry Pi Servo Control</li>
-        <li>Variable Pitch Mars Propeller Test Rig</li>
-        <li>Real Time Sensor Interface Systems</li>
-      </ul>
-    </div>
-
-    <!-- STAT CARDS (UNCHANGED) -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
-
-      <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-orange-400/60 text-xs uppercase">Tools Mastered</span>
-          <i data-lucide="cpu" class="w-4 h-4 text-orange-400"></i>
-        </div>
-        <span class="text-3xl font-bold">12</span>
-      </div>
-
-      <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-orange-400/60 text-xs uppercase">Days Since Last RUD</span>
-          <i data-lucide="activity" class="w-4 h-4 text-orange-400"></i>
-        </div>
-        <span class="text-3xl font-bold">0</span>
-      </div>
-
-      <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-orange-400/60 text-xs uppercase">Years Experience</span>
-          <i data-lucide="gauge" class="w-4 h-4 text-orange-400"></i>
-        </div>
-        <span class="text-3xl font-bold">2</span>
-      </div>
-
-      <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-xl p-4 hover:scale-105 transition-all">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-orange-400/60 text-xs uppercase">Mission Reviews</span>
-          <i data-lucide="target" class="w-4 h-4 text-orange-400"></i>
-        </div>
-        <span class="text-3xl font-bold">9</span>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <div class="w-6 h-10 border-2 border-cyan-400/50 rounded-full flex items-start justify-center p-2">
-      <div class="w-1 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-    </div>
-  </div>
-
-</section>
-
-<script>
-  const projectBtn = document.getElementById("projectBtn");
-  const projectOptions = document.getElementById("projectOptions");
-  const gncBtn = document.getElementById("gncBtn");
-  const hilBtn = document.getElementById("hilBtn");
-  const gncList = document.getElementById("gncList");
-  const hilList = document.getElementById("hilList");
-
-  projectBtn.addEventListener("click", () => {
-    projectOptions.classList.toggle("hidden");
-    gncList.classList.add("hidden");
-    hilList.classList.add("hidden");
-  });
-
-  gncBtn.addEventListener("click", () => {
-    gncList.classList.toggle("hidden");
-    hilList.classList.add("hidden");
-  });
-
-  hilBtn.addEventListener("click", () => {
-    hilList.classList.toggle("hidden");
-    gncList.classList.add("hidden");
-  });
-</script>
-
-
-  <!-- ABOUT, MISSIONS, EDUCATION, CONTACT, FOOTER SECTIONS -->
-  <!-- I will include all of them, but GitHub might cut my output. Let me know if you want them chunked in 2 parts. -->
-
-  <script>
-    lucide.createIcons();
-  </script>
-<!-- FULL SCREEN PROJECT MENU -->
-<div id="projectMenu"
-  class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center text-center px-6">
-
-  <h2 class="text-5xl font-black mb-12 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
-    SELECT PROJECT CATEGORY
-  </h2>
-
-  <div class="flex flex-col md:flex-row gap-10">
-
-    <!-- GNC BUTTON -->
-    <button id="openGNC"
-      class="px-16 py-12 bg-slate-900 border border-cyan-500/40 rounded-2xl text-4xl font-bold hover:scale-110 transition shadow-xl">
-      GNC
-    </button>
-
-    <!-- HARDWARE BUTTON -->
-    <button id="openHIL"
-      class="px-16 py-12 bg-slate-900 border border-orange-500/40 rounded-2xl text-4xl font-bold hover:scale-110 transition shadow-xl">
-      Hardware In The Loop
-    </button>
-
-  </div>
-
-  <button id="closeProjects" class="mt-16 text-slate-400 hover:text-white text-xl">
-    Close
-  </button>
-</div>
-<!-- GNC PROJECT LIST PAGE -->
-<div id="gncPage"
-  class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex flex-col items-center px-6 pt-20 overflow-auto">
-
-  <h2 class="text-5xl font-black mb-8 text-cyan-400">GNC PROJECTS</h2>
-
-  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
-
-    <a href="gnc_6dof.html" class="block hover:text-white">6DOF Rocket Simulation</a>
-    <a href="gnc_attitude.html" class="block hover:text-white">Satellite Attitude Control</a>
-    <a href="gnc_hcw.html" class="block hover:text-white">Relative Motion HCW</a>
-    <a href="gnc_optimal.html" class="block hover:text-white">Optimal Control Duffing System</a>
-
-  </div>
-
-  <button id="backFromGNC" class="mt-16 text-slate-400 hover:text-white text-xl">
-    Back
-  </button>
-</div>
-
-<!-- HARDWARE PROJECT LIST PAGE -->
-<div id="hilPage"
-  class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex flex-col items-center px-6 pt-20 overflow-auto">
-
-  <h2 class="text-5xl font-black mb-8 text-orange-400">HARDWARE PROJECTS</h2>
-
-  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
-
-    <a href="hil_prop.html" class="block hover:text-white">Mars Propeller Test Rig</a>
-    <a href="hil_servo.html" class="block hover:text-white">Raspberry Pi Servo Control</a>
-    <a href="hil_sensors.html" class="block hover:text-white">Real Time Sensor Interface System</a>
-
-  </div>
-
-  <button id="backFromHIL" class="mt-16 text-slate-400 hover:text-white text-xl">
-    Back
-  </button>
-</div>
-<script>
-  const enterBtn = document.getElementById("enterProjects");
-  const menu = document.getElementById("projectMenu");
-  const closeMenu = document.getElementById("closeProjects");
-
-  const openGNC = document.getElementById("openGNC");
-  const openHIL = document.getElementById("openHIL");
-
-  const gncPage = document.getElementById("gncPage");
-  const hilPage = document.getElementById("hilPage");
-
-  const backGNC = document.getElementById("backFromGNC");
-  const backHIL = document.getElementById("backFromHIL");
-
-  enterBtn.addEventListener("click", () => {
-    menu.classList.remove("hidden");
-  });
-
-  closeMenu.addEventListener("click", () => {
-    menu.classList.add("hidden");
-  });
-
-  openGNC.addEventListener("click", () => {
-    menu.classList.add("hidden");
-    gncPage.classList.remove("hidden");
-  });
-
-  openHIL.addEventListener("click", () => {
-    menu.classList.add("hidden");
-    hilPage.classList.remove("hidden");
-  });
-
-  backGNC.addEventListener("click", () => {
-    gncPage.classList.add("hidden");
-    menu.classList.remove("hidden");
-  });
-
-  backHIL.addEventListener("click", () => {
-    hilPage.classList.add("hidden");
-    menu.classList.remove("hidden");
-  });
-</script>
-
-</body>
-</html>
-<!-- ABOUT SECTION -->
-<section class="py-20 px-6">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-
-      <!-- Left -->
-      <div>
-        <h2 class="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
-          MISSION PROFILE
-        </h2>
-
-        <div class="space-y-4 text-slate-300 leading-relaxed">
-          <p>
-            BS in Aerospace Engineering from
-            <span class="text-cyan-400 font-semibold">Embry-Riddle Aeronautical University</span>
-            specializing in astronautics and spacecraft systems.
-          </p>
-
-          <p>
-            MS in Aerospace Engineering - Space Systems Design from
-            <span class="text-orange-400 font-semibold">University of Central Florida</span>,
-            focused on spacecraft design, GNC, and mission architecture.
-          </p>
-
-          <p>
-            Experienced in
-            <span class="text-cyan-400 font-semibold">orbital mechanics</span>,
-            attitude control systems,
-            propulsion analysis,
-            <span class="text-orange-400 font-semibold">structural design</span>,
-            testing and integration,
-            and <span class="text-orange-400 font-semibold">systems engineering</span>.
-            Skilled with MATLAB, STK, Python, CAD, and analysis tools.
-          </p>
-
-          <p>
-            Dedicated to advancing next-generation spacecraft and mission systems.
-          </p>
-        </div>
-      </div>
-
-      <!-- Skills -->
-      <div class="space-y-4">
-        <h3 class="text-2xl font-bold text-white mb-6">TECHNICAL CAPABILITIES</h3>
-
-        <!-- Skill -->
-        <span class="text-cyan-400 font-mono">75 percent</span>
-<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 75 percent"></div>
-</div>
-
-<span class="text-cyan-400 font-mono">70 percent</span>
-<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 70 percent"></div>
-</div>
-
-<span class="text-cyan-400 font-mono">65 percent</span>
-<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 65 percent"></div>
-</div>
-
-<span class="text-cyan-400 font-mono">60 percent</span>
-<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 60 percent"></div>
-</div>
-
-<span class="text-cyan-400 font-mono">55 percent</span>
-<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 55 percent"></div>
-</div>
-
-<span class="text-cyan-400 font-mono">70 percent</span>
-<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 70 percent"></div>
-</div>
-
-
-<!-- MISSIONS SECTION -->
-<section id="missions" class="py-20 px-6">
+<!-- 12U CUBESAT EXPERIENCE SECTION -->
+<section class="py-24 px-6 bg-slate-900/20">
   <div class="max-w-7xl mx-auto">
 
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
-        MISSION ARCHIVE
-      </h2>
-      <p class="text-slate-400 text-lg">Critical systems and engineering projects</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8">
-
-      <!-- LimeSAT -->
-      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <div class="flex items-start justify-between mb-4">
-          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
-            <i data-lucide="satellite" class="w-6 h-6 text-cyan-400"></i>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-2">LimeSAT - 12U CubeSat</h3>
-        <p class="text-cyan-400/60 text-sm mb-4">Systems & GNC Lead • L4 Lagrange Point Mission</p>
-
-        <ul class="space-y-2 text-slate-300 text-sm">
-          <li>Led team through NASA design methods</li>
-          <li>Designed L2 to L4 transfer orbit</li>
-          <li>Performed thermal / vibration analysis</li>
-          <li>Managed 713 thousand dollar budget</li>
-          <li>Defined L4 station keeping mission</li>
-        </ul>
-      </div>
-
-      <!-- Satellite Attitude Control -->
-      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <div class="flex items-start justify-between mb-4">
-          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
-            <i data-lucide="activity" class="w-6 h-6 text-cyan-400"></i>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-2">Satellite Attitude Control</h3>
-        <p class="text-cyan-400/60 text-sm mb-4">Lead Engineer • State Space Control</p>
-
-        <ul class="space-y-2 text-slate-300 text-sm">
-          <li>Developed detumble and orientation control</li>
-          <li>Built real time 3D Euler simulation</li>
-          <li>Achieved under ten arcsecond pointing</li>
-          <li>Reaction wheel optimization</li>
-          <li>Twenty five second angular velocity settle</li>
-        </ul>
-      </div>
-      <!-- Mercury Propulsion -->
-      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <div class="flex items-start justify-between mb-4">
-          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
-            <i data-lucide="rocket" class="w-6 h-6 text-cyan-400"></i>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-2">Mercury Mission Propulsion</h3>
-        <p class="text-cyan-400/60 text-sm mb-4">Propulsion Analysis • Multi Stage Design</p>
-
-        <ul class="space-y-2 text-slate-300 text-sm">
-          <li>Four stage liquid vehicle for nine point five kilometer per second delta v</li>
-          <li>Performed CEA analysis for LH2, LOX, MMH, NTO</li>
-          <li>Gravity assist trajectory optimization</li>
-          <li>Eighty eight ton wet mass architecture</li>
-          <li>Solid, liquid, hybrid comparisons</li>
-        </ul>
-      </div>
-
-      <!-- Variable Pitch Propeller -->
-      <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <div class="flex items-start justify-between mb-4">
-          <div class="p-3 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl">
-            <i data-lucide="target" class="w-6 h-6 text-cyan-400"></i>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-2">Variable Pitch Propeller</h3>
-        <p class="text-cyan-400/60 text-sm mb-4">Mars Atmosphere Testing</p>
-
-        <ul class="space-y-2 text-slate-300 text-sm">
-          <li>Led four person design team</li>
-          <li>Raspberry Pi servo control system</li>
-          <li>3D printed HTPB blades</li>
-          <li>Simulated one percent Earth density</li>
-          <li>Validated thrust model in Simulink</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CREDENTIALS -->
-<section class="py-20 px-6 bg-slate-900/20">
-  <div class="max-w-7xl mx-auto">
-
-    <h2 class="text-4xl font-black mb-12 text-center bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
-      CREDENTIALS
+    <h2 class="text-5xl font-black mb-10 text-center bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
+      12U CUBESAT • SYSTEMS & GNC ENGINEERING
     </h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <!-- Master's -->
-      <div class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl flex items-center justify-center">
-            <i data-lucide="cpu" class="w-6 h-6 text-cyan-400"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-white">Master's Degree</h3>
-            <p class="text-cyan-400/60 text-sm">In Progress</p>
-          </div>
-        </div>
-        <p class="text-white font-semibold">MS Aerospace Engineering</p>
-        <p class="text-slate-400">University of Central Florida</p>
-        <p class="text-cyan-400">GPA: 3.55 • Space Systems</p>
-      </div>
-
-      <!-- Bachelor's -->
-      <div class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl flex items-center justify-center">
-            <i data-lucide="cpu" class="w-6 h-6 text-orange-400"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-white">Bachelor's Degree</h3>
-            <p class="text-orange-400/60 text-sm">May 2024</p>
-          </div>
-        </div>
-        <p class="text-white font-semibold">BS Aerospace Engineering</p>
-        <p class="text-slate-400">Embry-Riddle Aeronautical University</p>
-        <p class="text-orange-400">GPA: 3.35 • Astronautics</p>
-      </div>
-
-      <!-- Certification -->
-      <div class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-8">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-orange-500/20 rounded-xl flex items-center justify-center">
-            <i data-lucide="zap" class="w-6 h-6 text-cyan-400"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-white">STK Level 1</h3>
-            <p class="text-cyan-400/60 text-sm">Ansys STK</p>
-          </div>
-        </div>
-        <p class="text-white font-semibold">Mission modeling and simulation</p>
-        <p class="text-slate-400">Analysis and visualization</p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="py-20 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-
-    <h2 class="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
-      INITIATE CONTACT
-    </h2>
-
-    <p class="text-slate-400 text-lg mb-12">
-      Open to opportunities in spacecraft systems, GNC, and mission design.
+    <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+      Systems engineering, quaternion-based attitude control, reaction wheel dynamics,
+      multi-day station keeping analysis, and STK orbital modeling for a 12U CubeSat
+      operating near the Earth–Moon L4 region.
     </p>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <!-- BULLET POINTS -->
+    <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
 
-      <a href="mailto:colbyricharddavis@gmail.com"
-         class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <i data-lucide="mail" class="w-8 h-8 text-cyan-400 mx-auto mb-3"></i>
-        <p class="text-white font-semibold mb-1">Email</p>
-        <p class="text-slate-400 text-sm">colbyricharddavis@gmail.com</p>
-      </a>
+      <div class="space-y-3 text-slate-300 text-lg">
+        <p class="text-cyan-400 font-bold">What I Worked On</p>
+        <ul class="space-y-2 list-disc list-inside">
+          <li>Quaternion-based attitude propagation & control</li>
+          <li>Reaction wheel modeling, saturation, and momentum buildup</li>
+          <li>Long duration station keeping simulations</li>
+          <li>Simulink architecture for kinematics + dynamics + control</li>
+          <li>Multi-day stability, pointing error, and angular rate tracking</li>
+          <li>STK visualization for Earth–Moon L4 orbits</li>
+        </ul>
+      </div>
 
-      <a href="tel:5739879307"
-         class="bg-slate-900/40 backdrop-blur-md border border-orange-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <i data-lucide="phone" class="w-8 h-8 text-orange-400 mx-auto mb-3"></i>
-        <p class="text-white font-semibold mb-1">Phone</p>
-        <p class="text-slate-400 text-sm">(573) 987 9307</p>
-      </a>
+      <div class="space-y-3 text-slate-300 text-lg">
+        <p class="text-orange-400 font-bold">What I Learned</p>
+        <ul class="space-y-2 list-disc list-inside">
+          <li>Systems engineering workflow and interface management</li>
+          <li>Quaternion error construction and controller tuning</li>
+          <li>Wheel momentum management over months-long operations</li>
+          <li>Simulation debugging and long-horizon model verification</li>
+          <li>STK mission geometry, L4 dynamics, and orbit analysis</li>
+          <li>How GNC ties together flight software, sensors, and actuators</li>
+        </ul>
+      </div>
 
-      <a href="https://linkedin.com/in/colbydavisr" target="_blank"
-         class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
-        <i data-lucide="linkedin" class="w-8 h-8 text-cyan-400 mx-auto mb-3"></i>
-        <p class="text-white font-semibold mb-1">LinkedIn</p>
-        <p class="text-slate-400 text-sm">colbydavisr</p>
-      </a>
+    </div>
+
+    <!-- IMAGE GRID -->
+    <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+      <!-- ANGULAR VELOCITY -->
+      <div class="bg-slate-900/40 border border-cyan-500/20 rounded-xl p-4 hover:scale-[1.02] transition">
+        <img src="images/omega.png" class="rounded-lg w-full" alt="Angular velocity plot">
+        <p class="text-center text-slate-400 text-sm mt-3">
+          Angular velocity decay during long-term station keeping.
+        </p>
+      </div>
+
+      <!-- QUATERNIONS -->
+      <div class="bg-slate-900/40 border border-cyan-500/20 rounded-xl p-4 hover:scale-[1.02] transition">
+        <img src="images/quaternions.png" class="rounded-lg w-full" alt="Quaternion tracking plot">
+        <p class="text-center text-slate-400 text-sm mt-3">
+          Quaternion tracking (actual vs desired) using nonlinear attitude control.
+        </p>
+      </div>
+
+      <!-- SIMULINK ARCHITECTURE -->
+      <div class="bg-slate-900/40 border border-orange-500/20 rounded-xl p-4 md:col-span-2 hover:scale-[1.02] transition">
+        <img src="images/simu.png" class="rounded-lg w-full" alt="Simulink architecture">
+        <p class="text-center text-slate-400 text-sm mt-3">
+          Full Simulink system: kinematics, dynamics, reaction wheels, and controller logic.
+        </p>
+      </div>
+
+      <!-- STK ORBIT -->
+      <div class="bg-slate-900/40 border border-cyan-500/20 rounded-xl p-4 hover:scale-[1.02] transition">
+        <img src="images/spo_new.png" class="rounded-lg w-full" alt="STK trajectory plot">
+        <p class="text-center text-slate-400 text-sm mt-3">
+          STK visualization of Earth–Moon L4 station keeping.
+        </p>
+      </div>
+
+      <!-- REACTION WHEEL RPM -->
+      <div class="bg-slate-900/40 border border-cyan-500/20 rounded-xl p-4 hover:scale-[1.02] transition">
+        <img src="images/wheel_RPM.png" class="rounded-lg w-full" alt="Reaction wheel RPM plot">
+        <p class="text-center text-slate-400 text-sm mt-3">
+          Reaction wheel rates over a multi-day attitude tracking profile.
+        </p>
+      </div>
 
     </div>
 
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer class="py-8 px-6 border-t border-cyan-500/10">
-  <div class="max-w-7xl mx-auto text-center text-slate-500 text-sm">
-    © 2024 Colby Davis • Aerospace Engineer • Designed for the Future of Space Exploration
-  </div>
-</footer>
-
-<!-- INIT ICONS -->
-<script>
-  lucide.createIcons();
-</script>
