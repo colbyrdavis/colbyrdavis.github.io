@@ -135,11 +135,12 @@
     <!-- REMOVE DEFENSE AND SPACE TEXT AND PARAGRAPH -->
 
     <!-- PROJECT BUTTON -->
-    <button id="projectBtn"
-      class="px-10 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl font-bold hover:scale-105 transition flex items-center gap-2 mx-auto mb-10">
-      CLICK HERE FOR PROJECTS
-      <i data-lucide="chevron-right" class="w-5 h-5"></i>
-    </button>
+ <!-- GIANT PROJECT BUTTON -->
+  <button id="enterProjects"
+    class="px-16 py-10 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-2xl font-black text-4xl hover:scale-110 transition mx-auto mb-12 shadow-xl">
+    CLICK HERE FOR PROJECTS
+  </button>
+
 
     <!-- PROJECT OPTIONS -->
     <div id="projectOptions" class="hidden flex flex-col items-center gap-4">
@@ -253,6 +254,114 @@
   <script>
     lucide.createIcons();
   </script>
+<!-- FULL SCREEN PROJECT MENU -->
+<div id="projectMenu"
+  class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center text-center px-6">
+
+  <h2 class="text-5xl font-black mb-12 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
+    SELECT PROJECT CATEGORY
+  </h2>
+
+  <div class="flex flex-col md:flex-row gap-10">
+
+    <!-- GNC BUTTON -->
+    <button id="openGNC"
+      class="px-16 py-12 bg-slate-900 border border-cyan-500/40 rounded-2xl text-4xl font-bold hover:scale-110 transition shadow-xl">
+      GNC
+    </button>
+
+    <!-- HARDWARE BUTTON -->
+    <button id="openHIL"
+      class="px-16 py-12 bg-slate-900 border border-orange-500/40 rounded-2xl text-4xl font-bold hover:scale-110 transition shadow-xl">
+      Hardware In The Loop
+    </button>
+
+  </div>
+
+  <button id="closeProjects" class="mt-16 text-slate-400 hover:text-white text-xl">
+    Close
+  </button>
+</div>
+<!-- GNC PROJECT LIST PAGE -->
+<div id="gncPage"
+  class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex flex-col items-center px-6 pt-20 overflow-auto">
+
+  <h2 class="text-5xl font-black mb-8 text-cyan-400">GNC PROJECTS</h2>
+
+  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
+
+    <a href="gnc_6dof.html" class="block hover:text-white">6DOF Rocket Simulation</a>
+    <a href="gnc_attitude.html" class="block hover:text-white">Satellite Attitude Control</a>
+    <a href="gnc_hcw.html" class="block hover:text-white">Relative Motion HCW</a>
+    <a href="gnc_optimal.html" class="block hover:text-white">Optimal Control Duffing System</a>
+
+  </div>
+
+  <button id="backFromGNC" class="mt-16 text-slate-400 hover:text-white text-xl">
+    Back
+  </button>
+</div>
+
+<!-- HARDWARE PROJECT LIST PAGE -->
+<div id="hilPage"
+  class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex flex-col items-center px-6 pt-20 overflow-auto">
+
+  <h2 class="text-5xl font-black mb-8 text-orange-400">HARDWARE PROJECTS</h2>
+
+  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
+
+    <a href="hil_prop.html" class="block hover:text-white">Mars Propeller Test Rig</a>
+    <a href="hil_servo.html" class="block hover:text-white">Raspberry Pi Servo Control</a>
+    <a href="hil_sensors.html" class="block hover:text-white">Real Time Sensor Interface System</a>
+
+  </div>
+
+  <button id="backFromHIL" class="mt-16 text-slate-400 hover:text-white text-xl">
+    Back
+  </button>
+</div>
+<script>
+  const enterBtn = document.getElementById("enterProjects");
+  const menu = document.getElementById("projectMenu");
+  const closeMenu = document.getElementById("closeProjects");
+
+  const openGNC = document.getElementById("openGNC");
+  const openHIL = document.getElementById("openHIL");
+
+  const gncPage = document.getElementById("gncPage");
+  const hilPage = document.getElementById("hilPage");
+
+  const backGNC = document.getElementById("backFromGNC");
+  const backHIL = document.getElementById("backFromHIL");
+
+  enterBtn.addEventListener("click", () => {
+    menu.classList.remove("hidden");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    menu.classList.add("hidden");
+  });
+
+  openGNC.addEventListener("click", () => {
+    menu.classList.add("hidden");
+    gncPage.classList.remove("hidden");
+  });
+
+  openHIL.addEventListener("click", () => {
+    menu.classList.add("hidden");
+    hilPage.classList.remove("hidden");
+  });
+
+  backGNC.addEventListener("click", () => {
+    gncPage.classList.add("hidden");
+    menu.classList.remove("hidden");
+  });
+
+  backHIL.addEventListener("click", () => {
+    hilPage.classList.add("hidden");
+    menu.classList.remove("hidden");
+  });
+</script>
 
 </body>
 </html>
@@ -302,70 +411,36 @@
         <h3 class="text-2xl font-bold text-white mb-6">TECHNICAL CAPABILITIES</h3>
 
         <!-- Skill -->
-        <div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-300">MATLAB / Simulink</span>
-            <span class="text-cyan-400 font-mono">95%</span>
-          </div>
-          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 95%"></div>
-          </div>
-        </div>
+        <span class="text-cyan-400 font-mono">75 percent</span>
+<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 75 percent"></div>
+</div>
 
-        <div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-300">STK & Astrodynamics</span>
-            <span class="text-cyan-400 font-mono">90%</span>
-          </div>
-          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 90%"></div>
-          </div>
-        </div>
+<span class="text-cyan-400 font-mono">70 percent</span>
+<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 70 percent"></div>
+</div>
 
-        <div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-300">SolidWorks / CAD</span>
-            <span class="text-cyan-400 font-mono">85%</span>
-          </div>
-          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
+<span class="text-cyan-400 font-mono">65 percent</span>
+<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 65 percent"></div>
+</div>
 
-        <div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-300">Python & C++</span>
-            <span class="text-cyan-400 font-mono">80%</span>
-          </div>
-          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 80%"></div>
-          </div>
-        </div>
+<span class="text-cyan-400 font-mono">60 percent</span>
+<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 60 percent"></div>
+</div>
 
-        <div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-300">ANSYS / Thermal Desktop</span>
-            <span class="text-cyan-400 font-mono">75%</span>
-          </div>
-          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 75%"></div>
-          </div>
-        </div>
+<span class="text-cyan-400 font-mono">55 percent</span>
+<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 55 percent"></div>
+</div>
 
-        <div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-300">Systems Engineering</span>
-            <span class="text-cyan-400 font-mono">90%</span>
-          </div>
-          <div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 90%"></div>
-          </div>
-        </div>
+<span class="text-cyan-400 font-mono">70 percent</span>
+<div class="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+  <div class="h-full bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full" style="width: 70 percent"></div>
+</div>
 
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- MISSIONS SECTION -->
 <section id="missions" class="py-20 px-6">
@@ -419,7 +494,6 @@
           <li>Twenty five second angular velocity settle</li>
         </ul>
       </div>
-
       <!-- Mercury Propulsion -->
       <div class="relative bg-slate-900/40 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 hover:scale-105 transition-all">
         <div class="flex items-start justify-between mb-4">
