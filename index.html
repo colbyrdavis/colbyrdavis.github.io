@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -90,79 +90,50 @@ onresize = () => {
  </div>
 </nav>
 
-<!-- HERO ------------------------------------------------------------------>
+<!-- PROJECTS SECTION -------------------------------------------------------->
 <section class="min-h-screen flex items-center justify-center relative pt-20">
  <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5"></div>
 
- <div class="relative z-10 text-center px-6 max-w-5xl">
-   <button id="enterProjects"
-     class="px-16 py-10 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-2xl font-black text-4xl
-            hover:scale-110 transition mx-auto mb-12 shadow-xl">
-     CLICK HERE FOR PROJECTS
-   </button>
+ <div class="relative z-10 px-6 max-w-6xl w-full mx-auto">
+
+   <div class="grid md:grid-cols-2 gap-16">
+
+     <!-- GNC PROJECTS -->
+     <div>
+       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+         GNC PROJECTS
+       </h2>
+       <div class="space-y-5">
+         <a id="open6dof" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           6DOF Rocket Simulation — V-2 Derived
+         </a>
+         <a id="open12u" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           12U CubeSat — Systems & GNC
+         </a>
+         <a id="openSatControl" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Satellite Attitude Control
+         </a>
+         <a class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Kalman Filter State Estimation
+         </a>
+       </div>
+     </div>
+
+     <!-- HARDWARE IN THE LOOP PROJECTS -->
+     <div>
+       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
+         HARDWARE IN THE LOOP
+       </h2>
+       <div class="space-y-5">
+         <a id="openSpeedControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Speed Controller
+         </a>
+       </div>
+     </div>
+
+   </div>
  </div>
 </section>
-
-<!-- PROJECT CATEGORY MENU ------------------------------------------------->
-<div id="projectMenu"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            flex flex-col items-center justify-center text-center px-6">
-
- <h2 class="text-5xl font-black mb-12 bg-gradient-to-r from-cyan-400 to-orange-400
-            bg-clip-text text-transparent">
-   SELECT PROJECT CATEGORY
- </h2>
-
- <div class="flex flex-col md:flex-row gap-10">
-   <button id="openGNC"
-     class="px-16 py-12 bg-slate-900 border border-cyan-500/40 rounded-2xl
-            text-4xl font-bold hover:scale-110 transition shadow-xl">
-     GNC
-   </button>
-
-   <button id="openHIL"
-     class="px-16 py-12 bg-slate-900 border border-orange-500/40 rounded-2xl
-            text-4xl font-bold hover:scale-110 transition shadow-xl">
-     Hardware<br>In The Loop
-   </button>
- </div>
-
- <button id="closeProjects" class="mt-16 text-slate-400 hover:text-white text-xl">
-   Close
- </button>
-</div>
-<!-- GNC PROJECT LIST PAGE ------------------------------------------------>
-<div id="gncPage"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            flex flex-col items-center px-6 pt-20 overflow-auto">
-
-  <h2 class="text-5xl font-black mb-8 text-cyan-400">GNC PROJECTS</h2>
-
-  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
-
-    <!-- ROCKET FIRST -->
-    <a id="open6dof" class="block hover:text-white cursor-pointer">
-      6DOF Rocket Simulation — V-2 Derived
-    </a>
-
-    <!-- CUBESAT SECOND -->
-    <a id="open12u" class="block hover:text-white cursor-pointer">
-      12U CubeSat — Systems & GNC
-    </a>
-
-    <a id="openSatControl" class="block hover:text-white cursor-pointer">Satellite Attitude Control</a>
-    <a class="block hover:text-white cursor-pointer">Kalman Filter State Estimation</a>
-
-  </div>
-
-  <button id="backFromGNC"
-          class="mt-16 text-slate-400 hover:text-white text-xl">
-    Back
-  </button>
-
-</div>
-
-
 
 <!-- ===================================================================== -->
 <!-- 6DOF ROCKET SIMULATION MODAL                                         -->
@@ -256,9 +227,6 @@ onresize = () => {
   </button>
 
 </div>
-
-
-
 
 <!-- ===================================================================== -->
 <!-- 12U CUBESAT MODAL (HEADER + TEXT)                                    -->
@@ -385,31 +353,6 @@ onresize = () => {
 </div>
 
 <!-- ===================================================================== -->
-<!-- HIL PROJECT LIST PAGE                                                -->
-<!-- ===================================================================== -->
-
-<div id="hilPage"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            flex flex-col items-center px-6 pt-20 overflow-auto">
-
-  <h2 class="text-5xl font-black mb-8 text-orange-400">HARDWARE IN THE LOOP PROJECTS</h2>
-
-  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
-
-    <a id="openSpeedControl" class="block hover:text-white cursor-pointer">
-      Speed Controller
-    </a>
-
-  </div>
-
-  <button id="backFromHIL"
-          class="mt-16 text-slate-400 hover:text-white text-xl">
-    Back
-  </button>
-
-</div>
-
-<!-- ===================================================================== -->
 <!-- SPEED CONTROLLER MODAL                                               -->
 <!-- ===================================================================== -->
 
@@ -443,20 +386,10 @@ onresize = () => {
 </div>
 
 <!-- ===================================================================== -->
-<!-- JAVASCRIPT: PROJECT MENUS + MODALS                                   -->
+<!-- JAVASCRIPT: PROJECT MODALS                                           -->
 <!-- ===================================================================== -->
 
 <script>
-// Main menu buttons
-const enter = document.getElementById("enterProjects");
-const menu  = document.getElementById("projectMenu");
-const closeM = document.getElementById("closeProjects");
-
-// GNC navigation
-const openG = document.getElementById("openGNC");
-const gnc   = document.getElementById("gncPage");
-const backG = document.getElementById("backFromGNC");
-
 // Missile modal
 const open6dof = document.getElementById("open6dof");
 const missile  = document.getElementById("missile6dof");
@@ -472,148 +405,26 @@ const openSat  = document.getElementById("openSatControl");
 const satCtrl  = document.getElementById("satControl");
 const closeSat = document.getElementById("closeSatControl");
 
-// HIL navigation
-const openH = document.getElementById("openHIL");
-const hil   = document.getElementById("hilPage");
-const backH = document.getElementById("backFromHIL");
-
 // Speed Controller modal
 const openSpeed  = document.getElementById("openSpeedControl");
 const speedCtrl  = document.getElementById("speedControl");
 const closeSpeed = document.getElementById("closeSpeedControl");
 
+// Open/Close Missile Modal
+open6dof.onclick = () => missile.classList.remove("hidden");
+close6.onclick = () => missile.classList.add("hidden");
 
-// =======================================================================
-// MAIN PROJECT MENU
-// =======================================================================
+// Open/Close CubeSat Modal
+open12.onclick = () => cube.classList.remove("hidden");
+close12.onclick = () => cube.classList.add("hidden");
 
-enter.onclick = () => {
-  menu.classList.remove("hidden");
-};
+// Open/Close Satellite Control Modal
+openSat.onclick = () => satCtrl.classList.remove("hidden");
+closeSat.onclick = () => satCtrl.classList.add("hidden");
 
-closeM.onclick = () => {
-  menu.classList.add("hidden");
-};
-
-
-// =======================================================================
-// OPEN GNC PAGE
-// =======================================================================
-
-openG.onclick = () => {
-  menu.classList.add("hidden");
-  gnc.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// BACK FROM GNC TO MENU
-// =======================================================================
-
-backG.onclick = () => {
-  gnc.classList.add("hidden");
-  menu.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// OPEN MISSILE MODAL
-// =======================================================================
-
-open6dof.onclick = () => {
-  gnc.classList.add("hidden");
-  missile.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// CLOSE MISSILE MODAL
-// =======================================================================
-
-close6.onclick = () => {
-  missile.classList.add("hidden");
-  gnc.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// OPEN CUBESAT MODAL
-// =======================================================================
-
-open12.onclick = () => {
-  gnc.classList.add("hidden");
-  cube.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// CLOSE CUBESAT MODAL
-// =======================================================================
-
-close12.onclick = () => {
-  cube.classList.add("hidden");
-  gnc.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// OPEN SATELLITE CONTROL MODAL
-// =======================================================================
-
-openSat.onclick = () => {
-  gnc.classList.add("hidden");
-  satCtrl.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// CLOSE SATELLITE CONTROL MODAL
-// =======================================================================
-
-closeSat.onclick = () => {
-  satCtrl.classList.add("hidden");
-  gnc.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// OPEN HIL PAGE
-// =======================================================================
-
-openH.onclick = () => {
-  menu.classList.add("hidden");
-  hil.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// BACK FROM HIL TO MENU
-// =======================================================================
-
-backH.onclick = () => {
-  hil.classList.add("hidden");
-  menu.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// OPEN SPEED CONTROLLER MODAL
-// =======================================================================
-
-openSpeed.onclick = () => {
-  hil.classList.add("hidden");
-  speedCtrl.classList.remove("hidden");
-};
-
-
-// =======================================================================
-// CLOSE SPEED CONTROLLER MODAL
-// =======================================================================
-
-closeSpeed.onclick = () => {
-  speedCtrl.classList.add("hidden");
-  hil.classList.remove("hidden");
-};
+// Open/Close Speed Controller Modal
+openSpeed.onclick = () => speedCtrl.classList.remove("hidden");
+closeSpeed.onclick = () => speedCtrl.classList.add("hidden");
 
 </script>
 
