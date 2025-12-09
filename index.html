@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -123,7 +123,7 @@ onresize = () => {
    <button id="openHIL"
      class="px-16 py-12 bg-slate-900 border border-orange-500/40 rounded-2xl
             text-4xl font-bold hover:scale-110 transition shadow-xl">
-     Hardware In The Loop
+     Hardware<br>In The Loop
    </button>
  </div>
 
@@ -142,18 +142,16 @@ onresize = () => {
 
     <!-- ROCKET FIRST -->
     <a id="open6dof" class="block hover:text-white cursor-pointer">
-      6DOF Rocket Simulation â€” V-2 Derived
+      6DOF Rocket Simulation — V-2 Derived
     </a>
 
     <!-- CUBESAT SECOND -->
     <a id="open12u" class="block hover:text-white cursor-pointer">
-      12U CubeSat â€” Systems & GNC
+      12U CubeSat — Systems & GNC
     </a>
 
-    <a class="block hover:text-white cursor-pointer">Satellite Attitude Control</a>
+    <a id="openSatControl" class="block hover:text-white cursor-pointer">Satellite Attitude Control</a>
     <a class="block hover:text-white cursor-pointer">Kalman Filter State Estimation</a>
-    <a class="block hover:text-white cursor-pointer"></a>
-    <a class="block hover:text-white cursor-pointer"></a>
 
   </div>
 
@@ -175,7 +173,7 @@ onresize = () => {
             overflow-auto px-6 py-20">
 
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    6DOF ROCKET SIMULATION â€” V-2 DYNAMIC MODEL (C++)
+    6DOF ROCKET SIMULATION — V-2 DYNAMIC MODEL (C++)
   </h2>
 
   <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
@@ -271,7 +269,7 @@ onresize = () => {
             overflow-auto px-6 py-20">
 
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    12U CUBESAT â€” SYSTEMS & GNC
+    12U CUBESAT — SYSTEMS & GNC
   </h2>
 
   <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
@@ -344,6 +342,106 @@ onresize = () => {
   </button>
 
 </div> <!-- END CUBESAT MODAL -->
+
+<!-- ===================================================================== -->
+<!-- SATELLITE ATTITUDE CONTROL MODAL                                     -->
+<!-- ===================================================================== -->
+
+<div id="satControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    SATELLITE ATTITUDE CONTROL
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Satellite attitude control system design and analysis.
+  </p>
+
+  <!-- SAT VIDEO -->
+  <div class="max-w-4xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="sat.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">Satellite attitude control visualization</p>
+    </div>
+  </div>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <a href="ControlsFinal_code.pdf" target="_blank"
+       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
+              text-cyan-400 hover:bg-cyan-500/30 transition">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </a>
+  </div>
+
+  <button id="closeSatControl"
+          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
+    Back
+  </button>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- HIL PROJECT LIST PAGE                                                -->
+<!-- ===================================================================== -->
+
+<div id="hilPage"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            flex flex-col items-center px-6 pt-20 overflow-auto">
+
+  <h2 class="text-5xl font-black mb-8 text-orange-400">HARDWARE IN THE LOOP PROJECTS</h2>
+
+  <div class="space-y-6 text-left w-full max-w-2xl mx-auto text-slate-300 text-2xl">
+
+    <a id="openSpeedControl" class="block hover:text-white cursor-pointer">
+      Speed Controller
+    </a>
+
+  </div>
+
+  <button id="backFromHIL"
+          class="mt-16 text-slate-400 hover:text-white text-xl">
+    Back
+  </button>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- SPEED CONTROLLER MODAL                                               -->
+<!-- ===================================================================== -->
+
+<div id="speedControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    SPEED CONTROLLER
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop speed controller implementation and testing.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <a href="AE443_Speed.pdf" target="_blank"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </a>
+  </div>
+
+  <button id="closeSpeedControl"
+          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
+    Back
+  </button>
+
+</div>
+
 <!-- ===================================================================== -->
 <!-- JAVASCRIPT: PROJECT MENUS + MODALS                                   -->
 <!-- ===================================================================== -->
@@ -368,6 +466,21 @@ const close6   = document.getElementById("close6dof");
 const open12   = document.getElementById("open12u");
 const cube     = document.getElementById("cube12u");
 const close12  = document.getElementById("close12u");
+
+// Satellite Control modal
+const openSat  = document.getElementById("openSatControl");
+const satCtrl  = document.getElementById("satControl");
+const closeSat = document.getElementById("closeSatControl");
+
+// HIL navigation
+const openH = document.getElementById("openHIL");
+const hil   = document.getElementById("hilPage");
+const backH = document.getElementById("backFromHIL");
+
+// Speed Controller modal
+const openSpeed  = document.getElementById("openSpeedControl");
+const speedCtrl  = document.getElementById("speedControl");
+const closeSpeed = document.getElementById("closeSpeedControl");
 
 
 // =======================================================================
@@ -440,6 +553,66 @@ open12.onclick = () => {
 close12.onclick = () => {
   cube.classList.add("hidden");
   gnc.classList.remove("hidden");
+};
+
+
+// =======================================================================
+// OPEN SATELLITE CONTROL MODAL
+// =======================================================================
+
+openSat.onclick = () => {
+  gnc.classList.add("hidden");
+  satCtrl.classList.remove("hidden");
+};
+
+
+// =======================================================================
+// CLOSE SATELLITE CONTROL MODAL
+// =======================================================================
+
+closeSat.onclick = () => {
+  satCtrl.classList.add("hidden");
+  gnc.classList.remove("hidden");
+};
+
+
+// =======================================================================
+// OPEN HIL PAGE
+// =======================================================================
+
+openH.onclick = () => {
+  menu.classList.add("hidden");
+  hil.classList.remove("hidden");
+};
+
+
+// =======================================================================
+// BACK FROM HIL TO MENU
+// =======================================================================
+
+backH.onclick = () => {
+  hil.classList.add("hidden");
+  menu.classList.remove("hidden");
+};
+
+
+// =======================================================================
+// OPEN SPEED CONTROLLER MODAL
+// =======================================================================
+
+openSpeed.onclick = () => {
+  hil.classList.add("hidden");
+  speedCtrl.classList.remove("hidden");
+};
+
+
+// =======================================================================
+// CLOSE SPEED CONTROLLER MODAL
+// =======================================================================
+
+closeSpeed.onclick = () => {
+  speedCtrl.classList.add("hidden");
+  hil.classList.remove("hidden");
 };
 
 </script>
