@@ -122,7 +122,7 @@ onresize = () => {
      <!-- HARDWARE IN THE LOOP PROJECTS -->
      <div>
        <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
-         HARDWARE IN THE LOOP
+         HIL
        </h2>
        <div class="space-y-5">
          <a id="openSpeedControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
@@ -148,6 +148,11 @@ onresize = () => {
 <div id="missile6dof"
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
+
+  <button id="close6dof"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
 
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
     6DOF ROCKET SIMULATION — V-2 DYNAMIC MODEL (C++)
@@ -227,11 +232,6 @@ onresize = () => {
 
   </div>
 
-  <button id="close6dof"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
-
 </div>
 
 <!-- ===================================================================== -->
@@ -241,6 +241,11 @@ onresize = () => {
 <div id="cube12u"
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
+
+  <button id="close12u"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
 
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
     12U CUBESAT — SYSTEMS & GNC
@@ -309,12 +314,6 @@ onresize = () => {
 
   </div>
 
-  <!-- BACK BUTTON -------------------------------------------------------->
-  <button id="close12u"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
-
 </div> <!-- END CUBESAT MODAL -->
 
 <!-- ===================================================================== -->
@@ -324,6 +323,11 @@ onresize = () => {
 <div id="satControl"
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
+
+  <button id="closeSatControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
 
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
     SATELLITE ATTITUDE CONTROL
@@ -345,18 +349,13 @@ onresize = () => {
 
   <!-- PDF LINK -->
   <div class="text-center mb-10">
-    <a href="ControlsFinal_code.pdf" target="_blank"
+    <button onclick="openPDF('ControlsFinal_code.pdf')"
        class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
-              text-cyan-400 hover:bg-cyan-500/30 transition">
+              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
       <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
       View Project Documentation (PDF)
-    </a>
+    </button>
   </div>
-
-  <button id="closeSatControl"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
 
 </div>
 
@@ -368,6 +367,11 @@ onresize = () => {
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
 
+  <button id="closeKalman"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
     KALMAN FILTER STATE ESTIMATION
   </h2>
@@ -378,18 +382,13 @@ onresize = () => {
 
   <!-- PDF LINK -->
   <div class="text-center mb-10">
-    <a href="Project_5.pdf" target="_blank"
+    <button onclick="openPDF('Project_5.pdf')"
        class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
-              text-cyan-400 hover:bg-cyan-500/30 transition">
+              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
       <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
       View Project Documentation (PDF)
-    </a>
+    </button>
   </div>
-
-  <button id="closeKalman"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
 
 </div>
 
@@ -401,6 +400,11 @@ onresize = () => {
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
 
+  <button id="closeSpeedControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
   <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
     SPEED CONTROLLER
   </h2>
@@ -411,18 +415,13 @@ onresize = () => {
 
   <!-- PDF LINK -->
   <div class="text-center mb-10">
-    <a href="AE443_Speed.pdf" target="_blank"
+    <button onclick="openPDF('AE443_Speed.pdf')"
        class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-              text-orange-400 hover:bg-orange-500/30 transition">
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
       <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
       View Project Documentation (PDF)
-    </a>
+    </button>
   </div>
-
-  <button id="closeSpeedControl"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
 
 </div>
 
@@ -434,6 +433,11 @@ onresize = () => {
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
 
+  <button id="closeServoBump"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
   <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
     SERVO BUMP TEST
   </h2>
@@ -444,18 +448,13 @@ onresize = () => {
 
   <!-- PDF LINK -->
   <div class="text-center mb-10">
-    <a href="bump.pdf" target="_blank"
+    <button onclick="openPDF('bump.pdf')"
        class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-              text-orange-400 hover:bg-orange-500/30 transition">
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
       <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
       View Project Documentation (PDF)
-    </a>
+    </button>
   </div>
-
-  <button id="closeServoBump"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
 
 </div>
 
@@ -467,6 +466,11 @@ onresize = () => {
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
 
+  <button id="closePositionControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
   <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
     POSITION CONTROL
   </h2>
@@ -477,19 +481,25 @@ onresize = () => {
 
   <!-- PDF LINK -->
   <div class="text-center mb-10">
-    <a href="position.pdf" target="_blank"
+    <button onclick="openPDF('position.pdf')"
        class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-              text-orange-400 hover:bg-orange-500/30 transition">
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
       <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
       View Project Documentation (PDF)
-    </a>
+    </button>
   </div>
 
-  <button id="closePositionControl"
-          class="mt-16 text-slate-400 hover:text-white text-xl block mx-auto">
-    Back
-  </button>
+</div>
 
+<!-- ===================================================================== -->
+<!-- PDF VIEWER MODAL                                                     -->
+<!-- ===================================================================== -->
+
+<div id="pdfViewer" class="hidden fixed inset-0 bg-black/90 z-[60] flex items-center justify-center p-6">
+  <button id="closePDF" class="absolute top-6 right-6 text-white hover:text-cyan-400 transition">
+    <i data-lucide="x" class="w-8 h-8"></i>
+  </button>
+  <iframe id="pdfFrame" class="w-full h-full bg-white rounded-lg" frameborder="0"></iframe>
 </div>
 
 <!-- ===================================================================== -->
@@ -497,6 +507,22 @@ onresize = () => {
 <!-- ===================================================================== -->
 
 <script>
+// PDF Viewer
+const pdfViewer = document.getElementById("pdfViewer");
+const pdfFrame = document.getElementById("pdfFrame");
+const closePDF = document.getElementById("closePDF");
+
+function openPDF(pdfPath) {
+  pdfFrame.src = pdfPath;
+  pdfViewer.classList.remove("hidden");
+  lucide.createIcons();
+}
+
+closePDF.onclick = () => {
+  pdfViewer.classList.add("hidden");
+  pdfFrame.src = "";
+};
+
 // Missile modal
 const open6dof = document.getElementById("open6dof");
 const missile  = document.getElementById("missile6dof");
