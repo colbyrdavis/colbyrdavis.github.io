@@ -150,10 +150,8 @@ onresize = () => {
       12U CubeSat — Systems & GNC
     </a>
 
-    <a class="block hover:text-white cursor-pointer">6DOF Rocket Simulation</a>
-    <a class="block hover:text-white cursor-pointer">Satellite Attitude Control</a>
-    <a class="block hover:text-white cursor-pointer">Relative Motion HCW</a>
-    <a class="block hover:text-white cursor-pointer">Optimal Control Duffing System</a>
+    <a id="openSatControl" class="block hover:text-white cursor-pointer">Satellite Attitude Control</a>
+    <a class="block hover:text-white cursor-pointer">Kalman Filter State Estimation</a>
 
   </div>
 
@@ -179,10 +177,12 @@ onresize = () => {
   </h2>
 
   <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    High-fidelity rigid-body 6DOF simulation implemented with modern C++ OOP.
-    Includes aerodynamic forces and moments, quaternion attitude propagation,
-    gravity-turn behavior, constant-thrust booster characteristics, and
-    Monte-Carlo dispersion analysis for sensitivity evaluation.
+    This project is a 6DOF unguided rocket simulation written in modern C++
+    using a modular, object-oriented structure. The model advances translational motion
+    through force integration with a time-varying mass and advances rotational motion using body-rate
+    equations with Euler angle kinematics. Aerodynamic drag, thrust modeling, gravity-turn behavior,
+    and a Monte-Carlo routine for launch angle and mass variations are all included
+    to evaluate sensitivity and dispersion.
   </p>
 
   <!-- Two-column bullets -->
@@ -191,22 +191,22 @@ onresize = () => {
     <div>
       <p class="text-cyan-400 font-bold">What I Worked On</p>
       <ul class="space-y-2 list-disc list-inside text-slate-300">
-        <li>6DOF translational + rotational rigid-body dynamics</li>
-        <li>Constant thrust + mass depletion until burnout</li>
-        <li>Quaternion-based attitude propagation (no singularities)</li>
-        <li>Aerodynamic forces and nonlinear cross-axis moments</li>
+        <li>Implemented 6DOF rigid-body equations using Euler angle kinematics and p q r body-rate propagation.</li>
+        <li>Built reusable C++ math utilities for vectors, rotation conversions, and forces.</li>
+        <li>Modeled thrust with linear mass depletion and computed drag from dynamic pressure, Cd, and reference area.</li>
+        <li>Advanced all states using a forward Euler integrator.</li>
         <li>Object-oriented C++ architecture (Vector3, Quaternion, RigidBody, Aerodynamics, Propulsion)</li>
-        <li>Monte-Carlo dispersion over angle, mass scale, atmosphere</li>
+        <li>Created a Monte-Carlo system that perturbed launch angle and mass scale to study trajectory dispersion.</li>
       </ul>
     </div>
 
     <div>
       <p class="text-orange-400 font-bold">What I Learned</p>
       <ul class="space-y-2 list-disc list-inside text-slate-300">
-        <li>Passive missile stability and gravity-turn dynamics</li>
-        <li>p-q-r Euler coupling and nonlinear attitude evolution</li>
-        <li>Numerical integration for long flight durations</li>
-        <li>Rigid-body moment coupling under thrust and drag</li>
+        <li>How to structure a multi-file C++ simulation with clear separation between math, dynamics, and integration logic.</li>
+        <li>How to debug coupled rotational and translational equations and ensure stable propagation with small time steps.</li>
+        <li>How aerodynamic forces and simple model assumptions influence sensitivity studies.</li>
+        <li>How to build flexible simulation code that can be extended, modified, or repurposed for more complex GNC work/li>
         <li>Modular aerospace software design using C++ OOP</li>
       </ul>
     </div>
@@ -220,7 +220,7 @@ onresize = () => {
       <p class="text-center text-slate-400 text-sm mt-3">Rocket attitude dynamics</p>
     </div>
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <video src="rocket_2d_trajectory.mp4" controls class="rounded-lg w-full"></video>
+      <video src="rocket_trajectory_telemetry.mp4" controls class="rounded-lg w-full"></video>
       <p class="text-center text-slate-400 text-sm mt-3">2D trajectory visualization</p>
     </div>
   </div>
