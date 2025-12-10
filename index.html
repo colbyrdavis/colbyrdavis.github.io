@@ -105,7 +105,7 @@ onresize = () => {
        </h2>
        <div class="space-y-5">
          <a id="open6dof" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           6DOF Rocket Simulation — V-2 Derived
+           6DOF Rocket Simulation — Based on V-2 Rocket
          </a>
          <a id="open12u" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
            12U CubeSat — Systems & GNC
@@ -159,7 +159,7 @@ onresize = () => {
   </h2>
 
   <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    This project is a 6DOF unguided rocket simulation written in modern C++
+    This project is a 6DOF unguided rocket simulation written in C++
     using a modular, object-oriented structure. The model advances translational motion
     through force integration with a time-varying mass and advances rotational motion using body-rate
     equations with Euler angle kinematics. Aerodynamic drag, thrust modeling, gravity-turn behavior,
@@ -268,7 +268,40 @@ onresize = () => {
       </button>
     </div>
   </div>
-
+<!-- REFERENCES SECTION -->
+  <div class="max-w-5xl mx-auto mt-16 mb-10 px-6">
+    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">REFERENCES & MATERIALS</h3>
+    <div class="bg-slate-900/60 border border-cyan-500/30 rounded-xl p-8">
+      <ul class="space-y-4 text-slate-300">
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">•</span>
+          <span><strong>Modern C++ for Absolute Beginners:</strong> A Friendly Introduction to C++ Programming Language and C++11 to C++20 Standards by Slobodan Dmitrović</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">•</span>
+          <span><strong>Claude AI</strong> - Relating C++ to MATLAB</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">•</span>
+          <span><strong>OpenAI</strong> for Website Building</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">•</span>
+          <span><strong>C++ for Engineers and Scientists</strong> by Gary Bronson</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">•</span>
+          <span><strong>Fundamentals of Six Degrees of Freedom Aerospace Simulation and Analysis in C++, Second Edition</strong> by Peter H. Zipfel</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">•</span>
+          <a href="https://www.youtube.com/watch?v=hr_PqdkG6XY&t=314s" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">
+            YouTube Tutorial: 6DOF Simulation Concepts
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- ===================================================================== -->
@@ -1423,3 +1456,4 @@ lucide.createIcons();
 </body>
 
 </html>
+
