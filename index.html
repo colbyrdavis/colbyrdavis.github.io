@@ -4,20 +4,551 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Colby Davis Portfolio</title>
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
 body { background:#020617; overflow-x:hidden; }
 canvas { position:fixed; inset:0; z-index:-10; }
 </style>
 </head>
+
 <body class="text-white">
+
+<!-- STARFIELD ------------------------------------------------------------>
 <canvas id="space"></canvas>
-<!-- CONTENT UNCHANGED FROM YOUR ORIGINAL -->
-<!-- Only scripts moved -->
-<script src="js/starfield.js"></script>
-<script src="js/codeFiles.js"></script>
-<script src="js/modalHandlers.js"></script>
-<script>lucide.createIcons();</script>
-</body>
-</html>
+
+
+<!-- NAVIGATION ------------------------------------------------------------>
+<nav class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-lg border-b border-cyan-500/10">
+ <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+   <div class="flex items-center gap-3">
+     <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-lg flex items-center justify-center">
+       <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
+     </div>
+     <div>
+       <div class="font-bold text-lg">COLBY DAVIS</div>
+       <div class="text-xs text-cyan-400">AEROSPACE ENGINEER</div>
+     </div>
+   </div>
+
+   <div class="flex items-center gap-6">
+     <a href="mailto:colbyricharddavis@gmail.com" class="text-slate-400 hover:text-cyan-400">
+       <i data-lucide="mail" class="w-5 h-5"></i>
+     </a>
+     <a href="https://linkedin.com/in/colbydavisr" target="_blank" class="text-slate-400 hover:text-cyan-400">
+       <i data-lucide="linkedin" class="w-5 h-5"></i>
+     </a>
+     <a href="tel:5739879307" class="text-slate-400 hover:text-cyan-400">
+       <i data-lucide="phone" class="w-5 h-5"></i>
+     </a>
+   </div>
+
+ </div>
+</nav>
+
+<!-- PROJECTS SECTION -------------------------------------------------------->
+<section class="min-h-screen flex items-center justify-center relative pt-20">
+ <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5"></div>
+
+ <div class="relative z-10 px-6 max-w-6xl w-full mx-auto">
+
+   <div class="grid md:grid-cols-2 gap-16">
+
+     <!-- GNC PROJECTS -->
+     <div>
+       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+         GNC PROJECTS
+       </h2>
+       <div class="space-y-5">
+         <a id="open6dof"
+         </a>
+         <a id="openMissilePN" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           3D Missile Intercept — Proportional Navigation
+         <a id="open6dof" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           6DOF Rocket Simulation â€” Based on V-2 Rocket
+         </a>
+         <a id="open12u" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           12U CubeSat â€” Systems & GNC
+         </a>
+         <a id="openSatControl" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Satellite Attitude Control
+         </a>
+         <a id="openKalman" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Kalman Filter State Estimation
+         </a>
+       </div>
+     </div>
+
+     <!-- HARDWARE IN THE LOOP PROJECTS -->
+     <div>
+       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
+         HIL
+       </h2>
+       <div class="space-y-5">
+         <a id="openSpeedControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Speed Controller
+         </a>
+         <a id="openServoBump" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Servo Bump Test
+         </a>
+         <a id="openPositionControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Position Control
+         </a>
+       </div>
+     </div>
+
+   </div>
+ </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 6DOF ROCKET SIMULATION MODAL                                         -->
+<!-- ===================================================================== -->
+
+<div id="missile6dof"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="close6dof"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    6DOF ROCKET SIMULATION â€” V-2 DYNAMIC MODEL (C++)
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    This project is a 6DOF unguided rocket simulation written in C++
+    using a modular, object-oriented structure. The model advances translational motion
+    through force integration with a time-varying mass and advances rotational motion using body-rate
+    equations with Euler angle kinematics. Aerodynamic drag, thrust modeling, gravity-turn behavior,
+    and a Monte-Carlo routine for launch angle and mass variations are all included
+    to evaluate sensitivity and dispersion.
+  </p>
+
+  <!-- Two-column bullets -->
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+
+    <div>
+      <p class="text-cyan-400 font-bold">What I Worked On</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Implemented 6DOF rigid-body equations using Euler angle kinematics and p q r body-rate propagation.</li>
+        <li>Built reusable C++ math utilities for vectors, rotation conversions, and forces.</li>
+        <li>Modeled thrust with linear mass depletion and computed drag from dynamic pressure, Cd, and reference area.</li>
+        <li>Advanced all states using a forward Euler integrator.</li>
+        <li>Object-oriented C++ architecture (Vector3, Quaternion, RigidBody, Aerodynamics, Propulsion)</li>
+        <li>Created a Monte-Carlo system that perturbed launch angle and mass scale to study trajectory dispersion.</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-orange-400 font-bold">What I Learned</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>How to structure a multi-file C++ simulation with clear separation between math, dynamics, and integration logic.</li>
+        <li>How to debug coupled rotational and translational equations and ensure stable propagation with small time steps.</li>
+        <li>How aerodynamic forces and simple model assumptions influence sensitivity studies.</li>
+        <li>How to build flexible simulation code that can be extended, modified, or repurposed for more complex GNC work/li>
+        <li>Modular aerospace software design using C++ OOP</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ROCKET VIDEOS -->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="rocket_attitude.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">Rocket attitude dynamics</p>
+    </div>
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="rocket_trajectory_telemetry.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">2D trajectory visualization</p>
+    </div>
+  </div>
+
+  <!-- ROCKET IMAGES -->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/mission_energy.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Energy evolution over full flight</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/mission_sum_key.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Altitude, Mach, and heating proxy</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/montecarlo_sum.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Monte-Carlo dispersions</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/vac_real.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Vacuum vs atmospheric trajectory</p>
+    </div>
+
+  </div>
+
+  <!-- CODE FILES SECTION -->
+  <div class="max-w-6xl mx-auto mt-20 mb-10">
+    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">VIEW SOURCE CODE</h3>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <button onclick="openCode('Main.cpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Main.cpp
+      </button>
+      <button onclick="openCode('Math.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Math.hpp
+      </button>
+      <button onclick="openCode('RocketState.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        RocketState.hpp
+      </button>
+      <button onclick="openCode('RocketDynamics')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        RocketDynamics
+      </button>
+      <button onclick="openCode('Simulation.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Simulation.hpp
+      </button>
+      <button onclick="openCode('Aerodynamics.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Aerodynamics.hpp
+      </button>
+      <button onclick="openCode('AttitudeKinematics.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        AttitudeKinematics.hpp
+      </button>
+      <button onclick="openCode('InertiaDiagonal.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        InertiaDiagonal.hpp
+      </button>
+      <button onclick="openCode('OmegaDot_B.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        OmegaDot_B.hpp
+      </button>
+      <button onclick="openCode('MonteCarlo')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        MonteCarlo
+      </button>
+    </div>
+  </div>
+<!-- REFERENCES SECTION -->
+  <div class="max-w-5xl mx-auto mt-16 mb-10 px-6">
+    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">REFERENCES & MATERIALS</h3>
+    <div class="bg-slate-900/60 border border-cyan-500/30 rounded-xl p-8">
+      <ul class="space-y-4 text-slate-300">
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>Modern C++ for Absolute Beginners:</strong> A Friendly Introduction to C++ Programming Language and C++11 to C++20 Standards by Slobodan DmitroviÄ‡</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>Claude AI</strong> - Relating C++ to MATLAB</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>OpenAI</strong> for Website Building</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>C++ for Engineers and Scientists</strong> by Gary Bronson</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>Fundamentals of Six Degrees of Freedom Aerospace Simulation and Analysis in C++, Second Edition</strong> by Peter H. Zipfel</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <a href="https://www.youtube.com/watch?v=hr_PqdkG6XY&t=314s" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">
+            YouTube Tutorial: 6DOF Simulation Concepts
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- 12U CUBESAT MODAL (HEADER + TEXT)                                    -->
+<!-- ===================================================================== -->
+
+<div id="cube12u"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="close12u"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    12U CUBESAT â€” SYSTEMS & GNC
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Quaternion attitude control, reaction wheel dynamics, long-duration
+    station-keeping analysis, and STK orbit modeling for L4 mission geometry.
+  </p>
+
+  <!-- Cubesat bullets -->
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+
+    <div>
+      <p class="text-cyan-400 font-bold">What I Worked On</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Quaternion propagation & attitude error control</li>
+        <li>Reaction wheel momentum modeling</li>
+        <li>Station-keeping simulation over multiple days</li>
+        <li>Simulink-based GNC architecture</li>
+        <li>Pointing stability and rate tracking</li>
+        <li>STK L4 orbit modeling and geometry visualization</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-orange-400 font-bold">What I Learned</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Systems engineering interaction between subsystems</li>
+        <li>Quaternion error dynamics & stability margins</li>
+        <li>Wheel saturation and desaturation logic</li>
+        <li>Debugging long-time attitude propagation</li>
+        <li>How GNC integrates with spacecraft FSW</li>
+        <li>Mission architecture evaluation using STK</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- CUBESAT IMAGES ----------------------------------------------------->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/omega.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Angular velocity tracking</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/quaternions.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Quaternion attitude evolution</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-orange-500/20 md:col-span-2">
+      <img src="images/simu.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Simulink GNC architecture</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="STK.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">STK Pointing</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/wheel_RPM.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Reaction wheel RPM tracking</p>
+    </div>
+
+  </div>
+
+</div> <!-- END CUBESAT MODAL -->
+
+<!-- ===================================================================== -->
+<!-- SATELLITE ATTITUDE CONTROL MODAL                                     -->
+<!-- ===================================================================== -->
+
+<div id="satControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeSatControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    SATELLITE ATTITUDE CONTROL
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Satellite attitude control system design and analysis.
+  </p>
+
+<!-- SAT VIDEO -->
+  <div class="max-w-4xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="Sat_2.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">Satellite attitude control visualization</p>
+    </div>
+  </div>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('ControlsFinal_code.pdf')"
+       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
+              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- KALMAN FILTER MODAL                                                  -->
+<!-- ===================================================================== -->
+
+<div id="kalmanFilter"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeKalman"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    KALMAN FILTER STATE ESTIMATION
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Kalman filter implementation for state estimation.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('Project_5.pdf')"
+       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
+              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- SPEED CONTROLLER MODAL                                               -->
+<!-- ===================================================================== -->
+
+<div id="speedControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeSpeedControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    SPEED CONTROLLER
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop speed controller implementation and testing.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('AE443_Speed.pdf')"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- SERVO BUMP TEST MODAL                                                -->
+<!-- ===================================================================== -->
+
+<div id="servoBump"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeServoBump"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    SERVO BUMP TEST
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop servo bump test implementation and analysis.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('bump.pdf')"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- POSITION CONTROL MODAL                                               -->
+<!-- ===================================================================== -->
+
+<div id="positionControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closePositionControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    POSITION CONTROL
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop position control system implementation.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('position.pdf')"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- PDF VIEWER MODAL                                                     -->
+<!-- ===================================================================== -->
+
+<div id="pdfViewer" class="hidden fixed inset-0 bg-black/90 z-[60] flex items-center justify-center p-6">
+  <button id="closePDF" class="absolute top-6 right-6 text-white hover:text-cyan-400 transition">
+    <i data-lucide="x" class="w-8 h-8"></i>
+  </button>
+  <iframe id="pdfFrame" class="w-full h-full bg-white rounded-lg" frameborder="0"></iframe>
+</div>
+
+<!-- ===================================================================== -->
+<!-- CODE VIEWER MODAL                                                    -->
+<!-- ===================================================================== -->
+
+<div id="codeViewer" class="hidden fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-6">
+  <div class="w-full h-full max-w-7xl flex flex-col">
+    <div class="flex items-center justify-between mb-4">
+      <h3 id="codeTitle" class="text-2xl font-bold text-cyan-400"></h3>
+      <button id="closeCode" class="text-white hover:text-cyan-400 transition">
+        <i data-lucide="x" class="w-8 h-8"></i>
+      </button>
+    </div>
+    <div class="flex-1 bg-slate-900 rounded-lg overflow-auto">
+      <pre id="codeContent" class="p-6 text-sm text-slate-200 font-mono leading-relaxed"></pre>
+    </div>
+  </div>
+</div>
+
