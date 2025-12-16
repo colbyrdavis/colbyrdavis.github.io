@@ -308,33 +308,22 @@ onresize = () => {
 </div>
 
 <!-- ===================================================================== -->
-<!-- SATELLITE ATTITUDE CONTROL MODAL                                     -->
+<!-- missile intercept                                   -->
 <!-- ===================================================================== -->
 
-<div id="Int"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="closeInt"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="Int" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeInt" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
 
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    SATELLITE ATTITUDE CONTROL
+    MISSILE INTERCEPT SIMULATION
   </h2>
 
   <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Satellite attitude control system design and analysis.
+    Add your project description, videos, images, etc. here...
   </p>
-
-<!-- SAT VIDEO -->
-  <div class="max-w-4xl mx-auto mb-10">
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <video src="Sat_2.mp4" controls class="rounded-lg w-full"></video>
-      <p class="text-center text-slate-400 text-sm mt-3">Satellite attitude control visualization</p>
-    </div>
-  </div>
+</div>
 
 <!-- ===================================================================== -->
 <!-- 12U CUBESAT MODAL (HEADER + TEXT)                                    -->
@@ -1414,69 +1403,65 @@ closePDF.onclick = () => {
   pdfFrame.src = "";
 };
 
-// Missile modal
+// Now fix all modal open/close handlers
 const open6dof = document.getElementById("open6dof");
-const missile  = document.getElementById("missile6dof");
-const close6   = document.getElementById("close6dof");
+const missile6dof = document.getElementById("missile6dof");
+const close6dof = document.getElementById("close6dof");
 
-// CubeSat modal
-const open12   = document.getElementById("open12u");
-const cube     = document.getElementById("cube12u");
-const close12  = document.getElementById("close12u");
+const openInt = document.getElementById("openInt");
+const intModal = document.getElementById("Int");
+const closeInt = document.getElementById("closeInt");
 
-// Satellite Control modal
-const openSat  = document.getElementById("openSatControl");
-const satCtrl  = document.getElementById("satControl");
-const closeSat = document.getElementById("closeSatControl");
+const open12u = document.getElementById("open12u");
+const cube12u = document.getElementById("cube12u");
+const close12u = document.getElementById("close12u");
 
-// Kalman Filter modal
-const openKalman  = document.getElementById("openKalman");
-const kalmanCtrl  = document.getElementById("kalmanFilter");
+const openSatControl = document.getElementById("openSatControl");
+const satControlModal = document.getElementById("satControl");
+const closeSatControl = document.getElementById("closeSatControl");
+
+const openKalman = document.getElementById("openKalman");
+const kalmanModal = document.getElementById("kalmanFilter");
 const closeKalman = document.getElementById("closeKalman");
 
-// Speed Controller modal
-const openSpeed  = document.getElementById("openSpeedControl");
-const speedCtrl  = document.getElementById("speedControl");
-const closeSpeed = document.getElementById("closeSpeedControl");
+const openSpeedControl = document.getElementById("openSpeedControl");
+const speedControlModal = document.getElementById("speedControl");
+const closeSpeedControl = document.getElementById("closeSpeedControl");
 
-// Servo Bump Test modal
-const openServoBump  = document.getElementById("openServoBump");
-const servoBumpCtrl  = document.getElementById("servoBump");
+const openServoBump = document.getElementById("openServoBump");
+const servoBumpModal = document.getElementById("servoBump");
 const closeServoBump = document.getElementById("closeServoBump");
 
-// Position Control modal
-const openPositionControl  = document.getElementById("openPositionControl");
-const positionCtrl  = document.getElementById("positionControl");
+const openPositionControl = document.getElementById("openPositionControl");
+const positionControlModal = document.getElementById("positionControl");
 const closePositionControl = document.getElementById("closePositionControl");
 
-// Open/Close Missile Modal
-open6dof.onclick = () => missile.classList.remove("hidden");
-close6.onclick = () => missile.classList.add("hidden");
+// Attach event listeners
+open6dof.onclick = () => missile6dof.classList.remove("hidden");
+close6dof.onclick = () => missile6dof.classList.add("hidden");
 
-// Open/Close CubeSat Modal
-open12.onclick = () => cube.classList.remove("hidden");
-close12.onclick = () => cube.classList.add("hidden");
+openInt.onclick = () => intModal.classList.remove("hidden");
+closeInt.onclick = () => intModal.classList.add("hidden");
 
-// Open/Close Satellite Control Modal
-openSat.onclick = () => satCtrl.classList.remove("hidden");
-closeSat.onclick = () => satCtrl.classList.add("hidden");
+open12u.onclick = () => cube12u.classList.remove("hidden");
+close12u.onclick = () => cube12u.classList.add("hidden");
 
-// Open/Close Kalman Filter Modal
-openKalman.onclick = () => kalmanCtrl.classList.remove("hidden");
-closeKalman.onclick = () => kalmanCtrl.classList.add("hidden");
+openSatControl.onclick = () => satControlModal.classList.remove("hidden");
+closeSatControl.onclick = () => satControlModal.classList.add("hidden");
 
-// Open/Close Speed Controller Modal
-openSpeed.onclick = () => speedCtrl.classList.remove("hidden");
-closeSpeed.onclick = () => speedCtrl.classList.add("hidden");
+openKalman.onclick = () => kalmanModal.classList.remove("hidden");
+closeKalman.onclick = () => kalmanModal.classList.add("hidden");
 
-// Open/Close Servo Bump Test Modal
-openServoBump.onclick = () => servoBumpCtrl.classList.remove("hidden");
-closeServoBump.onclick = () => servoBumpCtrl.classList.add("hidden");
+openSpeedControl.onclick = () => speedControlModal.classList.remove("hidden");
+closeSpeedControl.onclick = () => speedControlModal.classList.add("hidden");
 
-// Open/Close Position Control Modal
-openPositionControl.onclick = () => positionCtrl.classList.remove("hidden");
-closePositionControl.onclick = () => positionCtrl.classList.add("hidden");
+openServoBump.onclick = () => servoBumpModal.classList.remove("hidden");
+closeServoBump.onclick = () => servoBumpModal.classList.add("hidden");
 
+openPositionControl.onclick = () => positionControlModal.classList.remove("hidden");
+closePositionControl.onclick = () => positionControlModal.classList.add("hidden");
+
+lucide.createIcons();
 </script>
 
 <script>
