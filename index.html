@@ -4,8 +4,11 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Colby Davis Portfolio</title>
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
 body { background:#020617; overflow-x:hidden; }
 canvas { position:fixed; inset:0; z-index:-10; }
@@ -13,49 +16,1442 @@ canvas { position:fixed; inset:0; z-index:-10; }
 </head>
 
 <body class="text-white">
-<canvas id="space"></canvas>
 
-<section class="min-h-screen flex items-center justify-center pt-32">
-  <div class="bg-slate-700/80 w-[900px] h-[500px] rounded-xl p-12">
-    <h2 class="text-4xl font-bold text-white mb-8">GNC PROJECTS</h2>
-    <button id="openMissilePN"
-      class="px-6 py-4 bg-cyan-600 text-white rounded-lg">
-      3D Missile Intercept — Proportional Navigation
-    </button>
-  </div>
+<!-- STARFIELD ------------------------------------------------------------>
+<canvas id="space"></canvas>
+<script>
+const c=document.getElementById("space"),x=c.getContext("2d");
+function r(){c.width=innerWidth;c.height=innerHeight;} r();
+let s=Array.from({length:200},()=>({
+ x:Math.random()*c.width,
+ y:Math.random()*c.height,
+ r:Math.random()*1.5,
+ vx:(Math.random()-.5)*.2,
+ vy:(Math.random()-.5)*.2,
+ o:Math.random()
+}));
+
+function a(){
+ x.fillStyle="rgba(3,7,18,0.1)";
+ x.fillRect(0,0,c.width,c.height);
+ s.forEach(t=>{
+   t.x+=t.vx; t.y+=t.vy;
+   if(t.x<0||t.x>c.width) t.vx*=-1;
+   if(t.y<0||t.y>c.height) t.vy*=-1;
+
+   x.beginPath();
+   x.arc(t.x,t.y,t.r,0,6.28);
+   x.fillStyle=`rgba(139,233,253,${t.o})`;
+   x.fill();
+ });
+ requestAnimationFrame(a);
+}
+a();
+
+onresize = () => {
+ r();
+ s = s.map(()=>({
+   x:Math.random()*c.width,
+   y:Math.random()*c.height,
+   r:Math.random()*1.5,
+   vx:(Math.random()-.5)*.2,
+   vy:(Math.random()-.5)*.2,
+   o:Math.random()
+ }));
+};
+</script>
+
+<!-- NAVIGATION ------------------------------------------------------------>
+<nav class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-lg border-b border-cyan-500/10">
+ <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+   <div class="flex items-center gap-3">
+     <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-lg flex items-center justify-center">
+       <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
+     </div>
+     <div>
+       <div class="font-bold text-lg">COLBY DAVIS</div>
+       <div class="text-xs text-cyan-400">AEROSPACE ENGINEER</div>
+     </div>
+   </div>
+
+   <div class="flex items-center gap-6">
+     <a href="mailto:colbyricharddavis@gmail.com" class="text-slate-400 hover:text-cyan-400">
+       <i data-lucide="mail" class="w-5 h-5"></i>
+     </a>
+     <a href="https://linkedin.com/in/colbydavisr" target="_blank" class="text-slate-400 hover:text-cyan-400">
+       <i data-lucide="linkedin" class="w-5 h-5"></i>
+     </a>
+     <a href="tel:5739879307" class="text-slate-400 hover:text-cyan-400">
+       <i data-lucide="phone" class="w-5 h-5"></i>
+     </a>
+   </div>
+
+ </div>
+</nav>
+
+<!-- PROJECTS SECTION -------------------------------------------------------->
+<section class="min-h-screen flex items-center justify-center relative pt-20">
+ <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5"></div>
+
+ <div class="relative z-10 px-6 max-w-6xl w-full mx-auto">
+
+   <div class="grid md:grid-cols-2 gap-16">
+
+     <!-- GNC PROJECTS -->
+     <div>
+       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+         GNC PROJECTS
+       </h2>
+       <div class="space-y-5">
+         <a id="open6dof" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           6DOF Rocket Simulation â€” Based on V-2 Rocket
+         </a>
+         <a id="open12u" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           12U CubeSat â€” Systems & GNC
+         </a>
+         <a id="openSatControl" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Satellite Attitude Control
+         </a>
+         <a id="openKalman" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Kalman Filter State Estimation
+         </a>
+       </div>
+     </div>
+
+     <!-- HARDWARE IN THE LOOP PROJECTS -->
+     <div>
+       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
+         HIL
+       </h2>
+       <div class="space-y-5">
+         <a id="openSpeedControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Speed Controller
+         </a>
+         <a id="openServoBump" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Servo Bump Test
+         </a>
+         <a id="openPositionControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
+           Position Control
+         </a>
+       </div>
+     </div>
+
+   </div>
+ </div>
 </section>
 
-<!-- MISSILE MODAL -->
-<div id="missilePN"
-  class="hidden fixed inset-0 bg-slate-950/95 z-50 overflow-auto px-6 py-20">
+<!-- ===================================================================== -->
+<!-- 6DOF ROCKET SIMULATION MODAL                                         -->
+<!-- ===================================================================== -->
 
-  <button id="closeMissilePN"
-    class="fixed top-6 left-6 text-white flex gap-2">
-    ← Back
+<div id="missile6dof"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="close6dof"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
 
-  <h2 class="text-4xl font-bold text-cyan-400 text-center mb-8">
-    3D Missile Intercept — Proportional Navigation
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    6DOF ROCKET SIMULATION â€” V-2 DYNAMIC MODEL (C++)
   </h2>
 
-  <div class="max-w-5xl mx-auto mb-10">
-    <video src="intercept3d.mp4" controls class="w-full rounded-lg"></video>
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    This project is a 6DOF unguided rocket simulation written in C++
+    using a modular, object-oriented structure. The model advances translational motion
+    through force integration with a time-varying mass and advances rotational motion using body-rate
+    equations with Euler angle kinematics. Aerodynamic drag, thrust modeling, gravity-turn behavior,
+    and a Monte-Carlo routine for launch angle and mass variations are all included
+    to evaluate sensitivity and dispersion.
+  </p>
+
+  <!-- Two-column bullets -->
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+
+    <div>
+      <p class="text-cyan-400 font-bold">What I Worked On</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Implemented 6DOF rigid-body equations using Euler angle kinematics and p q r body-rate propagation.</li>
+        <li>Built reusable C++ math utilities for vectors, rotation conversions, and forces.</li>
+        <li>Modeled thrust with linear mass depletion and computed drag from dynamic pressure, Cd, and reference area.</li>
+        <li>Advanced all states using a forward Euler integrator.</li>
+        <li>Object-oriented C++ architecture (Vector3, Quaternion, RigidBody, Aerodynamics, Propulsion)</li>
+        <li>Created a Monte-Carlo system that perturbed launch angle and mass scale to study trajectory dispersion.</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-orange-400 font-bold">What I Learned</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>How to structure a multi-file C++ simulation with clear separation between math, dynamics, and integration logic.</li>
+        <li>How to debug coupled rotational and translational equations and ensure stable propagation with small time steps.</li>
+        <li>How aerodynamic forces and simple model assumptions influence sensitivity studies.</li>
+        <li>How to build flexible simulation code that can be extended, modified, or repurposed for more complex GNC work/li>
+        <li>Modular aerospace software design using C++ OOP</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ROCKET VIDEOS -->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="rocket_attitude.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">Rocket attitude dynamics</p>
+    </div>
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="rocket_trajectory_telemetry.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">2D trajectory visualization</p>
+    </div>
+  </div>
+
+  <!-- ROCKET IMAGES -->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/mission_energy.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Energy evolution over full flight</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/mission_sum_key.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Altitude, Mach, and heating proxy</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/montecarlo_sum.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Monte-Carlo dispersions</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/vac_real.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Vacuum vs atmospheric trajectory</p>
+    </div>
+
+  </div>
+
+  <!-- CODE FILES SECTION -->
+  <div class="max-w-6xl mx-auto mt-20 mb-10">
+    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">VIEW SOURCE CODE</h3>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <button onclick="openCode('Main.cpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Main.cpp
+      </button>
+      <button onclick="openCode('Math.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Math.hpp
+      </button>
+      <button onclick="openCode('RocketState.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        RocketState.hpp
+      </button>
+      <button onclick="openCode('RocketDynamics')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        RocketDynamics
+      </button>
+      <button onclick="openCode('Simulation.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Simulation.hpp
+      </button>
+      <button onclick="openCode('Aerodynamics.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        Aerodynamics.hpp
+      </button>
+      <button onclick="openCode('AttitudeKinematics.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        AttitudeKinematics.hpp
+      </button>
+      <button onclick="openCode('InertiaDiagonal.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        InertiaDiagonal.hpp
+      </button>
+      <button onclick="openCode('OmegaDot_B.hpp')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        OmegaDot_B.hpp
+      </button>
+      <button onclick="openCode('MonteCarlo')" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm">
+        MonteCarlo
+      </button>
+    </div>
+  </div>
+<!-- REFERENCES SECTION -->
+  <div class="max-w-5xl mx-auto mt-16 mb-10 px-6">
+    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">REFERENCES & MATERIALS</h3>
+    <div class="bg-slate-900/60 border border-cyan-500/30 rounded-xl p-8">
+      <ul class="space-y-4 text-slate-300">
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>Modern C++ for Absolute Beginners:</strong> A Friendly Introduction to C++ Programming Language and C++11 to C++20 Standards by Slobodan DmitroviÄ‡</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>Claude AI</strong> - Relating C++ to MATLAB</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>OpenAI</strong> for Website Building</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>C++ for Engineers and Scientists</strong> by Gary Bronson</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <span><strong>Fundamentals of Six Degrees of Freedom Aerospace Simulation and Analysis in C++, Second Edition</strong> by Peter H. Zipfel</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-1">â€¢</span>
+          <a href="https://www.youtube.com/watch?v=hr_PqdkG6XY&t=314s" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">
+            YouTube Tutorial: 6DOF Simulation Concepts
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<!-- CODE VIEWER -->
-<div id="codeViewer"
-  class="hidden fixed inset-0 bg-black/90 z-[60] flex items-center justify-center">
+<!-- ===================================================================== -->
+<!-- 12U CUBESAT MODAL (HEADER + TEXT)                                    -->
+<!-- ===================================================================== -->
+
+<div id="cube12u"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="close12u"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    12U CUBESAT â€” SYSTEMS & GNC
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Quaternion attitude control, reaction wheel dynamics, long-duration
+    station-keeping analysis, and STK orbit modeling for L4 mission geometry.
+  </p>
+
+  <!-- Cubesat bullets -->
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+
+    <div>
+      <p class="text-cyan-400 font-bold">What I Worked On</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Quaternion propagation & attitude error control</li>
+        <li>Reaction wheel momentum modeling</li>
+        <li>Station-keeping simulation over multiple days</li>
+        <li>Simulink-based GNC architecture</li>
+        <li>Pointing stability and rate tracking</li>
+        <li>STK L4 orbit modeling and geometry visualization</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-orange-400 font-bold">What I Learned</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Systems engineering interaction between subsystems</li>
+        <li>Quaternion error dynamics & stability margins</li>
+        <li>Wheel saturation and desaturation logic</li>
+        <li>Debugging long-time attitude propagation</li>
+        <li>How GNC integrates with spacecraft FSW</li>
+        <li>Mission architecture evaluation using STK</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- CUBESAT IMAGES ----------------------------------------------------->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/omega.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Angular velocity tracking</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/quaternions.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Quaternion attitude evolution</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-orange-500/20 md:col-span-2">
+      <img src="images/simu.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Simulink GNC architecture</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="STK.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">STK Pointing</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/wheel_RPM.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Reaction wheel RPM tracking</p>
+    </div>
+
+  </div>
+
+</div> <!-- END CUBESAT MODAL -->
+
+<!-- ===================================================================== -->
+<!-- SATELLITE ATTITUDE CONTROL MODAL                                     -->
+<!-- ===================================================================== -->
+
+<div id="satControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeSatControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    SATELLITE ATTITUDE CONTROL
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Satellite attitude control system design and analysis.
+  </p>
+
+<!-- SAT VIDEO -->
+  <div class="max-w-4xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="Sat_2.mp4" controls class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">Satellite attitude control visualization</p>
+    </div>
+  </div>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('ControlsFinal_code.pdf')"
+       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
+              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
 </div>
 
-<!-- PDF VIEWER -->
-<div id="pdfViewer"
-  class="hidden fixed inset-0 bg-black/90 z-[60]">
+<!-- ===================================================================== -->
+<!-- KALMAN FILTER MODAL                                                  -->
+<!-- ===================================================================== -->
+
+<div id="kalmanFilter"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeKalman"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    KALMAN FILTER STATE ESTIMATION
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Kalman filter implementation for state estimation.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('Project_5.pdf')"
+       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
+              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
 </div>
 
-<script src="js/starfield.js"></script>
-<script src="js/codeFiles.js"></script>
-<script src="js/modalHandlers.js"></script>
-<script>lucide.createIcons();</script>
+<!-- ===================================================================== -->
+<!-- SPEED CONTROLLER MODAL                                               -->
+<!-- ===================================================================== -->
+
+<div id="speedControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeSpeedControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    SPEED CONTROLLER
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop speed controller implementation and testing.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('AE443_Speed.pdf')"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- SERVO BUMP TEST MODAL                                                -->
+<!-- ===================================================================== -->
+
+<div id="servoBump"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeServoBump"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    SERVO BUMP TEST
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop servo bump test implementation and analysis.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('bump.pdf')"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- POSITION CONTROL MODAL                                               -->
+<!-- ===================================================================== -->
+
+<div id="positionControl"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closePositionControl"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
+    POSITION CONTROL
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Hardware-in-the-loop position control system implementation.
+  </p>
+
+  <!-- PDF LINK -->
+  <div class="text-center mb-10">
+    <button onclick="openPDF('position.pdf')"
+       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+      View Project Documentation (PDF)
+    </button>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- PDF VIEWER MODAL                                                     -->
+<!-- ===================================================================== -->
+
+<div id="pdfViewer" class="hidden fixed inset-0 bg-black/90 z-[60] flex items-center justify-center p-6">
+  <button id="closePDF" class="absolute top-6 right-6 text-white hover:text-cyan-400 transition">
+    <i data-lucide="x" class="w-8 h-8"></i>
+  </button>
+  <iframe id="pdfFrame" class="w-full h-full bg-white rounded-lg" frameborder="0"></iframe>
+</div>
+
+<!-- ===================================================================== -->
+<!-- CODE VIEWER MODAL                                                    -->
+<!-- ===================================================================== -->
+
+<div id="codeViewer" class="hidden fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-6">
+  <div class="w-full h-full max-w-7xl flex flex-col">
+    <div class="flex items-center justify-between mb-4">
+      <h3 id="codeTitle" class="text-2xl font-bold text-cyan-400"></h3>
+      <button id="closeCode" class="text-white hover:text-cyan-400 transition">
+        <i data-lucide="x" class="w-8 h-8"></i>
+      </button>
+    </div>
+    <div class="flex-1 bg-slate-900 rounded-lg overflow-auto">
+      <pre id="codeContent" class="p-6 text-sm text-slate-200 font-mono leading-relaxed"></pre>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- JAVASCRIPT: PROJECT MODALS                                           -->
+<!-- ===================================================================== -->
+
+<script>
+// Code storage
+const codeFiles = {
+  'Main.cpp': `#include <iostream>
+#include <fstream>
+#include <vector>
+#include <cmath>
+
+#include "Math.hpp"
+#include "RocketState.hpp"
+#include "Simulation.hpp"
+#include "MonteCarlo.hpp"
+
+int main()
+{
+    RocketState x0;
+
+    x0.r_I     = Vector3(0.0, 0.0, 0.0);
+    x0.v_I     = Vector3(0.0, 0.0, 0.0);
+
+    // Launch angle:
+    double launch_angle_deg = 45.0;
+    double launch_angle_rad = launch_angle_deg * M_PI / 180.0;
+
+    x0.euler   = Vector3(0.0, launch_angle_rad, 0.0); // roll, pitch, yaw
+    x0.omega_B = Vector3(0.0, 0.0, 5.0* M_PI/180.0); // initial spin [rad/s]
+
+    // V2 Rocket parameters
+    x0.mass = 12500.0;  // kg (fully fueled)
+    x0.I_B  = InertiaDiagonal(500.0, 50000.0, 50000.0);
+
+    double dt = 0.01;
+    int    numSteps = 100000; // 100 seconds total
+
+    // V2 thrust and fuel (~7800 kg of propellant)
+    Vector3 F_B(0.0, 0.0, 245000.0); // N (thrust along body +z axis)
+    double t_burn = 500.0; // seconds
+    double mass_flow_rate = 130.0; // kg/s
+    double mass_empty = 4000.0; // kg
+
+    // V2 drag parameters
+    double Cd = 0.125;
+    double A_ref = 2.14;
+
+    Vector3 M_B(0.0, 0.0, 0.0);
+    Vector3 g_I(0.0, 0.0, -9.81); // gravity
+
+    std::vector<RocketState> states;
+
+    simulateEuler(x0, dt, numSteps, F_B, M_B, g_I, t_burn, mass_flow_rate,
+                  Cd, A_ref, mass_empty, states);
+
+    std::ofstream trajFile("trajectory3d.csv");
+    if (!trajFile)
+    {
+        std::cerr << "Error opening trajectory3d.csv for writing\\n";
+        return 1;
+    }
+
+    // Excel header
+    trajFile << "t,"
+            << "x,y,z,"
+            << "vx,vy,vz,"
+            << "roll,pitch,yaw,"
+            << "mass\\n";
+
+    // Column
+    for (int k = 0; k < states.size(); ++k)
+    {
+        double t = k * dt;
+        const RocketState &s = states[k];
+
+        trajFile << t << ","
+                << s.r_I.x << ","
+                << s.r_I.y << ","
+                << s.r_I.z << ","
+                << s.v_I.x << ","
+                << s.v_I.y << ","
+                << s.v_I.z << ","
+                << s.euler.x << ","
+                << s.euler.y << ","
+                << s.euler.z << ","
+                << s.mass
+                << "\\n";
+    }
+
+
+    trajFile.close();
+
+    double launch_angle_nom_deg = launch_angle_deg;
+    double mass_nom = x0.mass;
+    RocketState x0_nom = x0;
+
+    std::mt19937 rng(12345);
+
+    const int Ntrials = 500;
+    std::ofstream mc_out("monte_carlo_summary.csv");
+    mc_out << "trial,angle_deg,mass_scale,impact_time,range,max_alt\\n";
+
+    for (int i = 0; i < Ntrials; ++i)
+    {
+        MonteCarloResult r = run_one_trial(
+            rng,
+            x0_nom,
+            launch_angle_nom_deg,
+            dt,
+            numSteps,
+            t_burn,
+            mass_flow_rate,
+            Cd,
+            A_ref,
+            mass_empty,
+            F_B,
+            M_B,
+            g_I
+        );
+
+        mc_out << i << ","
+            << r.launch_angle_deg << ","
+            << r.mass_scale << ","
+            << r.impact_time << ","
+            << r.ground_range << ","
+            << r.max_altitude << "\\n";
+    }
+
+    return 0;
+}`,
+
+  'Math.hpp': `#pragma once
+#include <cmath>
+
+struct Vector3
+{
+    double x{0.0};
+    double y{0.0};
+    double z{0.0};
+
+    // default constructor: needs to exist Vector3()=[0,0,0]
+    Vector3() = default;
+
+    // returns values Vector3(x,y,z)=[1,2,3] etc.
+    // Vector3 a(1.0, 2.0, 3.0);  a.x == 1.0, a.y == 2.0, a.z == 3.0
+    Vector3(double x_, double y_, double z_)
+        : x(x_), y(y_), z(z_) {}
+};
+
+// Operator overloads for Vector3
+// addition Vector3 a(1,2,3) + Vector3 b(4,5,6) = Vector3 c(5,7,9)
+// Vector3 a+b=c
+// [1,2,3] + [4,5,6] = [5,7,9]
+inline Vector3 operator+(const Vector3 &a, const Vector3 &b)
+{
+    return Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
+}
+
+// subtraction
+inline Vector3 operator-(const Vector3 &a, const Vector3 &b)
+{
+    return Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
+}
+
+// scalar times vector (s * v)
+inline Vector3 operator*(double s, const Vector3 &v)
+{
+    return Vector3(s * v.x, s * v.y, s * v.z);
+}
+
+// vector times scalar (v * s)
+inline Vector3 operator*(const Vector3 &v, double s)
+{
+    return s * v;
+}
+
+// vector divided by scalar
+inline Vector3 operator/(const Vector3 &v, double s)
+{
+    return Vector3(v.x / s, v.y / s, v.z / s);
+}
+
+// compound assignment for addition
+inline Vector3 &operator+=(Vector3 &a, const Vector3 &b)
+{
+    a.x += b.x;
+    a.y += b.y;
+    a.z += b.z;
+    return a;
+}
+
+// dot product
+inline double dot(const Vector3 &a, const Vector3 &b)
+{
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+// cross product
+inline Vector3 cross(const Vector3 &a, const Vector3 &b)
+{
+    return Vector3(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x
+    );
+}
+
+// Euclidean norm
+inline double norm(const Vector3 &v)
+{
+    return std::sqrt(dot(v, v));
+}
+
+// unit vector (returns zero vector if v has zero norm)
+inline Vector3 normalized(const Vector3 &v)
+{
+    double n = norm(v);
+    if (n > 0.0)
+        return v / n;
+    return Vector3(0.0, 0.0, 0.0);
+}
+
+struct Matrix3
+{
+    double m11, m12, m13;
+    double m21, m22, m23;
+    double m31, m32, m33;
+
+    // multiply Matrix3 by Vector3
+    Vector3 operator*(const Vector3 &v) const
+    {
+        return Vector3(
+            m11 * v.x + m12 * v.y + m13 * v.z,
+            m21 * v.x + m22 * v.y + m23 * v.z,
+            m31 * v.x + m32 * v.y + m33 * v.z
+        );
+    }
+};`,
+
+  'RocketState.hpp': `#pragma once
+
+#include "Math.hpp"
+#include "InertiaDiagonal.hpp" /
+
+// Rigid body
+struct RocketState
+{
+    // translation in inertial frame
+    Vector3 r_I; // position of center of mass
+    Vector3 v_I; // velocity
+
+    // attitude and rotational motion
+    Vector3 euler; // [phi, theta, psi] = roll pitch yaw [rad]
+    Vector3 omega_B; // body angular rate [rad/s]
+
+    // mass properties
+    double mass;
+    InertiaDiagonal I_B; // inertia about COM
+
+    RocketState()
+        : r_I(), v_I(), euler(), omega_B(),
+          mass(0.0), I_B()
+    {
+    }
+
+    // constructor with all fields
+    RocketState(const Vector3 &r_I_in,
+                const Vector3 &v_I_in,
+                const Vector3 &euler_in,
+                const Vector3 &omega_B_in,
+                double mass_in,
+                const InertiaDiagonal &I_B_in)
+        : r_I(r_I_in),
+          v_I(v_I_in),
+          euler(euler_in),
+          omega_B(omega_B_in),
+          mass(mass_in),
+          I_B(I_B_in)
+    {
+    }
+};`,
+
+  'RocketDynamics': `// RocketDynamics.hpp
+#pragma once
+#include "RocketState.hpp"
+#include "Math.hpp"
+
+RocketState computeRocketStateDot(const RocketState &x,
+                                  const Vector3 &F_thrust_B,
+                                  const Vector3 &M_B,
+                                  const Vector3 &g_I,
+                                  double t,
+                                  double t_burn,
+                                  double mass_flow_rate,
+                                  double Cd,
+                                  double A_ref,
+                                  double mass_empty);
+
+// ============================================================================
+
+// RocketDynamics.cpp
+#include <cmath>
+#include "Math.hpp"
+#include "RocketState.hpp"
+#include "OmegaDot_B.hpp"
+#include "AttitudeKinematics.hpp"
+#include "Aerodynamics.hpp"
+
+RocketState computeRocketStateDot(const RocketState &x,
+                                  const Vector3 &F_thrust_B,
+                                  const Vector3 &M_B,
+                                  const Vector3 &g_I,
+                                  double t,
+                                  double t_burn,
+                                  double mass_flow_rate,
+                                  double Cd,
+                                  double A_ref,
+                                  double mass_empty)
+{
+    RocketState xdot;
+
+    // position kinematics
+    xdot.r_I = x.v_I;
+
+    // rotation matrix from body to inertial
+    double phi   = x.euler.x;
+    double theta = x.euler.y;
+    double psi   = x.euler.z;
+
+    double cphi = std::cos(phi);
+    double sphi = std::sin(phi);
+    double cth  = std::cos(theta);
+    double sth  = std::sin(theta);
+    double cpsi = std::cos(psi);
+    double spsi = std::sin(psi);
+
+    double R11 =  cpsi * cth;
+    double R12 =  cpsi * sth * sphi - spsi * cphi;
+    double R13 =  cpsi * sth * cphi + spsi * sphi;
+
+    double R21 =  spsi * cth;
+    double R22 =  spsi * sth * sphi + cpsi * cphi;
+    double R23 =  spsi * sth * cphi - cpsi * sphi;
+
+    double R31 = -sth;
+    double R32 =  cth * sphi;
+    double R33 =  cth * cphi;
+
+    Matrix3 R_IB;
+    R_IB.m11 = R11; R_IB.m12 = R12; R_IB.m13 = R13;
+    R_IB.m21 = R21; R_IB.m22 = R22; R_IB.m23 = R23;
+    R_IB.m31 = R31; R_IB.m32 = R32; R_IB.m33 = R33;
+
+    // dont thrust is past burn time
+    bool burning = (t < t_burn) && (x.mass > mass_empty);
+    Vector3 F_B = burning ? F_thrust_B : Vector3(0.0, 0.0, 0.0);
+
+    // Thrust in inertial frame
+    Vector3 F_thrust_I = R_IB * F_B;
+
+    // Drag in inertial frame
+    double altitude = x.r_I.z;
+    double rho = airDensity(altitude);
+    Vector3 F_drag_I = computeDrag(x.v_I, R_IB, rho, Cd, A_ref);
+
+    // Total force in inertial frame
+    Vector3 F_total_I = F_thrust_I + F_drag_I;
+
+    // Translational dynamics
+    double invMass = (x.mass > 0.0) ? 1.0 / x.mass : 0.0;
+    Vector3 a_I = invMass * F_total_I + g_I;
+    xdot.v_I = a_I;
+
+    // Attitude kinematics
+    xdot.euler = computeEulerDot(x.euler, x.omega_B);
+
+    // Attitude dynamics
+    xdot.omega_B = computeOmegaDot_B(x.omega_B, x.I_B, M_B);
+
+    // Mass depletion (only if still burning)
+    xdot.mass = burning ? -mass_flow_rate : 0.0;
+
+    // Inertia constant for now
+    xdot.I_B = InertiaDiagonal();
+
+    return xdot;
+}`,
+
+  'Simulation.hpp': `#pragma once
+
+#include <vector>
+#include "Math.hpp"
+#include "RocketState.hpp"
+#include "RocketDynamics.hpp"
+
+inline RocketState eulerStep(const RocketState &x,
+                             double dt,
+                             double t,
+                             const Vector3 &F_B,
+                             const Vector3 &M_B,
+                             const Vector3 &g_I,
+                             double t_burn,
+                             double mass_flow_rate,
+                             double Cd,
+                             double A_ref,
+                             double mass_empty)
+{
+
+    RocketState xdot = computeRocketStateDot(x, F_B, M_B, g_I, t, t_burn, mass_flow_rate, Cd, A_ref, mass_empty);
+
+    RocketState x_next;
+
+    x_next.r_I = x.r_I + dt * xdot.r_I;
+    x_next.v_I = x.v_I + dt * xdot.v_I;
+    x_next.euler   = x.euler   + dt * xdot.euler;
+    x_next.omega_B = x.omega_B + dt * xdot.omega_B;
+    x_next.mass = x.mass + dt * xdot.mass;
+    x_next.I_B = x.I_B;
+
+    return x_next;
+}
+
+inline void simulateEuler(const RocketState &x0,
+                          double dt,
+                          int numSteps,
+                          const Vector3 &F_B,
+                          const Vector3 &M_B,
+                          const Vector3 &g_I,
+                          double t_burn,
+                          double mass_flow_rate,
+                          double Cd,
+                          double A_ref,
+                          double mass_empty,
+                          std::vector<RocketState> &states)
+{
+    states.clear();
+    states.reserve(numSteps + 1);
+
+    RocketState x = x0;
+    states.push_back(x);
+
+    for (int k = 0; k < numSteps; ++k)
+    {
+        double t = k * dt;
+
+        // predict next state
+        RocketState xNext = eulerStep(x, dt, t,
+                                  F_B, M_B, g_I,
+                                  t_burn, mass_flow_rate,
+                                  Cd, A_ref, mass_empty);
+
+        // ground check
+        if (xNext.r_I.z <= 0.0 && k > 0)
+            break;
+
+        x = xNext;
+        states.push_back(x);
+    }
+}`,
+
+  'Aerodynamics.hpp': `#pragma once
+
+#include "Math.hpp"
+
+// drag force in body frame
+inline Vector3 computeDrag(const Vector3 &v_I,
+                           const Matrix3 &R_IB,
+                           double rho,
+                           double Cd,
+                           double A_ref)
+{
+    double v_mag = norm(v_I); // speed
+
+    if (v_mag < 1e-6) {
+        return Vector3(0.0, 0.0, 0.0);
+    }
+
+    // drag magnitude
+    double D_mag = 0.5 * rho * v_mag * v_mag * Cd * A_ref;
+
+    // drag direction: opposite to velocity_inertial
+    Vector3 drag_direction_I = (-1.0 / v_mag) * v_I;
+
+    // drag force in inertial
+    Vector3 F_drag_I = D_mag * drag_direction_I;
+
+    return F_drag_I;
+}
+
+// air density
+inline double airDensity(double altitude)
+{
+    double rho_0 = 1.225;  // sea level density [kg/m^3]
+    double H = 8500.0;     // scale height [m]
+
+    return rho_0 * std::exp(-altitude / H);
+}`,
+
+  'AttitudeKinematics.hpp': `#pragma once
+
+#include <cmath>
+#include "Math.hpp"
+#include "RocketState.hpp"
+
+// from body frame to inertial frame
+inline Matrix3 eulerToR_IB(const Vector3 &euler)
+{
+    double phi   = euler.x;  // roll
+    double theta = euler.y;  // pitch
+    double psi   = euler.z;  // yaw
+
+    double cphi = std::cos(phi); // save cosines and sines for later use
+    double sphi = std::sin(phi);
+    double cth  = std::cos(theta);
+    double sth  = std::sin(theta);
+    double cpsi = std::cos(psi);
+    double spsi = std::sin(psi);
+
+    // Z Y X sequence yaw then pitch then roll
+    Matrix3 R;
+
+    R.m11 =  cpsi * cth;
+    R.m12 =  cpsi * sth * sphi - spsi * cphi;
+    R.m13 =  cpsi * sth * cphi + spsi * sphi;
+
+    R.m21 =  spsi * cth;
+    R.m22 =  spsi * sth * sphi + cpsi * cphi;
+    R.m23 =  spsi * sth * cphi - cpsi * sphi;
+
+    R.m31 = -sth;
+    R.m32 =  cth * sphi;
+    R.m33 =  cth * cphi;
+
+    return R;
+}
+
+// Euler angle rates from body rates [p q r] to [phi_dot; theta_dot; psi_dot]
+// euler_dot = T(euler) * omega_B
+inline Vector3 computeEulerDot(const Vector3 &euler,
+                               const Vector3 &omega_B)
+{
+    double phi   = euler.x;
+    double theta = euler.y;
+
+    double cphi = std::cos(phi); // again precompute cosines and sines
+    double sphi = std::sin(phi);
+    double cth  = std::cos(theta);
+    double sth  = std::sin(theta);
+
+    double p = omega_B.x; // roll
+    double q = omega_B.y; // pitch
+    double r = omega_B.z; // yaw
+
+    Vector3 euler_dot; // transformation
+
+    euler_dot.x = p + sphi * std::tan(theta) * q + cphi * std::tan(theta) * r;
+    euler_dot.y = cphi * q - sphi * r;
+    euler_dot.z = sphi * q / cth + cphi * r / cth;
+
+    return euler_dot;
+}`,
+
+  'InertiaDiagonal.hpp': `#pragma once
+
+struct InertiaDiagonal
+{
+    double Ixx;
+    double Iyy;
+    double Izz;
+
+    InertiaDiagonal()
+        : Ixx(0.0), Iyy(0.0), Izz(0.0)
+    {
+    }
+
+    // constructor with principal moments (inputs have _in)
+    InertiaDiagonal(double Ixx_in, double Iyy_in, double Izz_in)
+        : Ixx(Ixx_in), Iyy(Iyy_in), Izz(Izz_in)
+    {
+    }
+
+    // [Ixx 0 0; 0 Iyy 0; 0 0 Izz]*[wx; wy; wz]
+    Vector3 times(const Vector3 &omega_B) const
+    {
+        return Vector3(
+            // Omega_B is [omega_B.x (wx), omega_B.y (wy), omega_B.z (wz)] from input
+            Ixx * omega_B.x,
+            Iyy * omega_B.y,
+            Izz * omega_B.z
+            // Output is [Ixx*omega_B.x; Iyy*omega_B.y; Izz*omega_B.z]
+        );
+    }
+
+    // I inverse times v   for diagonal inertia
+    Vector3 inverseTimes(const Vector3 &v_B) const
+    {
+        return Vector3(
+            v_B.x / Ixx,
+            v_B.y / Iyy,
+            v_B.z / Izz
+
+        );
+    }
+};`,
+
+  'OmegaDot_B.hpp': `#pragma once
+
+#include "Math.hpp"
+#include "InertiaDiagonal.hpp"
+
+// body angular acceleration
+inline Vector3 computeOmegaDot_B(const Vector3 &omega_B,
+                                 const InertiaDiagonal &I_B,
+                                 const Vector3 &M_B)
+{
+    // Angular momentum in body frame
+    Vector3 Iomega_B = I_B.times(omega_B);
+
+    // Gyroscopic term: omega_B x h_B
+    Vector3 gyro_B = cross(omega_B, Iomega_B);
+
+    // Right hand side of I_B * omega_dot_B = M_B - omega_B x (I_B * omega_B)
+    Vector3 rhs_B = M_B - gyro_B;
+
+    // omega_dot_B = I_B^{-1} * rhs_B
+    return I_B.inverseTimes(rhs_B);
+}`,
+
+  'MonteCarlo': `// MonteCarlo.hpp
+#pragma once
+
+#include <random>
+#include <vector>
+
+#include "Math.hpp"
+#include "RocketState.hpp"
+#include "Simulation.hpp"
+
+struct MonteCarloResult
+{
+    double launch_angle_deg;
+    double mass_scale;
+    double impact_time;
+    double ground_range;
+    double max_altitude;
+};
+
+MonteCarloResult run_one_trial(
+    std::mt19937 &rng,
+    const RocketState &x0_nom,
+    double launch_angle_nom_deg,
+    double dt,
+    int    numSteps,
+    double t_burn,
+    double mass_flow_rate,
+    double Cd,
+    double A_ref,
+    double mass_empty,
+    const Vector3 &F_B_nom,
+    const Vector3 &M_B_nom,
+    const Vector3 &g_I
+);
+
+// ============================================================================
+
+// MonteCarlo.cpp
+#include <iostream>
+#include "MonteCarlo.hpp"
+#include <cmath>
+
+MonteCarloResult run_one_trial(
+    std::mt19937 &rng,
+    const RocketState &x0_nom,
+    double launch_angle_nom_deg,
+    double dt,
+    int    numSteps,
+    double t_burn,
+    double mass_flow_rate,
+    double Cd,
+    double A_ref,
+    double mass_empty,
+    const Vector3 &F_B_nom,
+    const Vector3 &M_B_nom,
+    const Vector3 &g_I
+)
+{
+    // Random distributions
+    std::normal_distribution<double> angle_noise(0.0, 0.5);  // deg
+    std::normal_distribution<double> mass_noise(1.0, 0.01);  // scale
+
+    // random angle and mass scale
+    double angle_deg  = launch_angle_nom_deg + angle_noise(rng);
+    double angle_rad  = angle_deg * M_PI / 180.0;
+    double mass_scale = mass_noise(rng);
+
+    RocketState x0 = x0_nom;
+
+    // Randomized pitch
+    x0.euler.y = angle_rad;
+
+    // Randomized mass
+    x0.mass = x0_nom.mass * mass_scale;
+
+    // Time
+    std::vector<RocketState> states;
+    states.reserve(static_cast<size_t>(numSteps) + 1);
+
+    simulateEuler(
+        x0,
+        dt,
+        numSteps,
+        F_B_nom,
+        M_B_nom,
+        g_I,
+        t_burn,
+        mass_flow_rate,
+        Cd,
+        A_ref,
+        mass_empty,
+        states
+    );
+
+    double max_alt      = 0.0;
+    double impact_time  = dt * numSteps;
+    double ground_range = 0.0;
+
+    for (int k = 0; k < states.size(); ++k)
+    {
+        const RocketState &s = states[k];
+        double t = k * dt;
+
+        if (s.r_I.z > max_alt)
+        {
+            max_alt = s.r_I.z;
+        }
+
+        if (s.r_I.z <= 0.0 && k > 0 && s.v_I.z < 0.0)
+        {
+            impact_time = t;
+            break;
+        }
+    }
+
+    const RocketState &xf = states.back();
+    ground_range = std::sqrt(
+        xf.r_I.x * xf.r_I.x +
+        xf.r_I.y * xf.r_I.y
+    );
+
+
+    MonteCarloResult res;
+    res.launch_angle_deg = angle_deg;
+    res.mass_scale       = mass_scale;
+    res.impact_time      = impact_time;
+    res.ground_range     = ground_range;
+    res.max_altitude     = max_alt;
+    return res;
+}`
+};
+
+// Code Viewer
+const codeViewer = document.getElementById("codeViewer");
+const codeTitle = document.getElementById("codeTitle");
+const codeContent = document.getElementById("codeContent");
+const closeCode = document.getElementById("closeCode");
+
+function openCode(filename) {
+  codeTitle.textContent = filename;
+  codeContent.textContent = codeFiles[filename] || "// File not found";
+  codeViewer.classList.remove("hidden");
+  lucide.createIcons();
+}
+
+closeCode.onclick = () => {
+  codeViewer.classList.add("hidden");
+};
+
+// PDF Viewer
+const pdfViewer = document.getElementById("pdfViewer");
+const pdfFrame = document.getElementById("pdfFrame");
+const closePDF = document.getElementById("closePDF");
+
+function openPDF(pdfPath) {
+  pdfFrame.src = pdfPath;
+  pdfViewer.classList.remove("hidden");
+  lucide.createIcons();
+}
+
+closePDF.onclick = () => {
+  pdfViewer.classList.add("hidden");
+  pdfFrame.src = "";
+};
+
+// Missile modal
+const open6dof = document.getElementById("open6dof");
+const missile  = document.getElementById("missile6dof");
+const close6   = document.getElementById("close6dof");
+
+// CubeSat modal
+const open12   = document.getElementById("open12u");
+const cube     = document.getElementById("cube12u");
+const close12  = document.getElementById("close12u");
+
+// Satellite Control modal
+const openSat  = document.getElementById("openSatControl");
+const satCtrl  = document.getElementById("satControl");
+const closeSat = document.getElementById("closeSatControl");
+
+// Kalman Filter modal
+const openKalman  = document.getElementById("openKalman");
+const kalmanCtrl  = document.getElementById("kalmanFilter");
+const closeKalman = document.getElementById("closeKalman");
+
+// Speed Controller modal
+const openSpeed  = document.getElementById("openSpeedControl");
+const speedCtrl  = document.getElementById("speedControl");
+const closeSpeed = document.getElementById("closeSpeedControl");
+
+// Servo Bump Test modal
+const openServoBump  = document.getElementById("openServoBump");
+const servoBumpCtrl  = document.getElementById("servoBump");
+const closeServoBump = document.getElementById("closeServoBump");
+
+// Position Control modal
+const openPositionControl  = document.getElementById("openPositionControl");
+const positionCtrl  = document.getElementById("positionControl");
+const closePositionControl = document.getElementById("closePositionControl");
+
+// Open/Close Missile Modal
+open6dof.onclick = () => missile.classList.remove("hidden");
+close6.onclick = () => missile.classList.add("hidden");
+
+// Open/Close CubeSat Modal
+open12.onclick = () => cube.classList.remove("hidden");
+close12.onclick = () => cube.classList.add("hidden");
+
+// Open/Close Satellite Control Modal
+openSat.onclick = () => satCtrl.classList.remove("hidden");
+closeSat.onclick = () => satCtrl.classList.add("hidden");
+
+// Open/Close Kalman Filter Modal
+openKalman.onclick = () => kalmanCtrl.classList.remove("hidden");
+closeKalman.onclick = () => kalmanCtrl.classList.add("hidden");
+
+// Open/Close Speed Controller Modal
+openSpeed.onclick = () => speedCtrl.classList.remove("hidden");
+closeSpeed.onclick = () => speedCtrl.classList.add("hidden");
+
+// Open/Close Servo Bump Test Modal
+openServoBump.onclick = () => servoBumpCtrl.classList.remove("hidden");
+closeServoBump.onclick = () => servoBumpCtrl.classList.add("hidden");
+
+// Open/Close Position Control Modal
+openPositionControl.onclick = () => positionCtrl.classList.remove("hidden");
+closePositionControl.onclick = () => positionCtrl.classList.add("hidden");
+
+</script>
+
+<script>
+lucide.createIcons();
+</script>
+
 </body>
+
 </html>
+
