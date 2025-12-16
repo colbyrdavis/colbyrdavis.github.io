@@ -101,14 +101,17 @@ onresize = () => {
      <!-- GNC PROJECTS -->
      <div>
        <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
-         GNC PROJECTS
+         GNC
        </h2>
        <div class="space-y-5">
          <a id="open6dof" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           6DOF Rocket Simulation â€” Based on V-2 Rocket
+           6DOF Rocket Simulation - Based on V-2 Rocket
+         </a>
+         <a id="openInt" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Missile Intercept Simulation
          </a>
          <a id="open12u" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           12U CubeSat â€” Systems & GNC
+           12U CubeSat - Systems & GNC
          </a>
          <a id="openSatControl" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
            Satellite Attitude Control
@@ -304,6 +307,87 @@ onresize = () => {
   </div>
 </div>
 
+<!-- ===================================================================== -->
+<!-- missile intercept sim                                -->
+<!-- ===================================================================== -->
+
+<div id="missileint"
+     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
+            overflow-auto px-6 py-20">
+
+  <button id="closeInt"
+          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    Missle Intercept Simulation in MATLAB
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    Quaternion attitude control, reaction wheel dynamics, long-duration
+    station-keeping analysis, and STK orbit modeling for L4 mission geometry.
+  </p>
+
+  <!-- Cubesat bullets -->
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+
+    <div>
+      <p class="text-cyan-400 font-bold">What I Worked On</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Quaternion propagation & attitude error control</li>
+        <li>Reaction wheel momentum modeling</li>
+        <li>Station-keeping simulation over multiple days</li>
+        <li>Simulink-based GNC architecture</li>
+        <li>Pointing stability and rate tracking</li>
+        <li>STK L4 orbit modeling and geometry visualization</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-orange-400 font-bold">What I Learned</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Systems engineering interaction between subsystems</li>
+        <li>Quaternion error dynamics & stability margins</li>
+        <li>Wheel saturation and desaturation logic</li>
+        <li>Debugging long-time attitude propagation</li>
+        <li>How GNC integrates with spacecraft FSW</li>
+        <li>Mission architecture evaluation using STK</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- CUBESAT IMAGES ----------------------------------------------------->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/omega.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Angular velocity tracking</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/quaternions.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Quaternion attitude evolution</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-orange-500/20 md:col-span-2">
+      <img src="images/simu.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Simulink GNC architecture</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="STK.jpg" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">STK Pointing</p>
+    </div>
+
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="images/wheel_RPM.png" class="rounded-lg w-full h-full object-cover"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Reaction wheel RPM tracking</p>
+    </div>
+
+  </div>
+
+</div>
 <!-- ===================================================================== -->
 <!-- 12U CUBESAT MODAL (HEADER + TEXT)                                    -->
 <!-- ===================================================================== -->
