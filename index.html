@@ -148,7 +148,7 @@ onresize = () => {
 <!-- 6DOF ROCKET SIMULATION MODAL                                         -->
 <!-- ===================================================================== -->
 
-<div id="missile6dof"
+<div id="rocket6dof"
      class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
             overflow-auto px-6 py-20">
 
@@ -1448,9 +1448,9 @@ closePDF.onclick = () => {
   pdfFrame.src = "";
 };
 
-// Now fix all modal open/close handlers
+
 const open6dof = document.getElementById("open6dof");
-const missile6dof = document.getElementById("missile6dof");
+const rocket6dof = document.getElementById("rocket6dof");    // <-- new ID
 const close6dof = document.getElementById("close6dof");
 
 const openInt = document.getElementById("openInt");
@@ -1482,8 +1482,8 @@ const positionControlModal = document.getElementById("positionControl");
 const closePositionControl = document.getElementById("closePositionControl");
 
 // Attach event listeners
-open6dof.onclick = () => missile6dof.classList.remove("hidden");
-close6dof.onclick = () => missile6dof.classList.add("hidden");
+open6dof.onclick = () => rocket6dof.classList.remove("hidden");
+close6dof.onclick = () => rocket6dof.classList.add("hidden");
 
 openInt.onclick = () => intModal.classList.remove("hidden");
 closeInt.onclick = () => intModal.classList.add("hidden");
