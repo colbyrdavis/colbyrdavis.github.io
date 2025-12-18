@@ -119,6 +119,9 @@ onresize = () => {
          <a id="openKalman" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
            Kalman Filter State Estimation
          </a>
+         <a id="openOptimal" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Optimal Satellite Control
+         </a>
        </div>
      </div>
 
@@ -527,6 +530,32 @@ onresize = () => {
 
 </div>
 
+<div id="Optimal" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeOptimal" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    DISCRETE AND CONTINUOUS OPTIMAL CONTROL OF SATELLITE RELATIVE MOTION
+  </h2>
+    <div class="flex items-center justify-center gap-8 mb-10">
+  <!-- Left -->
+  <button onclick="openPDF('Project2.pdf')"
+    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+    Paper
+  </button>
+
+  <!-- Center -->
+  <button onclick="openPDF('Project2Code.pdf')"
+    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
+           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
+    Code
+  </button>
+  </div>
+</div>
 <!-- ===================================================================== -->
 <!-- SPEED CONTROLLER MODAL                                               -->
 <!-- ===================================================================== -->
@@ -710,6 +739,10 @@ const openKalman = document.getElementById("openKalman");
 const kalmanModal = document.getElementById("kalmanFilter");
 const closeKalman = document.getElementById("closeKalman");
 
+const openOptimal = document.getElementById("openOptimal");
+const Optimal = document.getElementById("Optimal");
+const closeOptimal = document.getElementById("closeOptimal");
+
 const openSpeedControl = document.getElementById("openSpeedControl");
 const speedControlModal = document.getElementById("speedControl");
 const closeSpeedControl = document.getElementById("closeSpeedControl");
@@ -737,6 +770,9 @@ closeSatControl.onclick = () => satControlModal.classList.add("hidden");
 
 openKalman.onclick = () => kalmanModal.classList.remove("hidden");
 closeKalman.onclick = () => kalmanModal.classList.add("hidden");
+
+openOptimal.onclick = () => Optimal.classList.remove("hidden");
+closeOptimal.onclick = () => Optimal.classList.add("hidden");
 
 openSpeedControl.onclick = () => speedControlModal.classList.remove("hidden");
 closeSpeedControl.onclick = () => speedControlModal.classList.add("hidden");
