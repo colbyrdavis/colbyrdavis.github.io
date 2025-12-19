@@ -104,6 +104,9 @@ onresize = () => {
          GNC
        </h2>
        <div class="space-y-5">
+         <a id="openRPO" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
+           Rendezvous and Proximity Operations Satellite for True Anomaly Space
+         </a>
          <a id="openKOZ" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
            Autonomous Satellite KEEP OUT ZONE for True Anomaly Space
          </a>
@@ -150,6 +153,98 @@ onresize = () => {
  </div>
 </section>
 
+<div id="RPO" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeRPO" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+  </button>
+
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
+    6DOF SATELLITE RPO & INSPECTION SIMULATION (MATLAB)
+  </h2>
+
+  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
+    This project is a full 6-degree-of-freedom relative orbital proximity operations (RPO) and autonomous inspection simulation in MATLAB. It combines Clohessy-Wiltshire translational dynamics with quaternion-based attitude control using reaction wheels, LQR guidance for approach and fly-around, PD attitude pointing toward the chief satellite, and reaction wheel desaturation logic. The deputy performs a controlled approach from 180 m, enters a 25 m standoff inspection trajectory, and maintains line-of-sight pointing throughout.
+  </p>
+
+  <!-- Two-column bullets -->
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+    <div>
+      <p class="text-cyan-400 font-bold">What I Worked On</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>Implemented full 6DOF coupled translation + attitude dynamics with RK4 integration</li>
+        <li>Designed LQR-based translational guidance with feedforward CW terms and range band constraints</li>
+        <li>Developed quaternion PD attitude controller with reaction wheel torque allocation and unloading</li>
+        <li>Created smooth inspection reference trajectory </li>
+        <li>Modeled reaction wheel saturation, torque limits, and speed constraints</li>
+        <li>Implemented line-of-sight (LOS) checking and body-X pointing toward chief spacecraft</li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-orange-400 font-bold">What I Learned</p>
+      <ul class="space-y-2 list-disc list-inside text-slate-300">
+        <li>How to couple translational and attitude dynamics in a realistic 6DOF simulation</li>
+        <li>Practical challenges of reaction wheel momentum management and saturation</li>
+        <li>Designing smooth, feasible reference trajectories for inspection missions</li>
+        <li>Tuning LQR and PD gains for robust performance under actuator limits</li>
+        <li>Importance of proper quaternion normalization and shortest-path error logic</li>
+        <li>Real-world considerations in autonomous RPO: LOS constraints, hardware selection, and control blending</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="grid md:grid-cols-1 gap-6 max-w-6xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <video src="satellite_cone_3d.mp4" controls loop class="rounded-lg w-full"></video>
+      <p class="text-center text-slate-400 text-sm mt-3">3D Inspection Trajectory with LOS Cone Visualization</p>
+    </div>
+  </div>
+
+  <!-- IMAGES / PLOTS -->
+  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-10">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="control_acceleration_commands.jpg" class="rounded-lg w-full"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Control acceleration commands (a_x, a_y, a_z)</p>
+    </div>
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="relative_trajectory_xz.jpg" class="rounded-lg w-full"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Relative trajectory in x-z plane (Deputy path with inspection zone)</p>
+    </div>
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="reaction_wheel_torque.jpg" class="rounded-lg w-full"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Reaction wheel torque profiles</p>
+    </div>
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
+      <img src="reaction_wheel_speeds.jpg" class="rounded-lg w-full"/>
+      <p class="text-center text-slate-400 text-sm mt-3">Reaction wheel speeds (RPM) with saturation limits</p>
+    </div>
+  </div>
+
+  <!-- CODE FILES SECTION -->
+  <div class="max-w-6xl mx-auto mt-20 mb-10">
+    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">VIEW SOURCE CODE</h3>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <a href="Main_RPO.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> Main_RPO.m </a>
+      <a href="LQR_RPO.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> LQR_RPO.m </a>
+      <a href="inspection.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> inspection.m </a>
+      <a href="pointing.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> pointing.m </a>
+      <a href="attitude_pd_torque.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> attitude_pd_torque.m </a>
+      <a href="attitude_wheels.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> attitude_wheels.m </a>
+      <a href="rk4.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> rk4.m </a>
+      <a href="saturate.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> saturate.m </a>
+      <a href="quat_to_dcm.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> quat_to_dcm.m </a>
+      <a href="dcm_to_quat.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> dcm_to_quat.m </a>
+      <a href="quat_mul.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> quat_mul.m </a>
+      <a href="quat_conj.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> quat_conj.m </a>
+      <a href="LOS.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> check_los.m </a>
+      <a href="cw_state.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> cw_state.m </a>
+      <a href="parameters.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> parameters.m </a>
+    </div>
+  </div>
+
+
+  </div>
+</div>
 <!-- ===================================================================== -->
 <!-- NGZ                                    -->
 <!-- ===================================================================== -->
@@ -760,6 +855,10 @@ closePDF.onclick = () => {
   pdfFrame.src = "";
 };
 
+const openRPO = document.getElementById("openRPO");
+const RPO = document.getElementById("RPO");    // <-- new ID
+const closeRPO = document.getElementById("closeRPO");
+
 const openKOZ = document.getElementById("openKOZ");
 const KOZ = document.getElementById("KOZ");    // <-- new ID
 const closeKOZ = document.getElementById("closeKOZ");
@@ -801,6 +900,9 @@ const positionControlModal = document.getElementById("positionControl");
 const closePositionControl = document.getElementById("closePositionControl");
 
 // Attach event listeners
+openRPO.onclick = () => RPO.classList.remove("hidden");
+closeRPO.onclick = () => RPO.classList.add("hidden");
+
 openKOZ.onclick = () => KOZ.classList.remove("hidden");
 closeKOZ.onclick = () => KOZ.classList.add("hidden");
 
