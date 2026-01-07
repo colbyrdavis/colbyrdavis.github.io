@@ -55,7 +55,47 @@ canvas { position:fixed; inset:0; z-index:-10; }
 
 <!-- STARFIELD ------------------------------------------------------------>
 <canvas id="space"></canvas>
+<script>
+const c=document.getElementById("space"),x=c.getContext("2d");
+function r(){c.width=innerWidth;c.height=innerHeight;} r();
+let s=Array.from({length:200},()=>({
+ x:Math.random()*c.width,
+ y:Math.random()*c.height,
+ r:Math.random()*1.5,
+ vx:(Math.random()-.5)*.2,
+ vy:(Math.random()-.5)*.2,
+ o:Math.random()
+}));
 
+function a(){
+ x.fillStyle="rgba(3,7,18,0.1)";
+ x.fillRect(0,0,c.width,c.height);
+ s.forEach(t=>{
+   t.x+=t.vx; t.y+=t.vy;
+   if(t.x<0||t.x>c.width) t.vx*=-1;
+   if(t.y<0||t.y>c.height) t.vy*=-1;
+
+   x.beginPath();
+   x.arc(t.x,t.y,t.r,0,6.28);
+   x.fillStyle=`rgba(139,233,253,${t.o})`;
+   x.fill();
+ });
+ requestAnimationFrame(a);
+}
+a();
+
+onresize = () => {
+ r();
+ s = s.map(()=>({
+   x:Math.random()*c.width,
+   y:Math.random()*c.height,
+   r:Math.random()*1.5,
+   vx:(Math.random()-.5)*.2,
+   vy:(Math.random()-.5)*.2,
+   o:Math.random()
+ }));
+};
+</script>
 
 <!-- NAVIGATION ------------------------------------------------------------>
 <nav class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-lg border-b border-cyan-500/10">
@@ -407,21 +447,104 @@ canvas { position:fixed; inset:0; z-index:-10; }
 </div>
 
 <script>
-// Modal system
-const modals = {
-  RPO: document.getElementById("RPO"),
-  KOZ: document.getElementById("KOZ"),
-  rocket6dof: document.getElementById("rocket6dof"),
-  Int: document.getElementById("Int"),
-  cube12u: document.getElementById("cube12u"),
-  satControl: document.getElementById("satControl"),
-  kalmanFilter: document.getElementById("kalmanFilter"),
-  Optimal: document.getElementById("Optimal"),
-  speedControl: document.getElementById("speedControl"),
-  servoBump: document.getElementById("servoBump"),
-  positionControl: document.getElementById("positionControl")
+// PDF Viewer
+const pdfViewer = document.getElementById("pdfViewer");
+const pdfFrame = document.getElementById("pdfFrame");
+const closePDF = document.getElementById("closePDF");
+
+function openPDF(pdfPath) {
+  pdfFrame.src = pdfPath;
+  pdfViewer.classList.remove("hidden");
+  lucide.createIcons();
+}
+
+closePDF.onclick = () => {
+  pdfViewer.classList.add("hidden");
+  pdfFrame.src = "";
 };
 
-// Open modal
-document.querySelectorAll('[data-modal]').forEach(link => {
-  link.addEventListener('click', (e) =>
+// Individual modal open/close
+const openRPO = document.querySelector('[data-modal="RPO"]');
+const RPO = document.getElementById("RPO");
+const closeRPO = document.getElementById("closeRPO");
+
+const openKOZ = document.querySelector('[data-modal="KOZ"]');
+const KOZ = document.getElementById("KOZ");
+const closeKOZ = document.getElementById("closeKOZ");
+
+const open6dof = document.querySelector('[data-modal="rocket6dof"]');
+const rocket6dof = document.getElementById("rocket6dof");
+const close6dof = document.getElementById("close6dof");
+
+const openInt = document.querySelector('[data-modal="Int"]');
+const intModal = document.getElementById("Int");
+const closeInt = document.getElementById("closeInt");
+
+const open12u = document.querySelector('[data-modal="cube12u"]');
+const cube12u = document.getElementById("cube12u");
+const close12u = document.getElementById("close12u");
+
+const openSatControl = document.querySelector('[data-modal="satControl"]');
+const satControlModal = document.getElementById("satControl");
+const closeSatControl = document.getElementById("closeSatControl");
+
+const openKalman = document.querySelector('[data-modal="kalmanFilter"]');
+const kalmanModal = document.getElementById("kalmanFilter");
+const closeKalman = document.getElementById("closeKalman");
+
+const openOptimal = document.querySelector('[data-modal="Optimal"]');
+const Optimal = document.getElementById("Optimal");
+const closeOptimal = document.getElementById("closeOptimal");
+
+const openSpeedControl = document.querySelector('[data-modal="speedControl"]');
+const speedControlModal = document.getElementById("speedControl");
+const closeSpeedControl = document.getElementById("closeSpeedControl");
+
+const openServoBump = document.querySelector('[data-modal="servoBump"]');
+const servoBumpModal = document.getElementById("servoBump");
+const closeServoBump = document.getElementById("closeServoBump");
+
+const openPositionControl = document.querySelector('[data-modal="positionControl"]');
+const positionControlModal = document.getElementById("positionControl");
+const closePositionControl = document.getElementById("closePositionControl");
+
+// Attach clicks
+if (openRPO) openRPO.onclick = () => RPO.classList.remove("hidden");
+if (closeRPO) closeRPO.onclick = () => RPO.classList.add("hidden");
+
+if (openKOZ) openKOZ.onclick = () => KOZ.classList.remove("hidden");
+if (closeKOZ) closeKOZ.onclick = () => KOZ.classList.add("hidden");
+
+if (open6dof) open6dof.onclick = () => rocket6dof.classList.remove("hidden");
+if (close6dof) close6dof.onclick = () => rocket6dof.classList.add("hidden");
+
+if (openInt) openInt.onclick = () => intModal.classList.remove("hidden");
+if (closeInt) closeInt.onclick = () => intModal.classList.add("hidden");
+
+if (open12u) open12u.onclick = () => cube12u.classList.remove("hidden");
+if (close12u) close12u.onclick = () => cube12u.classList.add("hidden");
+
+if (openSatControl) openSatControl.onclick = () => satControlModal.classList.remove("hidden");
+if (closeSatControl) closeSatControl.onclick = () => satControlModal.classList.add("hidden");
+
+if (openKalman) openKalman.onclick = () => kalmanModal.classList.remove("hidden");
+if (closeKalman) closeKalman.onclick = () => kalmanModal.classList.add("hidden");
+
+if (openOptimal) openOptimal.onclick = () => Optimal.classList.remove("hidden");
+if (closeOptimal) closeOptimal.onclick = () => Optimal.classList.add("hidden");
+
+if (openSpeedControl) openSpeedControl.onclick = () => speedControlModal.classList.remove("hidden");
+if (closeSpeedControl) closeSpeedControl.onclick = () => speedControlModal.classList.add("hidden");
+
+if (openServoBump) openServoBump.onclick = () => servoBumpModal.classList.remove("hidden");
+if (closeServoBump) closeServoBump.onclick = () => servoBumpModal.classList.add("hidden");
+
+if (openPositionControl) openPositionControl.onclick = () => positionControlModal.classList.remove("hidden");
+if (closePositionControl) closePositionControl.onclick = () => positionControlModal.classList.add("hidden");
+
+lucide.createIcons();
+</script>
+
+<script>
+lucide.createIcons();
+</script>
