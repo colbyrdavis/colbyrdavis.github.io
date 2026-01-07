@@ -389,6 +389,25 @@ onresize = () => {
   <button id="close12u" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="flex items-center justify-center gap-8 mb-10 flex-wrap">
+    <button onclick="openPDF('12U_CubeSatProposal.pdf')" class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> NASA Proposal
+    </button>
+
+    <button onclick="openPDF('Transfer.pdf')" class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> Transfer (L2 to L4) Code
+    </button>
+
+    <button onclick="openPDF('CDR.pdf')" class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> Critical Design Review
+    </button>
+
+    <button onclick="openPDF('Simulink.pdf')" class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> Simulink Model
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">12U CUBESAT - SYSTEMS & GNC</h2>
 </div>
 
@@ -396,7 +415,15 @@ onresize = () => {
   <button id="closeSatControl" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="text-center mb-10">
+    <button onclick="openPDF('Satellite_Attitude_Control.pdf')" class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> View Project Documentation (PDF)
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">SATELLITE ATTITUDE CONTROL</h2>
+
   <div class="max-w-4xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <video src="Sat_2.mp4" controls class="rounded-lg w-full"></video>
@@ -408,6 +435,13 @@ onresize = () => {
   <button id="closeKalman" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="text-center mb-10">
+    <button onclick="openPDF('Project_5.pdf')" class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> View Project Documentation (PDF)
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">KALMAN FILTER STATE ESTIMATION</h2>
 </div>
 
@@ -415,6 +449,17 @@ onresize = () => {
   <button id="closeOptimal" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="flex items-center justify-center gap-8 mb-10">
+    <button onclick="openPDF('Project2.pdf')" class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> Paper
+    </button>
+
+    <button onclick="openPDF('Project2Code.pdf')" class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> Code
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">OPTIMAL SATELLITE CONTROL</h2>
 </div>
 
@@ -422,6 +467,13 @@ onresize = () => {
   <button id="closeSpeedControl" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="text-center mb-10">
+    <button onclick="openPDF('AE443_Speed.pdf')" class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> View Project Documentation (PDF)
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-orange-400">SPEED CONTROLLER</h2>
 </div>
 
@@ -429,6 +481,13 @@ onresize = () => {
   <button id="closeServoBump" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="text-center mb-10">
+    <button onclick="openPDF('Servo_Bump_Test.pdf')" class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> Test Report (PDF)
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-orange-400">SERVO BUMP TEST</h2>
 </div>
 
@@ -436,6 +495,13 @@ onresize = () => {
   <button id="closePositionControl" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
+
+  <div class="text-center mb-10">
+    <button onclick="openPDF('Position_Control.pdf')" class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i> View Project Documentation (PDF)
+    </button>
+  </div>
+
   <h2 class="text-5xl font-black mb-10 text-center text-orange-400">POSITION CONTROL</h2>
 </div>
 
@@ -445,6 +511,7 @@ onresize = () => {
   </button>
   <iframe id="pdfFrame" class="w-full h-full bg-white rounded-lg" frameborder="0"></iframe>
 </div>
+
 
 <script>
 // PDF Viewer
