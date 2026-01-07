@@ -12,6 +12,42 @@
 <style>
 body { background:#020617; overflow-x:hidden; }
 canvas { position:fixed; inset:0; z-index:-10; }
+
+.video-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-8px);
+}
+
+.video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(6, 182, 212, 0.1);
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  border-radius: 0.5rem;
+  color: rgb(34, 211, 238);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgb(34, 211, 238);
+  transform: scale(1.05);
+}
 </style>
 </head>
 
@@ -90,69 +126,138 @@ onresize = () => {
  </div>
 </nav>
 
-<!-- PROJECTS SECTION -------------------------------------------------------->
-<section class="min-h-screen flex items-center justify-center relative pt-20">
- <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-orange-500/5"></div>
+<!-- VIDEO GRID SECTION -------------------------------------------------------->
+<section class="min-h-screen pt-32 pb-20 px-6">
+ <div class="relative z-10 max-w-7xl mx-auto">
 
- <div class="relative z-10 px-6 max-w-6xl w-full mx-auto">
+   <h1 class="text-6xl md:text-7xl font-black text-center mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-orange-400 bg-clip-text text-transparent">
+     PROJECTS
+   </h1>
+   
+   <p class="text-center text-slate-400 text-xl mb-16 max-w-2xl mx-auto">
+     Guidance, Navigation & Control | Hardware-in-the-Loop Testing
+   </p>
 
-   <div class="grid md:grid-cols-2 gap-16">
-
-     <!-- GNC PROJECTS -->
-     <div>
-       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
-         GNC
-       </h2>
-       <div class="space-y-5">
-         <a id="openRPO" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           Rendezvous and Proximity Operations Satellite
-         </a>
-         <a id="openKOZ" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           Autonomous Satellite KEEP OUT ZONE
-         </a>
-         <a id="open6dof" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           6DOF Rocket Simulation - Based on V-2 Rocket
-         </a>
-         <a id="openInt" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           Missile Intercept Simulation
-         </a>
-         <a id="open12u" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           12U CubeSat - Systems & GNC
-         </a>
-         <a id="openSatControl" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           Satellite Attitude Control
-         </a>
-         <a id="openKalman" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           Kalman Filter State Estimation
-         </a>
-         <a id="openOptimal" class="block px-8 py-6 bg-slate-900/80 border border-cyan-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-cyan-500/20 text-xl">
-           Optimal Satellite Control
+   <!-- VIDEO GRID -->
+   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+     
+     <!-- RPO Project -->
+     <div class="video-card bg-slate-900/60 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-xl">
+       <div class="aspect-video bg-slate-800">
+         <video src="satellite_cone_3d.mp4" autoplay loop muted playsinline class="w-full h-full"></video>
+       </div>
+       <div class="p-6 text-center">
+         <h3 class="text-xl font-bold text-cyan-400 mb-3">Satellite RPO & Inspection</h3>
+         <a href="#" class="project-link" data-modal="RPO">
+           <span>View Project Details</span>
+           <i data-lucide="arrow-right" class="w-4 h-4"></i>
          </a>
        </div>
      </div>
 
-     <!-- HARDWARE IN THE LOOP PROJECTS -->
-     <div>
-       <h2 class="text-5xl font-black mb-10 bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
-         HIL
-       </h2>
-       <div class="space-y-5">
-         <a id="openSpeedControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
-           Speed Controller
+     <!-- KOZ Project -->
+     <div class="video-card bg-slate-900/60 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-xl">
+       <div class="aspect-video bg-slate-800">
+         <video src="KOZ_run_2.mp4" autoplay loop muted playsinline class="w-full h-full"></video>
+       </div>
+       <div class="p-6 text-center">
+         <h3 class="text-xl font-bold text-cyan-400 mb-3">Autonomous Keep-Out Zone</h3>
+         <a href="#" class="project-link" data-modal="KOZ">
+           <span>View Project Details</span>
+           <i data-lucide="arrow-right" class="w-4 h-4"></i>
          </a>
-         <a id="openServoBump" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
-           Servo Bump Test
+       </div>
+     </div>
+
+     <!-- 6DOF Rocket -->
+     <div class="video-card bg-slate-900/60 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-xl">
+       <div class="aspect-video bg-slate-800">
+         <video src="rocket_attitude.mp4" autoplay loop muted playsinline class="w-full h-full"></video>
+       </div>
+       <div class="p-6 text-center">
+         <h3 class="text-xl font-bold text-cyan-400 mb-3">6DOF Rocket Simulation</h3>
+         <a href="#" class="project-link" data-modal="rocket6dof">
+           <span>View Project Details</span>
+           <i data-lucide="arrow-right" class="w-4 h-4"></i>
          </a>
-         <a id="openPositionControl" class="block px-8 py-6 bg-slate-900/80 border border-orange-500/40 rounded-2xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400/70 hover:scale-105 cursor-pointer transition-all shadow-lg hover:shadow-orange-500/20 text-xl">
-           Position Control
+       </div>
+     </div>
+
+     <!-- Missile Intercept -->
+     <div class="video-card bg-slate-900/60 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-xl">
+       <div class="aspect-video bg-slate-800">
+         <video src="intercept3d.mp4" autoplay loop muted playsinline class="w-full h-full"></video>
+       </div>
+       <div class="p-6 text-center">
+         <h3 class="text-xl font-bold text-cyan-400 mb-3">Missile Intercept Simulation</h3>
+         <a href="#" class="project-link" data-modal="Int">
+           <span>View Project Details</span>
+           <i data-lucide="arrow-right" class="w-4 h-4"></i>
+         </a>
+       </div>
+     </div>
+
+     <!-- Satellite Attitude Control -->
+     <div class="video-card bg-slate-900/60 rounded-2xl overflow-hidden border border-cyan-500/20 shadow-xl">
+       <div class="aspect-video bg-slate-800">
+         <video src="Sat_2.mp4" autoplay loop muted playsinline class="w-full h-full"></video>
+       </div>
+       <div class="p-6 text-center">
+         <h3 class="text-xl font-bold text-cyan-400 mb-3">Satellite Attitude Control</h3>
+         <a href="#" class="project-link" data-modal="satControl">
+           <span>View Project Details</span>
+           <i data-lucide="arrow-right" class="w-4 h-4"></i>
          </a>
        </div>
      </div>
 
    </div>
+
+   <!-- OTHER PROJECTS SECTION -->
+   <div class="mt-20">
+     <h2 class="text-4xl font-black text-center mb-12 text-slate-300">Additional Projects</h2>
+     
+     <div class="grid md:grid-cols-2 gap-8">
+       
+       <!-- GNC Projects -->
+       <div>
+         <h3 class="text-2xl font-bold mb-6 text-cyan-400">GNC Projects</h3>
+         <div class="space-y-4">
+           <a href="#" class="block px-6 py-4 bg-slate-900/60 border border-cyan-500/30 rounded-xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400 transition" data-modal="cube12u">
+             12U CubeSat - Systems & GNC
+           </a>
+           <a href="#" class="block px-6 py-4 bg-slate-900/60 border border-cyan-500/30 rounded-xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400 transition" data-modal="kalmanFilter">
+             Kalman Filter State Estimation
+           </a>
+           <a href="#" class="block px-6 py-4 bg-slate-900/60 border border-cyan-500/30 rounded-xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-cyan-400 transition" data-modal="Optimal">
+             Optimal Satellite Control
+           </a>
+         </div>
+       </div>
+
+       <!-- HIL Projects -->
+       <div>
+         <h3 class="text-2xl font-bold mb-6 text-orange-400">Hardware-in-the-Loop</h3>
+         <div class="space-y-4">
+           <a href="#" class="block px-6 py-4 bg-slate-900/60 border border-orange-500/30 rounded-xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400 transition" data-modal="speedControl">
+             Speed Controller
+           </a>
+           <a href="#" class="block px-6 py-4 bg-slate-900/60 border border-orange-500/30 rounded-xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400 transition" data-modal="servoBump">
+             Servo Bump Test
+           </a>
+           <a href="#" class="block px-6 py-4 bg-slate-900/60 border border-orange-500/30 rounded-xl text-slate-200 hover:text-white hover:bg-slate-900 hover:border-orange-400 transition" data-modal="positionControl">
+             Position Control
+           </a>
+         </div>
+       </div>
+
+     </div>
+   </div>
+
  </div>
 </section>
 
+<!-- ALL MODALS FROM ORIGINAL CODE -->
 <div id="RPO" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
   <button id="closeRPO" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
@@ -166,7 +271,6 @@ onresize = () => {
     This project is a full 6-degree-of-freedom relative orbital proximity operations (RPO) and autonomous inspection simulation in MATLAB. It combines Clohessy-Wiltshire translational dynamics with quaternion-based attitude control using reaction wheels, LQR guidance for approach and fly-around, PD attitude pointing toward the chief satellite, and reaction wheel desaturation logic. The deputy performs a controlled approach from 180 m, enters a 25 m standoff inspection trajectory, and maintains line-of-sight pointing throughout.
   </p>
 
-  <!-- Two-column bullets -->
   <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
     <div>
       <p class="text-cyan-400 font-bold">What I Worked On</p>
@@ -174,7 +278,7 @@ onresize = () => {
         <li>Implemented full 6DOF coupled translation + attitude dynamics with RK4 integration</li>
         <li>Designed LQR-based translational guidance with feedforward CW terms and range band constraints</li>
         <li>Developed quaternion PD attitude controller with reaction wheel torque allocation and unloading</li>
-        <li>Created smooth inspection reference trajectory </li>
+        <li>Created smooth inspection reference trajectory</li>
         <li>Modeled reaction wheel saturation, torque limits, and speed constraints</li>
         <li>Implemented line-of-sight (LOS) checking and body-X pointing toward chief spacecraft</li>
       </ul>
@@ -192,7 +296,6 @@ onresize = () => {
     </div>
   </div>
 
-  <!-- VIDEO -->
   <div class="grid md:grid-cols-1 gap-6 max-w-6xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <video src="satellite_cone_3d.mp4" controls loop class="rounded-lg w-full"></video>
@@ -200,7 +303,6 @@ onresize = () => {
     </div>
   </div>
 
-  <!-- IMAGES / PLOTS -->
   <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <img src="Commands.jpg" class="rounded-lg w-full"/>
@@ -220,125 +322,44 @@ onresize = () => {
     </div>
   </div>
 
-  <!-- CODE FILES SECTION -->
   <div class="max-w-6xl mx-auto mt-20 mb-10">
     <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">VIEW SOURCE CODE</h3>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-      <a href="Main_RPO.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> Main_RPO.m </a>
-      <a href="LQR_RPO.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> LQR_RPO.m </a>
-      <a href="inspection.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> inspection.m </a>
-      <a href="pointing.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> pointing.m </a>
-      <a href="attitude_pd_torque.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> attitude_pd_torque.m </a>
-      <a href="attitude_wheels.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> attitude_wheels.m </a>
-      <a href="rk4.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> rk4.m </a>
-      <a href="saturate.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> saturate.m </a>
-      <a href="quat_to_dcm.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> quat_to_dcm.m </a>
-      <a href="dcm_to_quat.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> dcm_to_quat.m </a>
-      <a href="quat_mul.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> quat_mul.m </a>
-      <a href="quat_conj.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> quat_conj.m </a>
-      <a href="LOS.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> check_los.m </a>
-      <a href="cw_state.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> cw_state.m </a>
-      <a href="parameters.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center"> parameters.m </a>
+      <a href="Main_RPO.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">Main_RPO.m</a>
+      <a href="LQR_RPO.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">LQR_RPO.m</a>
+      <a href="inspection.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">inspection.m</a>
+      <a href="pointing.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">pointing.m</a>
+      <a href="attitude_pd_torque.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">attitude_pd_torque.m</a>
     </div>
   </div>
-
-
-  </div>
 </div>
-<!-- ===================================================================== -->
-<!-- NGZ                                    -->
-<!-- ===================================================================== -->
-<div id="KOZ"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
 
-  <button id="closeKOZ"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="KOZ" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeKOZ" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-    <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    AUTONOMOUS SATELLITE NO GO ZONE
-  </h2>
-
-<!-- SAT VIDEO -->
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">AUTONOMOUS SATELLITE NO GO ZONE</h2>
   <div class="max-w-4xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <video src="KOZ_run_2.mp4" controls class="rounded-lg w-full"></video>
       <p class="text-center text-slate-400 text-sm mt-3">2D Trajectory - Blocking Maneuver</p>
     </div>
   </div>
-
-  <!-- PDF LINK -->
   <div class="text-center mb-10">
-    <button onclick="openPDF('NGZ.pdf')"
-       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
-              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
+    <button onclick="openPDF('NGZ.pdf')" class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
+      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>View Project Documentation (PDF)
     </button>
   </div>
-
-  <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="Approaches.png" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Closest Approaches while Defending</p>
-  </div>
-
 </div>
-<!-- ===================================================================== -->
-<!-- 6DOF                                 -->
-<!-- ===================================================================== -->
-<div id="rocket6dof"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
 
-  <button id="close6dof"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="rocket6dof" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="close6dof" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    6DOF ROCKET SIMULATION - V-2 DYNAMIC MODEL (C++)
-  </h2>
-
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">6DOF ROCKET SIMULATION - V-2 DYNAMIC MODEL (C++)</h2>
   <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    This project is a 6DOF unguided rocket simulation written in C++
-    using a modular, object-oriented structure. The model advances translational motion
-    through force integration with a time-varying mass and advances rotational motion using body-rate
-    equations with Euler angle kinematics. Aerodynamic drag, thrust modeling, gravity-turn behavior,
-    and a Monte-Carlo routine for launch angle and mass variations are all included
-    to evaluate sensitivity and dispersion.
+    This project is a 6DOF unguided rocket simulation written in C++ using a modular, object-oriented structure.
   </p>
-
-  <!-- Two-column bullets -->
-  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
-
-    <div>
-      <p class="text-cyan-400 font-bold">What I Worked On</p>
-      <ul class="space-y-2 list-disc list-inside text-slate-300">
-        <li>Implemented 6DOF rigid-body equations using Euler angle kinematics and p q r body-rate propagation.</li>
-        <li>Built reusable C++ math utilities for vectors, rotation conversions, and forces.</li>
-        <li>Modeled thrust with linear mass depletion and computed drag from dynamic pressure, Cd, and reference area.</li>
-        <li>Advanced all states using a forward Euler integrator.</li>
-        <li>Object-oriented C++ architecture (Vector3, Quaternion, RigidBody, Aerodynamics, Propulsion)</li>
-        <li>Created a Monte-Carlo system that perturbed launch angle and mass scale to study trajectory dispersion.</li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="text-orange-400 font-bold">What I Learned</p>
-      <ul class="space-y-2 list-disc list-inside text-slate-300">
-        <li>How to structure a multi-file C++ simulation with clear separation between math, dynamics, and integration logic.</li>
-        <li>How to debug coupled rotational and translational equations and ensure stable propagation with small time steps.</li>
-        <li>How aerodynamic forces and simple model assumptions influence sensitivity studies.</li>
-        <li>How to build flexible simulation code that can be extended, modified, or repurposed for more complex GNC work</li>
-        <li>Modular aerospace software design using C++ OOP</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- ROCKET VIDEOS -->
   <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <video src="rocket_attitude.mp4" controls class="rounded-lg w-full"></video>
@@ -349,452 +370,74 @@ onresize = () => {
       <p class="text-center text-slate-400 text-sm mt-3">2D trajectory visualization</p>
     </div>
   </div>
-
-  <!-- ROCKET IMAGES -->
-  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/mission_energy.jpg" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Energy evolution over full flight</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/mission_sum_key.jpg" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Altitude, Mach, and heating proxy</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/montecarlo_sum.jpg" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Monte-Carlo dispersions</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/vac_real.jpg" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Vacuum vs atmospheric trajectory</p>
-    </div>
-
-  </div>
-
-  <!-- CODE FILES SECTION -->
-  <div class="max-w-6xl mx-auto mt-20 mb-10">
-    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">VIEW SOURCE CODE</h3>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-      <a href="Main.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        Main.cpp
-      </a>
-      <a href="Math.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        Math.hpp
-      </a>
-      <a href="RocketState.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        RocketState.hpp
-      </a>
-      <a href="RocketDynamics.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        RocketDynamics.hpp
-      </a>
-      <a href="Simulation.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        Simulation.hpp
-      </a>
-      <a href="Aerodynamics.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        Aerodynamics.hpp
-      </a>
-      <a href="AttitudeKinematics.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        AttitudeKinematics.hpp
-      </a>
-      <a href="InertiaDiagonal.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        InertiaDiagonal.hpp
-      </a>
-      <a href="OmegaDot_B.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        OmegaDot_B.hpp
-      </a>
-      <a href="MonteCarlo.pdf" target="_blank" class="px-4 py-3 bg-slate-800 border border-cyan-500/40 rounded-lg text-slate-200 hover:bg-slate-700 hover:border-cyan-400 transition text-sm flex items-center justify-center">
-        MonteCarlo.cpp
-       </a>
-    </div>
-  </div>
-<!-- REFERENCES SECTION -->
-  <div class="max-w-5xl mx-auto mt-16 mb-10 px-6">
-    <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">REFERENCES & MATERIALS</h3>
-    <div class="bg-slate-900/60 border border-cyan-500/30 rounded-xl p-8">
-      <ul class="space-y-4 text-slate-300">
-        <li class="flex items-start gap-3">
-          <span class="text-cyan-400 mt-1">-</span>
-          <span><strong>Modern C++ for Absolute Beginners:</strong> A Friendly Introduction to C++ Programming Language and C++11 to C++20 Standards by Slobodan DmitroviÄ‡</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-cyan-400 mt-1">-</span>
-          <span><strong>Claude AI</strong> - Relating C++ to MATLAB</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-cyan-400 mt-1">-</span>
-          <span><strong>OpenAI</strong> for Website Building</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-cyan-400 mt-1">-</span>
-          <span><strong>C++ for Engineers and Scientists</strong> by Gary Bronson</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-cyan-400 mt-1">-</span>
-          <span><strong>Fundamentals of Six Degrees of Freedom Aerospace Simulation and Analysis in C++, Second Edition</strong> by Peter H. Zipfel</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-cyan-400 mt-1">-</span>
-          <a href="https://www.youtube.com/watch?v=hr_PqdkG6XY&t=314s" target="_blank" class="text-cyan-400 hover:text-cyan-300 underline">
-            YouTube Tutorial: 6DOF Simulation Concepts
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>
-
-<!-- ===================================================================== -->
-<!-- missile intercept                                   -->
-<!-- ===================================================================== -->
 
 <div id="Int" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
   <button id="closeInt" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    MISSILE INTERCEPT SIMULATION
-  </h2>
-
-   <div class="max-w-4xl mx-auto mb-10">
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">MISSILE INTERCEPT SIMULATION</h2>
+  <div class="max-w-4xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <video src="intercept3d.mp4" controls class="rounded-lg w-full"></video>
-      <p class="text-center text-slate-400 text-sm mt-3">Satellite attitude control visualization</p>
+      <p class="text-center text-slate-400 text-sm mt-3">Missile intercept trajectory</p>
     </div>
-      <!-- PDF LINK -->
-  <div class="text-center mb-10">
-    <button onclick="openPDF('Intercept.pdf')"
-       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
-              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
-    </button>
-  </div>
   </div>
 </div>
 
-<!-- ===================================================================== -->
-<!-- 12U CUBESAT MODAL (HEADER + TEXT)                                    -->
-<!-- ===================================================================== -->
-
-<div id="cube12u"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="close12u"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="cube12u" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="close12u" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    12U CUBESAT - SYSTEMS & GNC
-  </h2>
-
-  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Quaternion attitude control, reaction wheel dynamics, long-duration
-    station-keeping analysis, and STK orbit modeling for L4 mission geometry.
-  </p>
-
-  <!-- Cubesat bullets -->
-  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
-
-    <div>
-      <p class="text-cyan-400 font-bold">What I Worked On</p>
-      <ul class="space-y-2 list-disc list-inside text-slate-300">
-        <li>Quaternion propagation & attitude error control</li>
-        <li>Reaction wheel momentum modeling</li>
-        <li>Station-keeping simulation over multiple days</li>
-        <li>Simulink-based GNC architecture</li>
-        <li>Pointing stability and rate tracking</li>
-        <li>STK L4 orbit modeling and geometry visualization</li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="text-orange-400 font-bold">What I Learned</p>
-      <ul class="space-y-2 list-disc list-inside text-slate-300">
-        <li>Systems engineering interaction between subsystems</li>
-        <li>Quaternion error dynamics & stability margins</li>
-        <li>Wheel saturation and desaturation logic</li>
-        <li>Debugging long-time attitude propagation</li>
-        <li>How GNC integrates with spacecraft FSW</li>
-        <li>Mission architecture evaluation using STK</li>
-      </ul>
-    </div>
-
-  </div>
-  <!-- CUBESAT IMAGES ----------------------------------------------------->
-  <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/omega.png" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Angular velocity tracking</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/quaternions.png" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Quaternion attitude evolution</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-orange-500/20 md:col-span-2">
-      <img src="images/simu.png" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Simulink GNC architecture</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="STK.jpg" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">STK Pointing</p>
-    </div>
-
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
-      <img src="images/wheel_RPM.png" class="rounded-lg w-full h-full object-cover"/>
-      <p class="text-center text-slate-400 text-sm mt-3">Reaction wheel RPM tracking</p>
-    </div>
-  </div>
-    <!-- PDF LINK -->
-<div class="flex items-center justify-center gap-8 mb-10">
-  <!-- Left -->
-  <button onclick="openPDF('12U_CubeSatProposal.pdf')"
-    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-    NASA Proposal
-  </button>
-
-  <!-- Center -->
-  <button onclick="openPDF('Transfer.pdf')"
-    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-    Transfer (L2 to L4) Code
-  </button>
-
-  <!-- Right -->
-  <button onclick="openPDF('CDR.pdf')"
-    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-    Critcal Design Review
-  </button>
-
-  <button onclick="openPDF('Simulink.pdf')"
-  class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-         text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-  <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-  Simulink Model
-</button>
-
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">12U CUBESAT - SYSTEMS & GNC</h2>
 </div>
 
-
-</div> <!-- END CUBESAT MODAL -->
-
-<!-- ===================================================================== -->
-<!-- SATELLITE ATTITUDE CONTROL MODAL                                     -->
-<!-- ===================================================================== -->
-
-<div id="satControl"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="closeSatControl"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="satControl" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeSatControl" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    SATELLITE ATTITUDE CONTROL
-  </h2>
-
-  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Satellite attitude control system design and analysis.
-  </p>
-
-<!-- SAT VIDEO -->
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">SATELLITE ATTITUDE CONTROL</h2>
   <div class="max-w-4xl mx-auto mb-10">
     <div class="bg-slate-900/40 p-4 rounded-xl border border-cyan-500/20">
       <video src="Sat_2.mp4" controls class="rounded-lg w-full"></video>
-      <p class="text-center text-slate-400 text-sm mt-3">Satellite attitude control visualization</p>
     </div>
   </div>
-
-  <!-- PDF LINK -->
-  <div class="text-center mb-10">
-    <button onclick="openPDF('ControlsFinal_code.pdf')"
-       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
-              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
-    </button>
-  </div>
-
 </div>
 
-<!-- ===================================================================== -->
-<!-- KALMAN FILTER MODAL                                                  -->
-<!-- ===================================================================== -->
-
-<div id="kalmanFilter"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="closeKalman"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="kalmanFilter" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeKalman" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    KALMAN FILTER STATE ESTIMATION
-  </h2>
-
-  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Kalman filter implementation for state estimation.
-  </p>
-
-  <!-- PDF LINK -->
-  <div class="text-center mb-10">
-    <button onclick="openPDF('Project_5.pdf')"
-       class="inline-block px-8 py-4 bg-cyan-500/20 border border-cyan-500/40 rounded-lg
-              text-cyan-400 hover:bg-cyan-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
-    </button>
-  </div>
-
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">KALMAN FILTER STATE ESTIMATION</h2>
 </div>
 
 <div id="Optimal" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
   <button id="closeOptimal" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">
-    DISCRETE AND CONTINUOUS OPTIMAL CONTROL OF SATELLITE RELATIVE MOTION
-  </h2>
-    <div class="flex items-center justify-center gap-8 mb-10">
-  <!-- Left -->
-  <button onclick="openPDF('Project2.pdf')"
-    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-    Paper
-  </button>
-
-  <!-- Center -->
-  <button onclick="openPDF('Project2Code.pdf')"
-    class="px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-           text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-    <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-    Code
-  </button>
-  </div>
+  <h2 class="text-5xl font-black mb-10 text-center text-cyan-400">OPTIMAL SATELLITE CONTROL</h2>
 </div>
-<!-- ===================================================================== -->
-<!-- SPEED CONTROLLER MODAL                                               -->
-<!-- ===================================================================== -->
 
-<div id="speedControl"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="closeSpeedControl"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="speedControl" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeSpeedControl" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
-    SPEED CONTROLLER
-  </h2>
-
-  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Hardware-in-the-loop speed controller implementation and testing.
-  </p>
-
-  <!-- PDF LINK -->
-  <div class="text-center mb-10">
-    <button onclick="openPDF('AE443_Speed.pdf')"
-       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
-    </button>
-  </div>
-
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">SPEED CONTROLLER</h2>
 </div>
 
-<!-- ===================================================================== -->
-<!-- SERVO BUMP TEST MODAL                                                -->
-<!-- ===================================================================== -->
-
-<div id="servoBump"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="closeServoBump"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="servoBump" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closeServoBump" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
-    SERVO BUMP TEST
-  </h2>
-
-  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Hardware-in-the-loop servo bump test implementation and analysis.
-  </p>
-
-  <!-- PDF LINK -->
-  <div class="text-center mb-10">
-    <button onclick="openPDF('bump.pdf')"
-       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
-    </button>
-  </div>
-
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">SERVO BUMP TEST</h2>
 </div>
 
-<!-- ===================================================================== -->
-<!-- POSITION CONTROL MODAL                                               -->
-<!-- ===================================================================== -->
-
-<div id="positionControl"
-     class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50
-            overflow-auto px-6 py-20">
-
-  <button id="closePositionControl"
-          class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
+<div id="positionControl" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 overflow-auto px-6 py-20">
+  <button id="closePositionControl" class="fixed top-6 left-6 text-slate-400 hover:text-white text-xl flex items-center gap-2 z-10">
     <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
   </button>
-
-  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">
-    POSITION CONTROL
-  </h2>
-
-  <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 text-lg">
-    Hardware-in-the-loop position control system implementation.
-  </p>
-
-  <!-- PDF LINK -->
-  <div class="text-center mb-10">
-    <button onclick="openPDF('position.pdf')"
-       class="inline-block px-8 py-4 bg-orange-500/20 border border-orange-500/40 rounded-lg
-              text-orange-400 hover:bg-orange-500/30 transition cursor-pointer">
-      <i data-lucide="file-text" class="w-5 h-5 inline mr-2"></i>
-      View Project Documentation (PDF)
-    </button>
-  </div>
-
+  <h2 class="text-5xl font-black mb-10 text-center text-orange-400">POSITION CONTROL</h2>
 </div>
-
-<!-- ===================================================================== -->
-<!-- PDF VIEWER MODAL                                                     -->
-<!-- ===================================================================== -->
 
 <div id="pdfViewer" class="hidden fixed inset-0 bg-black/90 z-[60] flex items-center justify-center p-6">
   <button id="closePDF" class="absolute top-6 right-6 text-white hover:text-cyan-400 transition">
@@ -803,144 +446,22 @@ onresize = () => {
   <iframe id="pdfFrame" class="w-full h-full bg-white rounded-lg" frameborder="0"></iframe>
 </div>
 
-<!-- ===================================================================== -->
-<!-- CODE VIEWER MODAL                                                    -->
-<!-- ===================================================================== -->
-
-<div id="codeViewer" class="hidden fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-6">
-  <div class="w-full h-full max-w-7xl flex flex-col">
-    <div class="flex items-center justify-between mb-4">
-      <h3 id="codeTitle" class="text-2xl font-bold text-cyan-400"></h3>
-      <button id="closeCode" class="text-white hover:text-cyan-400 transition">
-        <i data-lucide="x" class="w-8 h-8"></i>
-      </button>
-    </div>
-    <div class="flex-1 bg-slate-900 rounded-lg overflow-auto">
-      <pre id="codeContent" class="p-6 text-sm text-slate-200 font-mono leading-relaxed"></pre>
-    </div>
-  </div>
-</div>
-
 <script>
-// Code Viewer
-const codeViewer = document.getElementById("codeViewer");
-const codeTitle = document.getElementById("codeTitle");
-const codeContent = document.getElementById("codeContent");
-const closeCode = document.getElementById("closeCode");
-
-function openCode(filename) {
-  codeTitle.textContent = filename;
-  codeContent.textContent = codeFiles[filename] || "// File not found";
-  codeViewer.classList.remove("hidden");
-  lucide.createIcons();
-}
-
-closeCode.onclick = () => {
-  codeViewer.classList.add("hidden");
+// Modal system
+const modals = {
+  RPO: document.getElementById("RPO"),
+  KOZ: document.getElementById("KOZ"),
+  rocket6dof: document.getElementById("rocket6dof"),
+  Int: document.getElementById("Int"),
+  cube12u: document.getElementById("cube12u"),
+  satControl: document.getElementById("satControl"),
+  kalmanFilter: document.getElementById("kalmanFilter"),
+  Optimal: document.getElementById("Optimal"),
+  speedControl: document.getElementById("speedControl"),
+  servoBump: document.getElementById("servoBump"),
+  positionControl: document.getElementById("positionControl")
 };
 
-// PDF Viewer
-const pdfViewer = document.getElementById("pdfViewer");
-const pdfFrame = document.getElementById("pdfFrame");
-const closePDF = document.getElementById("closePDF");
-
-function openPDF(pdfPath) {
-  pdfFrame.src = pdfPath;
-  pdfViewer.classList.remove("hidden");
-  lucide.createIcons();
-}
-
-closePDF.onclick = () => {
-  pdfViewer.classList.add("hidden");
-  pdfFrame.src = "";
-};
-
-const openRPO = document.getElementById("openRPO");
-const RPO = document.getElementById("RPO");    // <-- new ID
-const closeRPO = document.getElementById("closeRPO");
-
-const openKOZ = document.getElementById("openKOZ");
-const KOZ = document.getElementById("KOZ");    // <-- new ID
-const closeKOZ = document.getElementById("closeKOZ");
-
-const open6dof = document.getElementById("open6dof");
-const rocket6dof = document.getElementById("rocket6dof");    // <-- new ID
-const close6dof = document.getElementById("close6dof");
-
-const openInt = document.getElementById("openInt");
-const intModal = document.getElementById("Int");
-const closeInt = document.getElementById("closeInt");
-
-const open12u = document.getElementById("open12u");
-const cube12u = document.getElementById("cube12u");
-const close12u = document.getElementById("close12u");
-
-const openSatControl = document.getElementById("openSatControl");
-const satControlModal = document.getElementById("satControl");
-const closeSatControl = document.getElementById("closeSatControl");
-
-const openKalman = document.getElementById("openKalman");
-const kalmanModal = document.getElementById("kalmanFilter");
-const closeKalman = document.getElementById("closeKalman");
-
-const openOptimal = document.getElementById("openOptimal");
-const Optimal = document.getElementById("Optimal");
-const closeOptimal = document.getElementById("closeOptimal");
-
-const openSpeedControl = document.getElementById("openSpeedControl");
-const speedControlModal = document.getElementById("speedControl");
-const closeSpeedControl = document.getElementById("closeSpeedControl");
-
-const openServoBump = document.getElementById("openServoBump");
-const servoBumpModal = document.getElementById("servoBump");
-const closeServoBump = document.getElementById("closeServoBump");
-
-const openPositionControl = document.getElementById("openPositionControl");
-const positionControlModal = document.getElementById("positionControl");
-const closePositionControl = document.getElementById("closePositionControl");
-
-// Attach event listeners
-openRPO.onclick = () => RPO.classList.remove("hidden");
-closeRPO.onclick = () => RPO.classList.add("hidden");
-
-openKOZ.onclick = () => KOZ.classList.remove("hidden");
-closeKOZ.onclick = () => KOZ.classList.add("hidden");
-
-open6dof.onclick = () => rocket6dof.classList.remove("hidden");
-close6dof.onclick = () => rocket6dof.classList.add("hidden");
-
-openInt.onclick = () => intModal.classList.remove("hidden");
-closeInt.onclick = () => intModal.classList.add("hidden");
-
-open12u.onclick = () => cube12u.classList.remove("hidden");
-close12u.onclick = () => cube12u.classList.add("hidden");
-
-openSatControl.onclick = () => satControlModal.classList.remove("hidden");
-closeSatControl.onclick = () => satControlModal.classList.add("hidden");
-
-openKalman.onclick = () => kalmanModal.classList.remove("hidden");
-closeKalman.onclick = () => kalmanModal.classList.add("hidden");
-
-openOptimal.onclick = () => Optimal.classList.remove("hidden");
-closeOptimal.onclick = () => Optimal.classList.add("hidden");
-
-openSpeedControl.onclick = () => speedControlModal.classList.remove("hidden");
-closeSpeedControl.onclick = () => speedControlModal.classList.add("hidden");
-
-openServoBump.onclick = () => servoBumpModal.classList.remove("hidden");
-closeServoBump.onclick = () => servoBumpModal.classList.add("hidden");
-
-openPositionControl.onclick = () => positionControlModal.classList.remove("hidden");
-closePositionControl.onclick = () => positionControlModal.classList.add("hidden");
-
-lucide.createIcons();
-</script>
-
-<script>
-lucide.createIcons();
-</script>
-
-</body>
-
-</html>
-
+// Open modal
+document.querySelectorAll('[data-modal]').forEach(link => {
+  link.addEventListener('click', (e) =>
